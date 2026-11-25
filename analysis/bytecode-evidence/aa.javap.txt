@@ -1,0 +1,402 @@
+Classfile /Users/kd-qa-0294/Desktop/REV/rea/games/worms-reloaded/analysis/recovered/aa.class
+  Last modified Nov 24, 2026; size 1599 bytes
+  SHA-256 checksum 894891aff4f619b31e0f62df881f8e218bdb5b0ab2e2768a27b73afbcf8b1328
+public final class aa extends javax.microedition.lcdui.Canvas
+  minor version: 0
+  major version: 46
+  flags: (0x0031) ACC_PUBLIC, ACC_FINAL, ACC_SUPER
+  this_class: #2                          // aa
+  super_class: #6                         // javax/microedition/lcdui/Canvas
+  interfaces: 0, fields: 3, methods: 7, attributes: 0
+Constant pool:
+    #1 = Integer            16777215
+    #2 = Class              #98           // aa
+    #3 = Class              #99           // ab
+    #4 = Class              #100          // ae
+    #5 = Class              #108          // java/lang/Throwable
+    #6 = Class              #109          // javax/microedition/lcdui/Canvas
+    #7 = Class              #110          // javax/microedition/lcdui/Graphics
+    #8 = Class              #113          // l
+    #9 = Class              #114          // n
+   #10 = Class              #116          // s
+   #11 = Class              #121          // v
+   #12 = Class              #122          // w
+   #13 = Class              #123          // z
+   #14 = Fieldref           #2.#51        // aa.a:Lae;
+   #15 = Fieldref           #2.#58        // aa.a:Z
+   #16 = Fieldref           #3.#56        // ab.a:Lv;
+   #17 = Fieldref           #4.#49        // ae.a:I
+   #18 = Fieldref           #4.#50        // ae.a:Lab;
+   #19 = Fieldref           #4.#51        // ae.a:Lae;
+   #20 = Fieldref           #4.#52        // ae.a:Ljava/lang/Object;
+   #21 = Fieldref           #4.#53        // ae.a:Ljavax/microedition/lcdui/Graphics;
+   #22 = Fieldref           #4.#58        // ae.a:Z
+   #23 = Fieldref           #4.#59        // ae.a:[S
+   #24 = Fieldref           #4.#61        // ae.b:Lz;
+   #25 = Fieldref           #8.#55        // l.a:Ls;
+   #26 = Fieldref           #8.#57        // l.a:Lw;
+   #27 = Fieldref           #9.#51        // n.a:Lae;
+   #28 = Fieldref           #9.#58        // n.a:Z
+   #29 = Fieldref           #10.#54       // s.a:Ln;
+   #30 = Fieldref           #11.#62       // v.d:Z
+   #31 = Fieldref           #13.#64       // z.g:Z
+   #32 = Fieldref           #13.#66       // z.h:Z
+   #33 = Methodref          #4.#45        // ae.a:()Ll;
+   #34 = Methodref          #4.#47        // ae.a:(Lz;)V
+   #35 = Methodref          #4.#48        // ae.a:(SSSLz;)V
+   #36 = Methodref          #6.#44        // javax/microedition/lcdui/Canvas."<init>":()V
+   #37 = Methodref          #6.#69        // javax/microedition/lcdui/Canvas.setFullScreenMode:(Z)V
+   #38 = Methodref          #7.#63        // javax/microedition/lcdui/Graphics.fillRect:(IIII)V
+   #39 = Methodref          #7.#65        // javax/microedition/lcdui/Graphics.getColor:()I
+   #40 = Methodref          #7.#67        // javax/microedition/lcdui/Graphics.setColor:(I)V
+   #41 = Methodref          #7.#68        // javax/microedition/lcdui/Graphics.setColor:(III)V
+   #42 = Methodref          #13.#60       // z.b:()V
+   #43 = InterfaceMethodref #12.#46       // w.a:(Ln;)V
+   #44 = NameAndType        #83:#73       // "<init>":()V
+   #45 = NameAndType        #97:#72       // a:()Ll;
+   #46 = NameAndType        #97:#79       // a:(Ln;)V
+   #47 = NameAndType        #97:#80       // a:(Lz;)V
+   #48 = NameAndType        #97:#81       // a:(SSSLz;)V
+   #49 = NameAndType        #97:#85       // a:I
+   #50 = NameAndType        #97:#86       // a:Lab;
+   #51 = NameAndType        #97:#87       // a:Lae;
+   #52 = NameAndType        #97:#88       // a:Ljava/lang/Object;
+   #53 = NameAndType        #97:#89       // a:Ljavax/microedition/lcdui/Graphics;
+   #54 = NameAndType        #97:#90       // a:Ln;
+   #55 = NameAndType        #97:#91       // a:Ls;
+   #56 = NameAndType        #97:#92       // a:Lv;
+   #57 = NameAndType        #97:#93       // a:Lw;
+   #58 = NameAndType        #97:#95       // a:Z
+   #59 = NameAndType        #97:#96       // a:[S
+   #60 = NameAndType        #101:#73      // b:()V
+   #61 = NameAndType        #101:#94      // b:Lz;
+   #62 = NameAndType        #102:#95      // d:Z
+   #63 = NameAndType        #103:#77      // fillRect:(IIII)V
+   #64 = NameAndType        #104:#95      // g:Z
+   #65 = NameAndType        #105:#71      // getColor:()I
+   #66 = NameAndType        #106:#95      // h:Z
+   #67 = NameAndType        #117:#74      // setColor:(I)V
+   #68 = NameAndType        #117:#76      // setColor:(III)V
+   #69 = NameAndType        #118:#82      // setFullScreenMode:(Z)V
+   #70 = Class              #125          // java/lang/Object
+   #71 = Utf8               ()I
+   #72 = Utf8               ()Ll;
+   #73 = Utf8               ()V
+   #74 = Utf8               (I)V
+   #75 = Utf8               (II)V
+   #76 = Utf8               (III)V
+   #77 = Utf8               (IIII)V
+   #78 = Utf8               (Ljavax/microedition/lcdui/Graphics;)V
+   #79 = Utf8               (Ln;)V
+   #80 = Utf8               (Lz;)V
+   #81 = Utf8               (SSSLz;)V
+   #82 = Utf8               (Z)V
+   #83 = Utf8               <init>
+   #84 = Utf8               Code
+   #85 = Utf8               I
+   #86 = Utf8               Lab;
+   #87 = Utf8               Lae;
+   #88 = Utf8               Ljava/lang/Object;
+   #89 = Utf8               Ljavax/microedition/lcdui/Graphics;
+   #90 = Utf8               Ln;
+   #91 = Utf8               Ls;
+   #92 = Utf8               Lv;
+   #93 = Utf8               Lw;
+   #94 = Utf8               Lz;
+   #95 = Utf8               Z
+   #96 = Utf8               [S
+   #97 = Utf8               a
+   #98 = Utf8               aa
+   #99 = Utf8               ab
+  #100 = Utf8               ae
+  #101 = Utf8               b
+  #102 = Utf8               d
+  #103 = Utf8               fillRect
+  #104 = Utf8               g
+  #105 = Utf8               getColor
+  #106 = Utf8               h
+  #107 = Utf8               hideNotify
+  #108 = Utf8               java/lang/Throwable
+  #109 = Utf8               javax/microedition/lcdui/Canvas
+  #110 = Utf8               javax/microedition/lcdui/Graphics
+  #111 = Utf8               keyPressed
+  #112 = Utf8               keyReleased
+  #113 = Utf8               l
+  #114 = Utf8               n
+  #115 = Utf8               paint
+  #116 = Utf8               s
+  #117 = Utf8               setColor
+  #118 = Utf8               setFullScreenMode
+  #119 = Utf8               showNotify
+  #120 = Utf8               sizeChanged
+  #121 = Utf8               v
+  #122 = Utf8               w
+  #123 = Utf8               z
+  #124 = Utf8               StackMap
+  #125 = Utf8               java/lang/Object
+{
+  private boolean a;
+    descriptor: Z
+    flags: (0x0002) ACC_PRIVATE
+
+  public int a;
+    descriptor: I
+    flags: (0x0001) ACC_PUBLIC
+
+  private ae a;
+    descriptor: Lae;
+    flags: (0x0002) ACC_PRIVATE
+
+  public aa();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #36                 // Method javax/microedition/lcdui/Canvas."<init>":()V
+         4: aload_0
+         5: iconst_1
+         6: invokevirtual #37                 // Method javax/microedition/lcdui/Canvas.setFullScreenMode:(Z)V
+         9: aload_0
+        10: getstatic     #19                 // Field ae.a:Lae;
+        13: checkcast     #4                  // class ae
+        16: putfield      #14                 // Field a:Lae;
+        19: return
+
+  public final void hideNotify();
+    descriptor: ()V
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=2, locals=1, args_size=1
+         0: getstatic     #24                 // Field ae.b:Lz;
+         3: invokestatic  #34                 // Method ae.a:(Lz;)V
+         6: getstatic     #24                 // Field ae.b:Lz;
+         9: iconst_1
+        10: putfield      #32                 // Field z.h:Z
+        13: return
+
+  public final void showNotify();
+    descriptor: ()V
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=4, locals=1, args_size=1
+         0: getstatic     #24                 // Field ae.b:Lz;
+         3: invokevirtual #42                 // Method z.b:()V
+         6: bipush        7
+         8: iconst_0
+         9: iconst_0
+        10: getstatic     #24                 // Field ae.b:Lz;
+        13: invokestatic  #35                 // Method ae.a:(SSSLz;)V
+        16: return
+
+  public final void sizeChanged(int, int);
+    descriptor: (II)V
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=0, locals=3, args_size=3
+         0: return
+
+  public final void keyPressed(int);
+    descriptor: (I)V
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=4, locals=2, args_size=2
+         0: iconst_1
+         1: iload_1
+         2: bipush        16
+         4: ishr
+         5: iload_1
+         6: i2s
+         7: getstatic     #24                 // Field ae.b:Lz;
+        10: invokestatic  #35                 // Method ae.a:(SSSLz;)V
+        13: return
+
+  public final void keyReleased(int);
+    descriptor: (I)V
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=4, locals=2, args_size=2
+         0: iconst_2
+         1: iload_1
+         2: bipush        16
+         4: ishr
+         5: iload_1
+         6: i2s
+         7: getstatic     #24                 // Field ae.b:Lz;
+        10: invokestatic  #35                 // Method ae.a:(SSSLz;)V
+        13: return
+
+  public final void paint(javax.microedition.lcdui.Graphics);
+    descriptor: (Ljavax/microedition/lcdui/Graphics;)V
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=6, locals=7, args_size=2
+         0: getstatic     #20                 // Field ae.a:Ljava/lang/Object;
+         3: dup
+         4: astore_2
+         5: monitorenter
+         6: aload_0
+         7: getfield      #15                 // Field a:Z
+        10: ifne          18
+        13: aload_0
+        14: iconst_1
+        15: putfield      #15                 // Field a:Z
+        18: aload_0
+        19: getfield      #14                 // Field a:Lae;
+        22: aload_1
+        23: putfield      #21                 // Field ae.a:Ljavax/microedition/lcdui/Graphics;
+        26: getstatic     #19                 // Field ae.a:Lae;
+        29: dup
+        30: astore_3
+        31: getfield      #17                 // Field ae.a:I
+        34: ifle          153
+        37: aload_3
+        38: aload_3
+        39: getfield      #17                 // Field ae.a:I
+        42: iconst_1
+        43: isub
+        44: putfield      #17                 // Field ae.a:I
+        47: iconst_3
+        48: newarray       short
+        50: dup
+        51: astore_1
+        52: iconst_0
+        53: iconst_0
+        54: sastore
+        55: aload_1
+        56: iconst_1
+        57: iconst_0
+        58: sastore
+        59: aload_1
+        60: iconst_2
+        61: iconst_0
+        62: sastore
+        63: getstatic     #19                 // Field ae.a:Lae;
+        66: getfield      #23                 // Field ae.a:[S
+        69: iconst_0
+        70: saload
+        71: istore_0
+        72: getstatic     #19                 // Field ae.a:Lae;
+        75: getfield      #23                 // Field ae.a:[S
+        78: iconst_1
+        79: saload
+        80: istore        4
+        82: getstatic     #19                 // Field ae.a:Lae;
+        85: getfield      #23                 // Field ae.a:[S
+        88: iconst_2
+        89: saload
+        90: istore        5
+        92: getstatic     #19                 // Field ae.a:Lae;
+        95: getfield      #23                 // Field ae.a:[S
+        98: iconst_3
+        99: saload
+       100: istore        6
+       102: aload_3
+       103: getfield      #21                 // Field ae.a:Ljavax/microedition/lcdui/Graphics;
+       106: invokevirtual #39                 // Method javax/microedition/lcdui/Graphics.getColor:()I
+       109: aload_3
+       110: getfield      #21                 // Field ae.a:Ljavax/microedition/lcdui/Graphics;
+       113: aload_1
+       114: iconst_0
+       115: saload
+       116: aload_1
+       117: iconst_1
+       118: saload
+       119: aload_1
+       120: iconst_2
+       121: saload
+       122: invokevirtual #41                 // Method javax/microedition/lcdui/Graphics.setColor:(III)V
+       125: aload_3
+       126: getfield      #21                 // Field ae.a:Ljavax/microedition/lcdui/Graphics;
+       129: iload_0
+       130: iload         4
+       132: iload         5
+       134: iload         6
+       136: invokevirtual #38                 // Method javax/microedition/lcdui/Graphics.fillRect:(IIII)V
+       139: ldc           #1                  // int 16777215
+       141: iand
+       142: istore        6
+       144: aload_3
+       145: getfield      #21                 // Field ae.a:Ljavax/microedition/lcdui/Graphics;
+       148: iload         6
+       150: invokevirtual #40                 // Method javax/microedition/lcdui/Graphics.setColor:(I)V
+       153: getstatic     #18                 // Field ae.a:Lab;
+       156: getfield      #16                 // Field ab.a:Lv;
+       159: checkcast     #8                  // class l
+       162: getfield      #25                 // Field l.a:Ls;
+       165: aload_3
+       166: astore_1
+       167: dup
+       168: astore_0
+       169: getfield      #29                 // Field s.a:Ln;
+       172: aload_1
+       173: astore_3
+       174: dup
+       175: astore_1
+       176: getfield      #28                 // Field n.a:Z
+       179: ifeq          192
+       182: aload_1
+       183: aconst_null
+       184: putfield      #27                 // Field n.a:Lae;
+       187: aload_1
+       188: iconst_0
+       189: putfield      #28                 // Field n.a:Z
+       192: aload_1
+       193: aload_3
+       194: putfield      #27                 // Field n.a:Lae;
+       197: invokestatic  #33                 // Method ae.a:()Ll;
+       200: getfield      #26                 // Field l.a:Lw;
+       203: aload_0
+       204: getfield      #29                 // Field s.a:Ln;
+       207: invokeinterface #43,  2           // InterfaceMethod w.a:(Ln;)V
+       212: getstatic     #18                 // Field ae.a:Lab;
+       215: getfield      #16                 // Field ab.a:Lv;
+       218: iconst_0
+       219: putfield      #30                 // Field v.d:Z
+       222: aload_2
+       223: monitorexit
+       224: goto          232
+       227: astore_3
+       228: aload_2
+       229: monitorexit
+       230: aload_3
+       231: athrow
+       232: iconst_0
+       233: putstatic     #22                 // Field ae.a:Z
+       236: getstatic     #24                 // Field ae.b:Lz;
+       239: getfield      #31                 // Field z.g:Z
+       242: ifeq          266
+       245: iconst_1
+       246: putstatic     #22                 // Field ae.a:Z
+       249: getstatic     #18                 // Field ae.a:Lab;
+       252: getfield      #16                 // Field ab.a:Lv;
+       255: iconst_1
+       256: putfield      #30                 // Field v.d:Z
+       259: getstatic     #24                 // Field ae.b:Lz;
+       262: iconst_0
+       263: putfield      #31                 // Field z.g:Z
+       266: return
+      Exception table:
+         from    to  target type
+             6   224   227   Class java/lang/Throwable
+           228   230   227   Class java/lang/Throwable
+      StackMap: number_of_entries = 6
+        frame_type = 255 offset = 18
+          locals = [ class aa, class javax/microedition/lcdui/Graphics, class java/lang/Object ]
+          stack = []
+        frame_type = 255 offset = 153
+          locals = [ top, class java/lang/Object, class java/lang/Object, class ae ]
+          stack = []
+        frame_type = 255 offset = 192
+          locals = [ class s, class n, class java/lang/Object, class ae ]
+          stack = []
+        frame_type = 255 offset = 227
+          locals = [ top, class java/lang/Object, class java/lang/Object ]
+          stack = [ class java/lang/Throwable ]
+        frame_type = 255 offset = 232
+          locals = [ class s, class n, class java/lang/Object, class ae ]
+          stack = []
+        frame_type = 255 offset = 266
+          locals = [ class s, class n, class java/lang/Object, class ae ]
+          stack = []
+}

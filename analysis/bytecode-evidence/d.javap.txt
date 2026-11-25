@@ -1,0 +1,225 @@
+Classfile /Users/kd-qa-0294/Desktop/REV/rea/games/worms-reloaded/analysis/recovered/d.class
+  Last modified Nov 24, 2026; size 705 bytes
+  SHA-256 checksum 3bf65121f6c1e7fd43a6e4aadd7773859fa3620b12dcbab9031899e9b35487f9
+public final class d
+  minor version: 3
+  major version: 45
+  flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+  this_class: #3                          // d
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 13, methods: 2, attributes: 0
+Constant pool:
+   #1 = Class              #48            // ab
+   #2 = Class              #49            // ae
+   #3 = Class              #52            // d
+   #4 = Class              #53            // java/lang/Object
+   #5 = Class              #54            // t
+   #6 = Fieldref           #1.#24         // ab.a:Ld;
+   #7 = Fieldref           #2.#23         // ae.a:Lab;
+   #8 = Fieldref           #2.#25         // ae.a:S
+   #9 = Fieldref           #3.#24         // d.a:Ld;
+  #10 = Fieldref           #3.#25         // d.a:S
+  #11 = Fieldref           #3.#26         // d.a:[I
+  #12 = Fieldref           #3.#27         // d.a:[Ld;
+  #13 = Fieldref           #3.#28         // d.a:[Lt;
+  #14 = Fieldref           #3.#29         // d.b:Ld;
+  #15 = Fieldref           #3.#30         // d.b:S
+  #16 = Fieldref           #3.#31         // d.c:S
+  #17 = Methodref          #2.#22         // ae.a:(Ld;)S
+  #18 = Methodref          #3.#21         // d."<init>":(I)V
+  #19 = Methodref          #4.#20         // java/lang/Object."<init>":()V
+  #20 = NameAndType        #36:#33        // "<init>":()V
+  #21 = NameAndType        #36:#34        // "<init>":(I)V
+  #22 = NameAndType        #47:#35        // a:(Ld;)S
+  #23 = NameAndType        #47:#39        // a:Lab;
+  #24 = NameAndType        #47:#40        // a:Ld;
+  #25 = NameAndType        #47:#42        // a:S
+  #26 = NameAndType        #47:#44        // a:[I
+  #27 = NameAndType        #47:#45        // a:[Ld;
+  #28 = NameAndType        #47:#46        // a:[Lt;
+  #29 = NameAndType        #50:#40        // b:Ld;
+  #30 = NameAndType        #50:#42        // b:S
+  #31 = NameAndType        #51:#42        // c:S
+  #32 = Class              #45            // "[Ld;"
+  #33 = Utf8               ()V
+  #34 = Utf8               (I)V
+  #35 = Utf8               (Ld;)S
+  #36 = Utf8               <init>
+  #37 = Utf8               Code
+  #38 = Utf8               I
+  #39 = Utf8               Lab;
+  #40 = Utf8               Ld;
+  #41 = Utf8               Lt;
+  #42 = Utf8               S
+  #43 = Utf8               Z
+  #44 = Utf8               [I
+  #45 = Utf8               [Ld;
+  #46 = Utf8               [Lt;
+  #47 = Utf8               a
+  #48 = Utf8               ab
+  #49 = Utf8               ae
+  #50 = Utf8               b
+  #51 = Utf8               c
+  #52 = Utf8               d
+  #53 = Utf8               java/lang/Object
+  #54 = Utf8               t
+  #55 = Utf8               StackMap
+{
+  public short a;
+    descriptor: S
+    flags: (0x0001) ACC_PUBLIC
+
+  public d a;
+    descriptor: Ld;
+    flags: (0x0001) ACC_PUBLIC
+
+  public d b;
+    descriptor: Ld;
+    flags: (0x0001) ACC_PUBLIC
+
+  public d[] a;
+    descriptor: [Ld;
+    flags: (0x0001) ACC_PUBLIC
+
+  public short b;
+    descriptor: S
+    flags: (0x0001) ACC_PUBLIC
+
+  public short c;
+    descriptor: S
+    flags: (0x0001) ACC_PUBLIC
+
+  public boolean a;
+    descriptor: Z
+    flags: (0x0001) ACC_PUBLIC
+
+  public boolean b;
+    descriptor: Z
+    flags: (0x0001) ACC_PUBLIC
+
+  public int a;
+    descriptor: I
+    flags: (0x0001) ACC_PUBLIC
+
+  public t a;
+    descriptor: Lt;
+    flags: (0x0001) ACC_PUBLIC
+
+  public t b;
+    descriptor: Lt;
+    flags: (0x0001) ACC_PUBLIC
+
+  public int[] a;
+    descriptor: [I
+    flags: (0x0001) ACC_PUBLIC
+
+  public t[] a;
+    descriptor: [Lt;
+    flags: (0x0001) ACC_PUBLIC
+
+  public d();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #19                 // Method java/lang/Object."<init>":()V
+         4: return
+
+  public d(int);
+    descriptor: (I)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=5, locals=3, args_size=2
+         0: aload_0
+         1: invokespecial #19                 // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: iload_1
+         6: i2s
+         7: putfield      #10                 // Field a:S
+        10: iload_1
+        11: tableswitch   { // 1 to 3
+                       1: 49
+                       2: 122
+                       3: 130
+                 default: 36
+            }
+        36: aload_0
+        37: new           #3                  // class d
+        40: dup
+        41: iconst_2
+        42: invokespecial #18                 // Method "<init>":(I)V
+        45: putfield      #9                  // Field a:Ld;
+        48: return
+        49: aload_0
+        50: aconst_null
+        51: putfield      #12                 // Field a:[Ld;
+        54: aload_0
+        55: sipush        255
+        58: putfield      #15                 // Field b:S
+        61: aload_0
+        62: new           #3                  // class d
+        65: dup
+        66: iconst_3
+        67: invokespecial #18                 // Method "<init>":(I)V
+        70: putfield      #14                 // Field b:Ld;
+        73: aload_0
+        74: aload_0
+        75: invokestatic  #17                 // Method ae.a:(Ld;)S
+        78: putfield      #16                 // Field c:S
+        81: getstatic     #7                  // Field ae.a:Lab;
+        84: aload_0
+        85: putfield      #6                  // Field ab.a:Ld;
+        88: iconst_1
+        89: anewarray     #3                  // class d
+        92: astore_2
+        93: iconst_0
+        94: istore_1
+        95: iload_1
+        96: ifgt          116
+        99: aload_2
+       100: iconst_0
+       101: new           #3                  // class d
+       104: dup
+       105: iconst_0
+       106: invokespecial #18                 // Method "<init>":(I)V
+       109: aastore
+       110: iinc          1, 1
+       113: goto          95
+       116: aload_0
+       117: aload_2
+       118: putfield      #12                 // Field a:[Ld;
+       121: return
+       122: aload_0
+       123: sipush        255
+       126: putfield      #15                 // Field b:S
+       129: return
+       130: aload_0
+       131: getstatic     #8                  // Field ae.a:S
+       134: anewarray     #5                  // class t
+       137: putfield      #13                 // Field a:[Lt;
+       140: aload_0
+       141: getstatic     #8                  // Field ae.a:S
+       144: newarray       int
+       146: putfield      #11                 // Field a:[I
+       149: return
+      StackMap: number_of_entries = 6
+        frame_type = 255 offset = 36
+          locals = [ class d, int ]
+          stack = []
+        frame_type = 255 offset = 49
+          locals = [ class d, int ]
+          stack = []
+        frame_type = 255 offset = 95
+          locals = [ class d, int, class "[Ld;" ]
+          stack = []
+        frame_type = 255 offset = 116
+          locals = [ class d, int, class "[Ld;" ]
+          stack = []
+        frame_type = 255 offset = 122
+          locals = [ class d, int ]
+          stack = []
+        frame_type = 255 offset = 130
+          locals = [ class d, int ]
+          stack = []
+}

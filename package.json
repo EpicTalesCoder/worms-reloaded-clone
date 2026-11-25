@@ -1,0 +1,11 @@
+{
+  "name": "worms-reloaded-clone",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test web-port/tests/*.test.mjs",
+    "build": "python3 tools/build-dist.py",
+    "verify": "python3 tools/verify-port-parity.py",
+    "start": "python3 tools/build-dist.py && python3 -m http.server 4179 --bind 127.0.0.1 --directory dist"
+  }
+}

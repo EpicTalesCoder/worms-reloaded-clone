@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Worms Reloaded — J2ME Web Port</title>
+  <link rel="icon" href="assets/icon.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="game-shell">
+    <section id="stage-wrap" aria-label="Worms Reloaded 320x240 Stage">
+      <canvas id="game" width="320" height="240" aria-label="Worms Reloaded Game Canvas"></canvas>
+
+      <aside id="keypad-drawer" class="hidden" aria-label="J2ME Virtual Keypad">
+        <div class="kp-row">
+          <button type="button" class="kp-btn" data-key="32">LSK</button>
+          <button type="button" class="kp-btn" data-key="1">▲</button>
+          <button type="button" class="kp-btn" data-key="64">RSK</button>
+        </div>
+        <div class="kp-row">
+          <button type="button" class="kp-btn" data-key="4">◀</button>
+          <button type="button" class="kp-btn" data-key="16">OK/5</button>
+          <button type="button" class="kp-btn" data-key="8">▶</button>
+        </div>
+        <div class="kp-row">
+          <button type="button" class="kp-btn" data-key="256">1 B.Flip</button>
+          <button type="button" class="kp-btn" data-key="2">▼</button>
+          <button type="button" class="kp-btn" data-key="1024">3 Jump</button>
+        </div>
+        <div class="kp-row">
+          <button type="button" class="kp-btn" data-key="16384">7 Map</button>
+          <button type="button" class="kp-btn" data-key="262144"># Fuse</button>
+          <button type="button" class="kp-btn" data-key="65536">9 Look</button>
+        </div>
+      </aside>
+    </section>
+
+    <nav class="floating-toolbar" aria-label="Game Controls & Multiplayer">
+      <button type="button" id="btn-mp-lobby" class="tb-btn accent">⚔️ Multiplayer (2–4)</button>
+      <button type="button" id="btn-keypad" class="tb-btn">📱 Keypad</button>
+      <button type="button" id="btn-lang" class="tb-btn">🌐 VI</button>
+      <button type="button" id="btn-sound" class="tb-btn">🔊 Sound: ON</button>
+      <button type="button" id="btn-fullscreen" class="tb-btn">⛶ Full</button>
+    </nav>
+  </main>
+
+  <div id="mp-lobby" class="hidden" role="dialog" aria-modal="true" aria-labelledby="mp-title">
+    <div class="mp-card">
+      <div class="mp-header">
+        <h2 id="mp-title">⚔️ ĐẤU TRƯỜNG ONLINE (2–4)</h2>
+        <button type="button" id="btn-mp-close" class="mp-close" aria-label="Close">✕</button>
+      </div>
+
+      <div id="mp-home-section" style="display:flex; flex-direction:column; gap:10px;">
+        <div class="mp-row">
+          <input type="text" id="mp-name-input" class="mp-input" maxlength="14" value="Commander" placeholder="Player Name" />
+          <button type="button" id="btn-mp-create" class="mp-btn primary">⚔️ TẠO PHÒNG MỚI</button>
+        </div>
+        <div class="mp-row">
+          <input type="text" id="mp-code-input" class="mp-input" maxlength="8" placeholder="WRxxxx" />
+          <button type="button" id="btn-mp-join" class="mp-btn">VÀO PHÒNG</button>
+        </div>
+      </div>
+
+      <div id="mp-room-section" style="display:none; flex-direction:column; gap:10px;">
+        <div class="mp-room-banner">
+          <span>PHÒNG: <span id="mp-room-code" class="mp-code">WR0000</span></span>
+          <div class="mp-row">
+            <button type="button" id="btn-mp-copy" class="mp-btn">📋 COPY LINK</button>
+            <button type="button" id="btn-mp-tab2" class="mp-btn">↗ MỞ TAB 2</button>
+          </div>
+        </div>
+
+        <div id="mp-seats" class="mp-seats"></div>
+
+        <div class="mp-cfg">
+          <label>MAP
+            <select id="mp-cfg-map">
+              <option value="0">Hills</option>
+              <option value="1">Island</option>
+              <option value="2">Twin Peaks</option>
+              <option value="3">Cavern</option>
+              <option value="4">Forts</option>
+            </select>
+          </label>
+          <label>THEME
+            <select id="mp-cfg-theme">
+              <option value="0">Standing Stone</option>
+              <option value="1">Desert / Canyon</option>
+              <option value="2">Cheese / Arctic</option>
+              <option value="3">Snow</option>
+              <option value="4">Graveyard</option>
+            </select>
+          </label>
+          <label>WORMS
+            <select id="mp-cfg-worms">
+              <option value="2">2 Worms</option>
+              <option value="3" selected>3 Worms</option>
+              <option value="4">4 Worms</option>
+            </select>
+          </label>
+          <label>TURN TIME
+            <select id="mp-cfg-time">
+              <option value="30">30s</option>
+              <option value="45" selected>45s</option>
+              <option value="60">60s</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="mp-status" style="font-size:12px; color:#b8dcff;">Waiting...</div>
+
+        <div class="mp-row" style="justify-content:space-between;">
+          <button type="button" id="btn-mp-leave" class="mp-btn danger">RỜI PHÒNG</button>
+          <div class="mp-row">
+            <button type="button" id="btn-mp-ready" class="mp-btn">✓ SẴN SÀNG</button>
+            <button type="button" id="btn-mp-start" class="mp-btn primary">🚀 BẮT ĐẦU TRẬN</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="game.js"></script>
+</body>
+</html>

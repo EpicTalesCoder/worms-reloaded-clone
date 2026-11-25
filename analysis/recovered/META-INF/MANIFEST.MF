@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+MIDlet-Vendor: WapTai.COM
+Ant-Version: Apache Ant 1.6.5
+MIDlet-Version: 4.9.10
+MicroEdition-Configuration: CLDC-1.1
+MIDlet-1: Worms Reloaded, /icon.png, com.ea.sdk.SDKMIDlet
+MIDlet-2: WapTai.COM, icon2.png, MobileAds
+Created-By: 1.6.0-b105 (Sun Microsystems Inc.)
+Content-Folder: Games
+MIDlet-Icon: /icon.png
+MIDlet-Name: Worms Reloaded WapTai.COM
+MicroEdition-Profile: MIDP-2.0
+MIDlet-Delete-Confirm: Tai game hay tai WapTai.COM

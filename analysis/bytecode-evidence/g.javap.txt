@@ -1,0 +1,258 @@
+Classfile /Users/kd-qa-0294/Desktop/REV/rea/games/worms-reloaded/analysis/recovered/g.class
+  Last modified Nov 24, 2026; size 800 bytes
+  SHA-256 checksum 15667ec5cb1ad7368bd17e9367ca1c29398e2410fbe38226c6ce936de540d9e3
+public final class g
+  minor version: 3
+  major version: 45
+  flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+  this_class: #3                          // g
+  super_class: #5                         // java/lang/Object
+  interfaces: 0, fields: 19, methods: 2, attributes: 0
+Constant pool:
+   #1 = Class              #46            // ab
+   #2 = Class              #47            // ae
+   #3 = Class              #52            // g
+   #4 = Class              #53            // i
+   #5 = Class              #54            // java/lang/Object
+   #6 = Fieldref           #1.#25         // ab.a:Lv;
+   #7 = Fieldref           #2.#22         // ae.a:Lab;
+   #8 = Fieldref           #3.#21         // g.a:I
+   #9 = Fieldref           #3.#23         // g.a:Lg;
+  #10 = Fieldref           #3.#24         // g.a:Li;
+  #11 = Fieldref           #3.#26         // g.a:S
+  #12 = Fieldref           #3.#27         // g.b:I
+  #13 = Fieldref           #3.#28         // g.b:S
+  #14 = Methodref          #2.#20         // ae.a:(IILv;)V
+  #15 = Methodref          #3.#19         // g."<init>":(I)V
+  #16 = Methodref          #4.#18         // i."<init>":()V
+  #17 = Methodref          #5.#18         // java/lang/Object."<init>":()V
+  #18 = NameAndType        #32:#29        // "<init>":()V
+  #19 = NameAndType        #32:#30        // "<init>":(I)V
+  #20 = NameAndType        #45:#31        // a:(IILv;)V
+  #21 = NameAndType        #45:#34        // a:I
+  #22 = NameAndType        #45:#35        // a:Lab;
+  #23 = NameAndType        #45:#36        // a:Lg;
+  #24 = NameAndType        #45:#37        // a:Li;
+  #25 = NameAndType        #45:#39        // a:Lv;
+  #26 = NameAndType        #45:#40        // a:S
+  #27 = NameAndType        #48:#34        // b:I
+  #28 = NameAndType        #48:#40        // b:S
+  #29 = Utf8               ()V
+  #30 = Utf8               (I)V
+  #31 = Utf8               (IILv;)V
+  #32 = Utf8               <init>
+  #33 = Utf8               Code
+  #34 = Utf8               I
+  #35 = Utf8               Lab;
+  #36 = Utf8               Lg;
+  #37 = Utf8               Li;
+  #38 = Utf8               Ljava/lang/Object;
+  #39 = Utf8               Lv;
+  #40 = Utf8               S
+  #41 = Utf8               Z
+  #42 = Utf8               [B
+  #43 = Utf8               [I
+  #44 = Utf8               [S
+  #45 = Utf8               a
+  #46 = Utf8               ab
+  #47 = Utf8               ae
+  #48 = Utf8               b
+  #49 = Utf8               c
+  #50 = Utf8               d
+  #51 = Utf8               e
+  #52 = Utf8               g
+  #53 = Utf8               i
+  #54 = Utf8               java/lang/Object
+  #55 = Utf8               StackMap
+{
+  public short a;
+    descriptor: S
+    flags: (0x0001) ACC_PUBLIC
+
+  public i a;
+    descriptor: Li;
+    flags: (0x0001) ACC_PUBLIC
+
+  public int a;
+    descriptor: I
+    flags: (0x0001) ACC_PUBLIC
+
+  public short b;
+    descriptor: S
+    flags: (0x0001) ACC_PUBLIC
+
+  public boolean a;
+    descriptor: Z
+    flags: (0x0001) ACC_PUBLIC
+
+  public int b;
+    descriptor: I
+    flags: (0x0001) ACC_PUBLIC
+
+  public boolean b;
+    descriptor: Z
+    flags: (0x0001) ACC_PUBLIC
+
+  public boolean c;
+    descriptor: Z
+    flags: (0x0001) ACC_PUBLIC
+
+  public boolean d;
+    descriptor: Z
+    flags: (0x0001) ACC_PUBLIC
+
+  public boolean e;
+    descriptor: Z
+    flags: (0x0001) ACC_PUBLIC
+
+  public g a;
+    descriptor: Lg;
+    flags: (0x0001) ACC_PUBLIC
+
+  public java.lang.Object a;
+    descriptor: Ljava/lang/Object;
+    flags: (0x0001) ACC_PUBLIC
+
+  public byte[] a;
+    descriptor: [B
+    flags: (0x0001) ACC_PUBLIC
+
+  public short[] a;
+    descriptor: [S
+    flags: (0x0001) ACC_PUBLIC
+
+  public short[] b;
+    descriptor: [S
+    flags: (0x0001) ACC_PUBLIC
+
+  public short[] c;
+    descriptor: [S
+    flags: (0x0001) ACC_PUBLIC
+
+  public byte[] b;
+    descriptor: [B
+    flags: (0x0001) ACC_PUBLIC
+
+  public int[] a;
+    descriptor: [I
+    flags: (0x0001) ACC_PUBLIC
+
+  public java.lang.Object b;
+    descriptor: Ljava/lang/Object;
+    flags: (0x0001) ACC_PUBLIC
+
+  public g();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #17                 // Method java/lang/Object."<init>":()V
+         4: return
+
+  public g(int);
+    descriptor: (I)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=4, locals=2, args_size=2
+         0: aload_0
+         1: invokespecial #17                 // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: iload_1
+         6: i2s
+         7: putfield      #11                 // Field a:S
+        10: iload_1
+        11: tableswitch   { // 1 to 6
+                       1: 60
+                       2: 61
+                       3: 72
+                       4: 73
+                       5: 164
+                       6: 177
+                 default: 48
+            }
+        48: aload_0
+        49: new           #4                  // class i
+        52: dup
+        53: invokespecial #16                 // Method i."<init>":()V
+        56: putfield      #10                 // Field a:Li;
+        59: return
+        60: return
+        61: aload_0
+        62: sipush        256
+        65: bipush        10
+        67: ishl
+        68: putfield      #8                  // Field a:I
+        71: return
+        72: return
+        73: aload_0
+        74: iconst_0
+        75: putfield      #8                  // Field a:I
+        78: aload_0
+        79: iconst_0
+        80: putfield      #13                 // Field b:S
+        83: aload_0
+        84: iconst_0
+        85: putfield      #12                 // Field b:I
+        88: bipush        7
+        90: iconst_5
+        91: getstatic     #7                  // Field ae.a:Lab;
+        94: getfield      #6                  // Field ab.a:Lv;
+        97: invokestatic  #14                 // Method ae.a:(IILv;)V
+       100: bipush        13
+       102: iconst_5
+       103: getstatic     #7                  // Field ae.a:Lab;
+       106: getfield      #6                  // Field ab.a:Lv;
+       109: invokestatic  #14                 // Method ae.a:(IILv;)V
+       112: bipush        9
+       114: bipush        6
+       116: getstatic     #7                  // Field ae.a:Lab;
+       119: getfield      #6                  // Field ab.a:Lv;
+       122: invokestatic  #14                 // Method ae.a:(IILv;)V
+       125: bipush        10
+       127: bipush        6
+       129: getstatic     #7                  // Field ae.a:Lab;
+       132: getfield      #6                  // Field ab.a:Lv;
+       135: invokestatic  #14                 // Method ae.a:(IILv;)V
+       138: bipush        14
+       140: bipush        6
+       142: getstatic     #7                  // Field ae.a:Lab;
+       145: getfield      #6                  // Field ab.a:Lv;
+       148: invokestatic  #14                 // Method ae.a:(IILv;)V
+       151: bipush        31
+       153: iconst_5
+       154: getstatic     #7                  // Field ae.a:Lab;
+       157: getfield      #6                  // Field ab.a:Lv;
+       160: invokestatic  #14                 // Method ae.a:(IILv;)V
+       163: return
+       164: aload_0
+       165: new           #3                  // class g
+       168: dup
+       169: iconst_2
+       170: invokespecial #15                 // Method "<init>":(I)V
+       173: putfield      #9                  // Field a:Lg;
+       176: return
+       177: return
+      StackMap: number_of_entries = 7
+        frame_type = 255 offset = 48
+          locals = [ class g, int ]
+          stack = []
+        frame_type = 255 offset = 60
+          locals = [ class g, int ]
+          stack = []
+        frame_type = 255 offset = 61
+          locals = [ class g, int ]
+          stack = []
+        frame_type = 255 offset = 72
+          locals = [ class g, int ]
+          stack = []
+        frame_type = 255 offset = 73
+          locals = [ class g, int ]
+          stack = []
+        frame_type = 255 offset = 164
+          locals = [ class g, int ]
+          stack = []
+        frame_type = 255 offset = 177
+          locals = [ class g, int ]
+          stack = []
+}

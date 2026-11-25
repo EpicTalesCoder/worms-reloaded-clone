@@ -1,0 +1,137 @@
+Classfile /Users/kd-qa-0294/Desktop/REV/rea/games/worms-reloaded/analysis/recovered/MobileAds.class
+  Last modified Nov 24, 2026; size 898 bytes
+  SHA-256 checksum a2b3119cbfb7ff4a33c66f8e00c889681e4d246df76d9c42ea6585a3fcee0a1e
+  Compiled from "MobileAds.java"
+public class MobileAds extends javax.microedition.midlet.MIDlet
+  minor version: 3
+  major version: 45
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #8                          // MobileAds
+  super_class: #9                         // javax/microedition/midlet/MIDlet
+  interfaces: 0, fields: 0, methods: 4, attributes: 1
+Constant pool:
+   #1 = Methodref          #9.#27         // javax/microedition/midlet/MIDlet."<init>":()V
+   #2 = String             #28            // https://waptai.com
+   #3 = Methodref          #9.#29         // javax/microedition/midlet/MIDlet.platformRequest:(Ljava/lang/String;)Z
+   #4 = Class              #30            // javax/microedition/io/ConnectionNotFoundException
+   #5 = Methodref          #31.#32        // java/lang/Throwable.printStackTrace:()V
+   #6 = Methodref          #8.#33         // MobileAds.destroyApp:(Z)V
+   #7 = Methodref          #9.#34         // javax/microedition/midlet/MIDlet.notifyDestroyed:()V
+   #8 = Class              #35            // MobileAds
+   #9 = Class              #36            // javax/microedition/midlet/MIDlet
+  #10 = Utf8               <init>
+  #11 = Utf8               ()V
+  #12 = Utf8               Code
+  #13 = Utf8               LineNumberTable
+  #14 = Utf8               LocalVariableTable
+  #15 = Utf8               this
+  #16 = Utf8               LMobileAds;
+  #17 = Utf8               startApp
+  #18 = Utf8               ex
+  #19 = Utf8               Ljavax/microedition/io/ConnectionNotFoundException;
+  #20 = Utf8               pauseApp
+  #21 = Utf8               destroyApp
+  #22 = Utf8               (Z)V
+  #23 = Utf8               unconditional
+  #24 = Utf8               Z
+  #25 = Utf8               SourceFile
+  #26 = Utf8               MobileAds.java
+  #27 = NameAndType        #10:#11        // "<init>":()V
+  #28 = Utf8               https://waptai.com
+  #29 = NameAndType        #37:#38        // platformRequest:(Ljava/lang/String;)Z
+  #30 = Utf8               javax/microedition/io/ConnectionNotFoundException
+  #31 = Class              #39            // java/lang/Throwable
+  #32 = NameAndType        #40:#11        // printStackTrace:()V
+  #33 = NameAndType        #21:#22        // destroyApp:(Z)V
+  #34 = NameAndType        #41:#11        // notifyDestroyed:()V
+  #35 = Utf8               MobileAds
+  #36 = Utf8               javax/microedition/midlet/MIDlet
+  #37 = Utf8               platformRequest
+  #38 = Utf8               (Ljava/lang/String;)Z
+  #39 = Utf8               java/lang/Throwable
+  #40 = Utf8               printStackTrace
+  #41 = Utf8               notifyDestroyed
+  #42 = Utf8               StackMap
+{
+  public MobileAds();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #1                  // Method javax/microedition/midlet/MIDlet."<init>":()V
+         4: return
+      LineNumberTable:
+        line 12: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   LMobileAds;
+
+  public void startApp();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=2, args_size=1
+         0: aload_0
+         1: ldc           #2                  // String https://waptai.com
+         3: invokevirtual #3                  // Method javax/microedition/midlet/MIDlet.platformRequest:(Ljava/lang/String;)Z
+         6: pop
+         7: goto          15
+        10: astore_1
+        11: aload_1
+        12: invokevirtual #5                  // Method java/lang/Throwable.printStackTrace:()V
+        15: aload_0
+        16: iconst_1
+        17: invokevirtual #6                  // Method destroyApp:(Z)V
+        20: return
+      Exception table:
+         from    to  target type
+             0     7    10   Class javax/microedition/io/ConnectionNotFoundException
+      LineNumberTable:
+        line 16: 0
+        line 19: 7
+        line 17: 10
+        line 18: 11
+        line 20: 15
+        line 21: 20
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+           11       4     1    ex   Ljavax/microedition/io/ConnectionNotFoundException;
+            0      21     0  this   LMobileAds;
+      StackMap: number_of_entries = 2
+        frame_type = 255 offset = 10
+          locals = [ class MobileAds ]
+          stack = [ class javax/microedition/io/ConnectionNotFoundException ]
+        frame_type = 255 offset = 15
+          locals = [ class MobileAds ]
+          stack = []
+
+  public void pauseApp();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=0, locals=1, args_size=1
+         0: return
+      LineNumberTable:
+        line 24: 0
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       1     0  this   LMobileAds;
+
+  public void destroyApp(boolean);
+    descriptor: (Z)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=2, args_size=2
+         0: aload_0
+         1: invokevirtual #7                  // Method javax/microedition/midlet/MIDlet.notifyDestroyed:()V
+         4: return
+      LineNumberTable:
+        line 27: 0
+        line 28: 4
+      LocalVariableTable:
+        Start  Length  Slot  Name   Signature
+            0       5     0  this   LMobileAds;
+            0       5     1 unconditional   Z
+}
+SourceFile: "MobileAds.java"

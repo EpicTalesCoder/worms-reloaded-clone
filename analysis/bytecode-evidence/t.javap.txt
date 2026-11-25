@@ -1,0 +1,245 @@
+Classfile /Users/kd-qa-0294/Desktop/REV/rea/games/worms-reloaded/analysis/recovered/t.class
+  Last modified Nov 24, 2026; size 979 bytes
+  SHA-256 checksum d528ed2fac98eea4b8409629c570ec27a262b19510ef65d67236d0b5506fcf7a
+public final class t
+  minor version: 3
+  major version: 45
+  flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+  this_class: #8                          // t
+  super_class: #6                         // java/lang/Object
+  interfaces: 0, fields: 7, methods: 4, attributes: 0
+Constant pool:
+   #1 = String             #42            // Undefined
+   #2 = String             #45            // audio/amr
+   #3 = String             #46            // audio/midi
+   #4 = String             #47            // audio/mpeg
+   #5 = String             #48            // audio/x-wav
+   #6 = Class              #51            // java/lang/Object
+   #7 = Class              #52            // java/lang/String
+   #8 = Class              #53            // t
+   #9 = Fieldref           #8.#24         // t.a:I
+  #10 = Fieldref           #8.#25         // t.a:Ljava/lang/String;
+  #11 = Fieldref           #8.#26         // t.a:Lt;
+  #12 = Fieldref           #8.#27         // t.a:[B
+  #13 = Fieldref           #8.#28         // t.b:Lt;
+  #14 = Fieldref           #8.#29         // t.c:Lt;
+  #15 = Methodref          #6.#20         // java/lang/Object."<init>":()V
+  #16 = Methodref          #7.#20         // java/lang/String."<init>":()V
+  #17 = Methodref          #7.#22         // java/lang/String."<init>":(Ljava/lang/String;)V
+  #18 = Methodref          #8.#21         // t."<init>":(I)V
+  #19 = Methodref          #8.#23         // t."<init>":(Lt;Ljava/lang/String;)V
+  #20 = NameAndType        #36:#31        // "<init>":()V
+  #21 = NameAndType        #36:#32        // "<init>":(I)V
+  #22 = NameAndType        #36:#33        // "<init>":(Ljava/lang/String;)V
+  #23 = NameAndType        #36:#34        // "<init>":(Lt;Ljava/lang/String;)V
+  #24 = NameAndType        #44:#38        // a:I
+  #25 = NameAndType        #44:#39        // a:Ljava/lang/String;
+  #26 = NameAndType        #44:#41        // a:Lt;
+  #27 = NameAndType        #44:#43        // a:[B
+  #28 = NameAndType        #49:#41        // b:Lt;
+  #29 = NameAndType        #50:#41        // c:Lt;
+  #30 = Class              #43            // "[B"
+  #31 = Utf8               ()V
+  #32 = Utf8               (I)V
+  #33 = Utf8               (Ljava/lang/String;)V
+  #34 = Utf8               (Lt;Ljava/lang/String;)V
+  #35 = Utf8               ([BI)V
+  #36 = Utf8               <init>
+  #37 = Utf8               Code
+  #38 = Utf8               I
+  #39 = Utf8               Ljava/lang/String;
+  #40 = Utf8               Ljavax/microedition/media/Player;
+  #41 = Utf8               Lt;
+  #42 = Utf8               Undefined
+  #43 = Utf8               [B
+  #44 = Utf8               a
+  #45 = Utf8               audio/amr
+  #46 = Utf8               audio/midi
+  #47 = Utf8               audio/mpeg
+  #48 = Utf8               audio/x-wav
+  #49 = Utf8               b
+  #50 = Utf8               c
+  #51 = Utf8               java/lang/Object
+  #52 = Utf8               java/lang/String
+  #53 = Utf8               t
+  #54 = Utf8               StackMap
+{
+  public byte[] a;
+    descriptor: [B
+    flags: (0x0001) ACC_PUBLIC
+
+  public t a;
+    descriptor: Lt;
+    flags: (0x0001) ACC_PUBLIC
+
+  public t b;
+    descriptor: Lt;
+    flags: (0x0001) ACC_PUBLIC
+
+  public javax.microedition.media.Player a;
+    descriptor: Ljavax/microedition/media/Player;
+    flags: (0x0001) ACC_PUBLIC
+
+  public java.lang.String a;
+    descriptor: Ljava/lang/String;
+    flags: (0x0001) ACC_PUBLIC
+
+  public t c;
+    descriptor: Lt;
+    flags: (0x0001) ACC_PUBLIC
+
+  public int a;
+    descriptor: I
+    flags: (0x0001) ACC_PUBLIC
+
+  public t();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #15                 // Method java/lang/Object."<init>":()V
+         4: return
+
+  private t(int);
+    descriptor: (I)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=4, locals=2, args_size=2
+         0: aload_0
+         1: invokespecial #15                 // Method java/lang/Object."<init>":()V
+         4: iload_1
+         5: iconst_1
+         6: if_icmpeq     15
+         9: iload_1
+        10: iconst_2
+        11: if_icmpeq     28
+        14: return
+        15: aload_0
+        16: new           #8                  // class t
+        19: dup
+        20: iconst_2
+        21: invokespecial #18                 // Method "<init>":(I)V
+        24: putfield      #11                 // Field a:Lt;
+        27: return
+        28: aload_0
+        29: new           #7                  // class java/lang/String
+        32: dup
+        33: invokespecial #16                 // Method java/lang/String."<init>":()V
+        36: putfield      #10                 // Field a:Ljava/lang/String;
+        39: aload_0
+        40: new           #8                  // class t
+        43: dup
+        44: iconst_0
+        45: invokespecial #18                 // Method "<init>":(I)V
+        48: putfield      #13                 // Field b:Lt;
+        51: return
+      StackMap: number_of_entries = 2
+        frame_type = 255 offset = 15
+          locals = [ class t, int ]
+          stack = []
+        frame_type = 255 offset = 28
+          locals = [ class t, int ]
+          stack = []
+
+  private t(t, java.lang.String);
+    descriptor: (Lt;Ljava/lang/String;)V
+    flags: (0x0002) ACC_PRIVATE
+    Code:
+      stack=4, locals=3, args_size=3
+         0: aload_0
+         1: invokespecial #15                 // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: new           #8                  // class t
+         8: dup
+         9: iconst_2
+        10: invokespecial #18                 // Method "<init>":(I)V
+        13: putfield      #11                 // Field a:Lt;
+        16: aload_0
+        17: new           #8                  // class t
+        20: dup
+        21: iconst_2
+        22: invokespecial #18                 // Method "<init>":(I)V
+        25: putfield      #11                 // Field a:Lt;
+        28: aload_0
+        29: getfield      #11                 // Field a:Lt;
+        32: aload_2
+        33: putfield      #10                 // Field a:Ljava/lang/String;
+        36: aload_0
+        37: getfield      #11                 // Field a:Lt;
+        40: aload_1
+        41: putfield      #13                 // Field b:Lt;
+        44: return
+
+  public t(byte[], int);
+    descriptor: ([BI)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=5, args_size=3
+         0: aload_0
+         1: invokespecial #15                 // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: iload_2
+         6: putfield      #9                  // Field a:I
+         9: new           #8                  // class t
+        12: dup
+        13: astore_2
+        14: iconst_0
+        15: invokespecial #18                 // Method "<init>":(I)V
+        18: aload_2
+        19: aload_1
+        20: putfield      #12                 // Field a:[B
+        23: new           #8                  // class t
+        26: astore_3
+        27: new           #7                  // class java/lang/String
+        30: dup
+        31: ldc           #1                  // String Undefined
+        33: invokespecial #17                 // Method java/lang/String."<init>":(Ljava/lang/String;)V
+        36: astore        4
+        38: aload_1
+        39: iconst_0
+        40: baload
+        41: lookupswitch  { // 5
+                      -1: 113
+                      35: 99
+                      73: 113
+                      77: 92
+                      82: 106
+                 default: 117
+            }
+        92: ldc           #3                  // String audio/midi
+        94: astore        4
+        96: goto          117
+        99: ldc           #2                  // String audio/amr
+       101: astore        4
+       103: goto          117
+       106: ldc           #5                  // String audio/x-wav
+       108: astore        4
+       110: goto          117
+       113: ldc           #4                  // String audio/mpeg
+       115: astore        4
+       117: aload_3
+       118: aload_2
+       119: aload         4
+       121: invokespecial #19                 // Method "<init>":(Lt;Ljava/lang/String;)V
+       124: aload_0
+       125: aload_3
+       126: putfield      #14                 // Field c:Lt;
+       129: return
+      StackMap: number_of_entries = 5
+        frame_type = 255 offset = 92
+          locals = [ class t, class "[B", class t, uninitialized 23, class java/lang/String ]
+          stack = []
+        frame_type = 255 offset = 99
+          locals = [ class t, class "[B", class t, uninitialized 23, class java/lang/String ]
+          stack = []
+        frame_type = 255 offset = 106
+          locals = [ class t, class "[B", class t, uninitialized 23, class java/lang/String ]
+          stack = []
+        frame_type = 255 offset = 113
+          locals = [ class t, class "[B", class t, uninitialized 23, class java/lang/String ]
+          stack = []
+        frame_type = 255 offset = 117
+          locals = [ class t, class "[B", class t, uninitialized 23, class java/lang/String ]
+          stack = []
+}

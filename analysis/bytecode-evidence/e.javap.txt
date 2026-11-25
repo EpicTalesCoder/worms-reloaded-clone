@@ -1,0 +1,228 @@
+Classfile /Users/kd-qa-0294/Desktop/REV/rea/games/worms-reloaded/analysis/recovered/e.class
+  Last modified Nov 24, 2026; size 931 bytes
+  SHA-256 checksum aa7cb82fc2024c9095785e7ae957279ccbddf371025cc1503063e6eddeb68827
+public final class e
+  minor version: 0
+  major version: 46
+  flags: (0x0031) ACC_PUBLIC, ACC_FINAL, ACC_SUPER
+  this_class: #4                          // e
+  super_class: #5                         // java/lang/Object
+  interfaces: 0, fields: 2, methods: 5, attributes: 0
+Constant pool:
+   #1 = Class              #53            // "[B"
+   #2 = Class              #55            // ae
+   #3 = Class              #56            // af
+   #4 = Class              #59            // e
+   #5 = Class              #62            // java/lang/Object
+   #6 = Class              #63            // javax/microedition/lcdui/Image
+   #7 = Class              #64            // n
+   #8 = Class              #65            // u
+   #9 = Fieldref           #3.#30         // af.a:S
+  #10 = Fieldref           #3.#31         // af.b:S
+  #11 = Fieldref           #4.#27         // e.a:Laf;
+  #12 = Fieldref           #4.#29         // e.a:Ln;
+  #13 = Fieldref           #8.#28         // u.a:Ljavax/microedition/lcdui/Image;
+  #14 = Methodref          #2.#26         // ae.a:(Ljava/lang/String;)Lx;
+  #15 = Methodref          #5.#23         // java/lang/Object."<init>":()V
+  #16 = Methodref          #6.#32         // javax/microedition/lcdui/Image.createImage:(II)Ljavax/microedition/lcdui/Image;
+  #17 = Methodref          #6.#33         // javax/microedition/lcdui/Image.createImage:([BII)Ljavax/microedition/lcdui/Image;
+  #18 = Methodref          #6.#34         // javax/microedition/lcdui/Image.getHeight:()I
+  #19 = Methodref          #6.#35         // javax/microedition/lcdui/Image.getWidth:()I
+  #20 = Methodref          #7.#24         // n."<init>":(Le;)V
+  #21 = Methodref          #8.#23         // u."<init>":()V
+  #22 = Methodref          #8.#25         // u."<init>":(Lx;)V
+  #23 = NameAndType        #47:#38        // "<init>":()V
+  #24 = NameAndType        #47:#41        // "<init>":(Le;)V
+  #25 = NameAndType        #47:#44        // "<init>":(Lx;)V
+  #26 = NameAndType        #54:#42        // a:(Ljava/lang/String;)Lx;
+  #27 = NameAndType        #54:#49        // a:Laf;
+  #28 = NameAndType        #54:#50        // a:Ljavax/microedition/lcdui/Image;
+  #29 = NameAndType        #54:#51        // a:Ln;
+  #30 = NameAndType        #54:#52        // a:S
+  #31 = NameAndType        #57:#52        // b:S
+  #32 = NameAndType        #58:#39        // createImage:(II)Ljavax/microedition/lcdui/Image;
+  #33 = NameAndType        #58:#45        // createImage:([BII)Ljavax/microedition/lcdui/Image;
+  #34 = NameAndType        #60:#36        // getHeight:()I
+  #35 = NameAndType        #61:#36        // getWidth:()I
+  #36 = Utf8               ()I
+  #37 = Utf8               ()Ln;
+  #38 = Utf8               ()V
+  #39 = Utf8               (II)Ljavax/microedition/lcdui/Image;
+  #40 = Utf8               (II)V
+  #41 = Utf8               (Le;)V
+  #42 = Utf8               (Ljava/lang/String;)Lx;
+  #43 = Utf8               (Ljava/lang/String;)V
+  #44 = Utf8               (Lx;)V
+  #45 = Utf8               ([BII)Ljavax/microedition/lcdui/Image;
+  #46 = Utf8               ([BII)V
+  #47 = Utf8               <init>
+  #48 = Utf8               Code
+  #49 = Utf8               Laf;
+  #50 = Utf8               Ljavax/microedition/lcdui/Image;
+  #51 = Utf8               Ln;
+  #52 = Utf8               S
+  #53 = Utf8               [B
+  #54 = Utf8               a
+  #55 = Utf8               ae
+  #56 = Utf8               af
+  #57 = Utf8               b
+  #58 = Utf8               createImage
+  #59 = Utf8               e
+  #60 = Utf8               getHeight
+  #61 = Utf8               getWidth
+  #62 = Utf8               java/lang/Object
+  #63 = Utf8               javax/microedition/lcdui/Image
+  #64 = Utf8               n
+  #65 = Utf8               u
+  #66 = Utf8               StackMap
+{
+  private n a;
+    descriptor: Ln;
+    flags: (0x0002) ACC_PRIVATE
+
+  public af a;
+    descriptor: Laf;
+    flags: (0x0001) ACC_PUBLIC
+
+  public final n a();
+    descriptor: ()Ln;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=4, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #12                 // Field a:Ln;
+         4: ifnonnull     19
+         7: aload_0
+         8: new           #7                  // class n
+        11: dup
+        12: aload_0
+        13: invokespecial #20                 // Method n."<init>":(Le;)V
+        16: putfield      #12                 // Field a:Ln;
+        19: aload_0
+        20: getfield      #12                 // Field a:Ln;
+        23: areturn
+      StackMap: number_of_entries = 1
+        frame_type = 255 offset = 19
+          locals = [ class e ]
+          stack = []
+
+  public e(int, int);
+    descriptor: (II)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: invokespecial #15                 // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: aconst_null
+         6: putfield      #12                 // Field a:Ln;
+         9: aload_0
+        10: new           #8                  // class u
+        13: dup
+        14: invokespecial #21                 // Method u."<init>":()V
+        17: putfield      #11                 // Field a:Laf;
+        20: aload_0
+        21: getfield      #11                 // Field a:Laf;
+        24: checkcast     #8                  // class u
+        27: iload_1
+        28: i2s
+        29: iload_2
+        30: i2s
+        31: istore_0
+        32: istore_2
+        33: dup
+        34: astore_1
+        35: iload_2
+        36: iload_0
+        37: invokestatic  #16                 // Method javax/microedition/lcdui/Image.createImage:(II)Ljavax/microedition/lcdui/Image;
+        40: putfield      #13                 // Field u.a:Ljavax/microedition/lcdui/Image;
+        43: aload_1
+        44: iload_2
+        45: putfield      #9                  // Field af.a:S
+        48: aload_1
+        49: iload_0
+        50: putfield      #10                 // Field af.b:S
+        53: return
+
+  public e(byte[], int, int);
+    descriptor: ([BII)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=4, locals=4, args_size=4
+         0: aload_0
+         1: invokespecial #15                 // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: aconst_null
+         6: putfield      #12                 // Field a:Ln;
+         9: aload_0
+        10: new           #8                  // class u
+        13: dup
+        14: invokespecial #21                 // Method u."<init>":()V
+        17: putfield      #11                 // Field a:Laf;
+        20: aload_0
+        21: aload_1
+        22: astore_1
+        23: getfield      #11                 // Field a:Laf;
+        26: checkcast     #8                  // class u
+        29: aload_1
+        30: checkcast     #1                  // class "[B"
+        33: iload_3
+        34: istore_0
+        35: astore_2
+        36: dup
+        37: astore_1
+        38: aload_2
+        39: iconst_0
+        40: iload_0
+        41: invokestatic  #17                 // Method javax/microedition/lcdui/Image.createImage:([BII)Ljavax/microedition/lcdui/Image;
+        44: putfield      #13                 // Field u.a:Ljavax/microedition/lcdui/Image;
+        47: aload_1
+        48: aload_1
+        49: getfield      #13                 // Field u.a:Ljavax/microedition/lcdui/Image;
+        52: invokevirtual #19                 // Method javax/microedition/lcdui/Image.getWidth:()I
+        55: i2s
+        56: putfield      #9                  // Field af.a:S
+        59: aload_1
+        60: aload_1
+        61: getfield      #13                 // Field u.a:Ljavax/microedition/lcdui/Image;
+        64: invokevirtual #18                 // Method javax/microedition/lcdui/Image.getHeight:()I
+        67: i2s
+        68: putfield      #10                 // Field af.b:S
+        71: return
+
+  public e(java.lang.String);
+    descriptor: (Ljava/lang/String;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=4, locals=2, args_size=2
+         0: aload_0
+         1: invokespecial #15                 // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: aconst_null
+         6: putfield      #12                 // Field a:Ln;
+         9: aload_0
+        10: new           #8                  // class u
+        13: dup
+        14: aload_1
+        15: invokestatic  #14                 // Method ae.a:(Ljava/lang/String;)Lx;
+        18: invokespecial #22                 // Method u."<init>":(Lx;)V
+        21: putfield      #11                 // Field a:Laf;
+        24: return
+
+  public e();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #15                 // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: aconst_null
+         6: putfield      #12                 // Field a:Ln;
+         9: aload_0
+        10: new           #8                  // class u
+        13: dup
+        14: invokespecial #21                 // Method u."<init>":()V
+        17: putfield      #11                 // Field a:Laf;
+        20: return
+}

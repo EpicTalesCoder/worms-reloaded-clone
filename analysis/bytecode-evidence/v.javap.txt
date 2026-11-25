@@ -1,0 +1,174 @@
+Classfile /Users/kd-qa-0294/Desktop/REV/rea/games/worms-reloaded/analysis/recovered/v.class
+  Last modified Nov 24, 2026; size 582 bytes
+  SHA-256 checksum 0a58cab6a5ebadc21cf94f006c79a054ac0f0b996a820db0ff1dfa9f523dcc6e
+public abstract class v
+  minor version: 0
+  major version: 46
+  flags: (0x0421) ACC_PUBLIC, ACC_SUPER, ACC_ABSTRACT
+  this_class: #6                          // v
+  super_class: #4                         // java/lang/Object
+  interfaces: 0, fields: 10, methods: 1, attributes: 0
+Constant pool:
+   #1 = Class              #46            // ab
+   #2 = Class              #47            // ae
+   #3 = Class              #54            // g
+   #4 = Class              #55            // java/lang/Object
+   #5 = Class              #56            // java/lang/System
+   #6 = Class              #57            // v
+   #7 = Fieldref           #1.#24         // ab.a:Lv;
+   #8 = Fieldref           #1.#27         // ab.b:Lg;
+   #9 = Fieldref           #2.#23         // ae.a:Lab;
+  #10 = Fieldref           #6.#22         // v.a:I
+  #11 = Fieldref           #6.#25         // v.a:[J
+  #12 = Fieldref           #6.#26         // v.a:[S
+  #13 = Fieldref           #6.#28         // v.b:[S
+  #14 = Fieldref           #6.#29         // v.c:Z
+  #15 = Fieldref           #6.#31         // v.d:Z
+  #16 = Fieldref           #6.#32         // v.f:Z
+  #17 = Methodref          #3.#21         // g."<init>":(I)V
+  #18 = Methodref          #4.#20         // java/lang/Object."<init>":()V
+  #19 = Methodref          #5.#30         // java/lang/System.currentTimeMillis:()J
+  #20 = NameAndType        #36:#34        // "<init>":()V
+  #21 = NameAndType        #36:#35        // "<init>":(I)V
+  #22 = NameAndType        #45:#38        // a:I
+  #23 = NameAndType        #45:#39        // a:Lab;
+  #24 = NameAndType        #45:#41        // a:Lv;
+  #25 = NameAndType        #45:#43        // a:[J
+  #26 = NameAndType        #45:#44        // a:[S
+  #27 = NameAndType        #48:#40        // b:Lg;
+  #28 = NameAndType        #48:#44        // b:[S
+  #29 = NameAndType        #49:#42        // c:Z
+  #30 = NameAndType        #50:#33        // currentTimeMillis:()J
+  #31 = NameAndType        #51:#42        // d:Z
+  #32 = NameAndType        #53:#42        // f:Z
+  #33 = Utf8               ()J
+  #34 = Utf8               ()V
+  #35 = Utf8               (I)V
+  #36 = Utf8               <init>
+  #37 = Utf8               Code
+  #38 = Utf8               I
+  #39 = Utf8               Lab;
+  #40 = Utf8               Lg;
+  #41 = Utf8               Lv;
+  #42 = Utf8               Z
+  #43 = Utf8               [J
+  #44 = Utf8               [S
+  #45 = Utf8               a
+  #46 = Utf8               ab
+  #47 = Utf8               ae
+  #48 = Utf8               b
+  #49 = Utf8               c
+  #50 = Utf8               currentTimeMillis
+  #51 = Utf8               d
+  #52 = Utf8               e
+  #53 = Utf8               f
+  #54 = Utf8               g
+  #55 = Utf8               java/lang/Object
+  #56 = Utf8               java/lang/System
+  #57 = Utf8               v
+  #58 = Utf8               StackMap
+{
+  public long[] a;
+    descriptor: [J
+    flags: (0x0001) ACC_PUBLIC
+
+  public boolean b;
+    descriptor: Z
+    flags: (0x0001) ACC_PUBLIC
+
+  public boolean c;
+    descriptor: Z
+    flags: (0x0001) ACC_PUBLIC
+
+  public boolean d;
+    descriptor: Z
+    flags: (0x0001) ACC_PUBLIC
+
+  public boolean e;
+    descriptor: Z
+    flags: (0x0001) ACC_PUBLIC
+
+  public int a;
+    descriptor: I
+    flags: (0x0001) ACC_PUBLIC
+
+  public short[] a;
+    descriptor: [S
+    flags: (0x0001) ACC_PUBLIC
+
+  public int b;
+    descriptor: I
+    flags: (0x0001) ACC_PUBLIC
+
+  public boolean f;
+    descriptor: Z
+    flags: (0x0001) ACC_PUBLIC
+
+  public short[] b;
+    descriptor: [S
+    flags: (0x0001) ACC_PUBLIC
+
+  public v();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=4, locals=2, args_size=1
+         0: aload_0
+         1: invokespecial #18                 // Method java/lang/Object."<init>":()V
+         4: aload_0
+         5: aconst_null
+         6: putfield      #11                 // Field a:[J
+         9: aload_0
+        10: sipush        149
+        13: newarray       short
+        15: putfield      #12                 // Field a:[S
+        18: aload_0
+        19: sipush        149
+        22: newarray       short
+        24: putfield      #13                 // Field b:[S
+        27: aload_0
+        28: iconst_1
+        29: putfield      #14                 // Field c:Z
+        32: aload_0
+        33: iconst_1
+        34: putfield      #15                 // Field d:Z
+        37: aload_0
+        38: iconst_0
+        39: putfield      #10                 // Field a:I
+        42: aload_0
+        43: iconst_1
+        44: putfield      #16                 // Field f:Z
+        47: getstatic     #9                  // Field ae.a:Lab;
+        50: aload_0
+        51: putfield      #7                  // Field ab.a:Lv;
+        54: getstatic     #9                  // Field ae.a:Lab;
+        57: dup
+        58: astore_1
+        59: getfield      #8                  // Field ab.b:Lg;
+        62: ifnonnull     77
+        65: aload_1
+        66: new           #3                  // class g
+        69: dup
+        70: iconst_4
+        71: invokespecial #17                 // Method g."<init>":(I)V
+        74: putfield      #8                  // Field ab.b:Lg;
+        77: aload_0
+        78: iconst_2
+        79: newarray       long
+        81: putfield      #11                 // Field a:[J
+        84: aload_0
+        85: getfield      #11                 // Field a:[J
+        88: iconst_0
+        89: invokestatic  #19                 // Method java/lang/System.currentTimeMillis:()J
+        92: lastore
+        93: aload_0
+        94: getfield      #11                 // Field a:[J
+        97: iconst_1
+        98: lconst_0
+        99: lastore
+       100: return
+      StackMap: number_of_entries = 1
+        frame_type = 255 offset = 77
+          locals = [ class v, class ab ]
+          stack = []
+}

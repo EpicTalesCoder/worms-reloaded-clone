@@ -1,0 +1,48 @@
+Classfile /Users/kd-qa-0294/Desktop/REV/rea/games/worms-reloaded/analysis/recovered/k.class
+  Last modified Nov 24, 2026; size 170 bytes
+  SHA-256 checksum b4119f266b04a5040368a81eb79fa436fd18dec7c6189e4d22383ba0cf0073af
+final class k extends o
+  minor version: 3
+  major version: 45
+  flags: (0x0030) ACC_FINAL, ACC_SUPER
+  this_class: #1                          // k
+  super_class: #2                         // o
+  interfaces: 0, fields: 0, methods: 2, attributes: 0
+Constant pool:
+   #1 = Class              #14            // k
+   #2 = Class              #15            // o
+   #3 = Class              #16            // y
+   #4 = Methodref          #2.#6          // o."<init>":(II)V
+   #5 = Methodref          #3.#7          // y.b:(Ln;)V
+   #6 = NameAndType        #10:#8         // "<init>":(II)V
+   #7 = NameAndType        #13:#9         // b:(Ln;)V
+   #8 = Utf8               (II)V
+   #9 = Utf8               (Ln;)V
+  #10 = Utf8               <init>
+  #11 = Utf8               Code
+  #12 = Utf8               a
+  #13 = Utf8               b
+  #14 = Utf8               k
+  #15 = Utf8               o
+  #16 = Utf8               y
+{
+  k(int, int);
+    descriptor: (II)V
+    flags: (0x0000)
+    Code:
+      stack=3, locals=3, args_size=3
+         0: aload_0
+         1: iload_1
+         2: iload_2
+         3: invokespecial #4                  // Method o."<init>":(II)V
+         6: return
+
+  public final void a(n);
+    descriptor: (Ln;)V
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=1, locals=2, args_size=2
+         0: aload_1
+         1: invokestatic  #5                  // Method y.b:(Ln;)V
+         4: return
+}

@@ -1,0 +1,144 @@
+Classfile /Users/kd-qa-0294/Desktop/REV/rea/games/worms-reloaded/analysis/recovered/x.class
+  Last modified Nov 24, 2026; size 489 bytes
+  SHA-256 checksum b40d9a491b3e10a0d53f5a32beb0195dd56730983732c150c2b4f3eae0233e5d
+public final class x
+  minor version: 0
+  major version: 46
+  flags: (0x0031) ACC_PUBLIC, ACC_FINAL, ACC_SUPER
+  this_class: #3                          // x
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 1, methods: 3, attributes: 0
+Constant pool:
+   #1 = Class              #22            // ae
+   #2 = Class              #24            // java/lang/Object
+   #3 = Class              #25            // x
+   #4 = Fieldref           #3.#11         // x.a:[S
+   #5 = Methodref          #1.#9          // ae.a:([S)I
+   #6 = Methodref          #1.#10         // ae.a:([SILx;)V
+   #7 = Methodref          #2.#8          // java/lang/Object."<init>":()V
+   #8 = NameAndType        #18:#13        // "<init>":()V
+   #9 = NameAndType        #21:#15        // a:([S)I
+  #10 = NameAndType        #21:#17        // a:([SILx;)V
+  #11 = NameAndType        #21:#20        // a:[S
+  #12 = Class              #20            // "[S"
+  #13 = Utf8               ()V
+  #14 = Utf8               (Ljava/lang/Object;)Z
+  #15 = Utf8               ([S)I
+  #16 = Utf8               ([S)V
+  #17 = Utf8               ([SILx;)V
+  #18 = Utf8               <init>
+  #19 = Utf8               Code
+  #20 = Utf8               [S
+  #21 = Utf8               a
+  #22 = Utf8               ae
+  #23 = Utf8               equals
+  #24 = Utf8               java/lang/Object
+  #25 = Utf8               x
+  #26 = Utf8               StackMap
+{
+  public short[] a;
+    descriptor: [S
+    flags: (0x0001) ACC_PUBLIC
+
+  public x();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=4, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #7                  // Method java/lang/Object."<init>":()V
+         4: iconst_1
+         5: newarray       short
+         7: dup
+         8: iconst_0
+         9: iconst_0
+        10: sastore
+        11: iconst_0
+        12: aload_0
+        13: invokestatic  #6                  // Method ae.a:([SILx;)V
+        16: return
+
+  public x(short[]);
+    descriptor: ([S)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=3, locals=2, args_size=2
+         0: aload_0
+         1: invokespecial #7                  // Method java/lang/Object."<init>":()V
+         4: aload_1
+         5: aload_1
+         6: invokestatic  #5                  // Method ae.a:([S)I
+         9: aload_0
+        10: invokestatic  #6                  // Method ae.a:([SILx;)V
+        13: return
+
+  public final boolean equals(java.lang.Object);
+    descriptor: (Ljava/lang/Object;)Z
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=3, locals=4, args_size=2
+         0: aload_1
+         1: instanceof    #3                  // class x
+         4: ifeq          75
+         7: aload_1
+         8: checkcast     #3                  // class x
+        11: astore_1
+        12: aload_0
+        13: getfield      #4                  // Field a:[S
+        16: invokestatic  #5                  // Method ae.a:([S)I
+        19: istore_2
+        20: aload_1
+        21: getfield      #4                  // Field a:[S
+        24: invokestatic  #5                  // Method ae.a:([S)I
+        27: iload_2
+        28: if_icmpeq     36
+        31: iconst_0
+        32: istore_2
+        33: goto          73
+        36: aload_1
+        37: getfield      #4                  // Field a:[S
+        40: astore_1
+        41: iconst_0
+        42: istore_3
+        43: iload_3
+        44: iload_2
+        45: if_icmpge     71
+        48: aload_0
+        49: getfield      #4                  // Field a:[S
+        52: iload_3
+        53: saload
+        54: aload_1
+        55: iload_3
+        56: saload
+        57: if_icmpeq     65
+        60: iconst_0
+        61: istore_2
+        62: goto          73
+        65: iinc          3, 1
+        68: goto          43
+        71: iconst_1
+        72: istore_2
+        73: iload_2
+        74: ireturn
+        75: iconst_0
+        76: ireturn
+      StackMap: number_of_entries = 6
+        frame_type = 255 offset = 36
+          locals = [ class x, class x, int ]
+          stack = []
+        frame_type = 255 offset = 43
+          locals = [ class x, class "[S", int, int ]
+          stack = []
+        frame_type = 255 offset = 65
+          locals = [ class x, class "[S", int, int ]
+          stack = []
+        frame_type = 255 offset = 71
+          locals = [ class x, class "[S", int, int ]
+          stack = []
+        frame_type = 255 offset = 73
+          locals = [ class x, class java/lang/Object, int ]
+          stack = []
+        frame_type = 255 offset = 75
+          locals = [ class x, class java/lang/Object ]
+          stack = []
+}

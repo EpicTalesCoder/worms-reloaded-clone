@@ -1,0 +1,56 @@
+Summary for /Users/kd-qa-0294/Desktop/REV/rea/games/worms-reloaded/original/WormsReloaded_s40v6-C3-00_320x240.jar
+Decompiled with CFR 0.152
+
+
+ae
+----------------------------
+
+a(d )
+  Unable to fully structure code
+
+
+ah
+----------------------------
+
+b()
+  Handled duff style switch with additional control
+d()
+  Unable to fully structure code
+a(n )
+  Unable to fully structure code
+o()
+  Unable to fully structure code
+  Could not resolve type clashes
+r()
+  Unable to fully structure code
+  Could not resolve type clashes
+g(int )
+  Unable to fully structure code
+
+
+r
+----------------------------
+
+a(b )
+  Handled duff style switch with additional control
+
+
+y
+----------------------------
+
+a(n )
+  Exception : org.benf.cfr.reader.util.ConfusedCFRException: Statement already marked as first in another block
+a(long )
+  Unable to fully structure code
+x()
+  Unable to fully structure code
+  Could not resolve type clashes
+
+
+a
+----------------------------
+
+f()
+  Unable to fully structure code
+d(int int int )
+  Unable to fully structure code

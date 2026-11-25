@@ -1,0 +1,85 @@
+Classfile /Users/kd-qa-0294/Desktop/REV/rea/games/worms-reloaded/analysis/recovered/com/ea/sdk/SDKMIDlet.class
+  Last modified Nov 24, 2026; size 417 bytes
+  SHA-256 checksum 2707239e9f21484bbec7654fba7be622af1b7b00dfca0b02492a7e918e222bf6
+public class com.ea.sdk.SDKMIDlet extends z
+  minor version: 0
+  major version: 46
+  flags: (0x0021) ACC_PUBLIC, ACC_SUPER
+  this_class: #3                          // com/ea/sdk/SDKMIDlet
+  super_class: #5                         // z
+  interfaces: 0, fields: 1, methods: 3, attributes: 0
+Constant pool:
+   #1 = String             #22            // NULL
+   #2 = Class              #24            // ae
+   #3 = Class              #25            // com/ea/sdk/SDKMIDlet
+   #4 = Class              #27            // java/lang/String
+   #5 = Class              #28            // z
+   #6 = Fieldref           #3.#14         // com/ea/sdk/SDKMIDlet.a:Lcom/ea/sdk/SDKMIDlet;
+   #7 = Methodref          #2.#12         // ae.a:()V
+   #8 = Methodref          #2.#13         // ae.a:(Ljava/lang/String;)Ljava/lang/String;
+   #9 = Methodref          #4.#15         // java/lang/String.equals:(Ljava/lang/Object;)Z
+  #10 = Methodref          #5.#11         // z."<init>":()V
+  #11 = NameAndType        #19:#16        // "<init>":()V
+  #12 = NameAndType        #23:#16        // a:()V
+  #13 = NameAndType        #23:#18        // a:(Ljava/lang/String;)Ljava/lang/String;
+  #14 = NameAndType        #23:#21        // a:Lcom/ea/sdk/SDKMIDlet;
+  #15 = NameAndType        #26:#17        // equals:(Ljava/lang/Object;)Z
+  #16 = Utf8               ()V
+  #17 = Utf8               (Ljava/lang/Object;)Z
+  #18 = Utf8               (Ljava/lang/String;)Ljava/lang/String;
+  #19 = Utf8               <init>
+  #20 = Utf8               Code
+  #21 = Utf8               Lcom/ea/sdk/SDKMIDlet;
+  #22 = Utf8               NULL
+  #23 = Utf8               a
+  #24 = Utf8               ae
+  #25 = Utf8               com/ea/sdk/SDKMIDlet
+  #26 = Utf8               equals
+  #27 = Utf8               java/lang/String
+  #28 = Utf8               z
+  #29 = Utf8               StackMap
+{
+  public static com.ea.sdk.SDKMIDlet a;
+    descriptor: Lcom/ea/sdk/SDKMIDlet;
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+
+  public com.ea.sdk.SDKMIDlet();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #10                 // Method z."<init>":()V
+         4: aload_0
+         5: putstatic     #6                  // Field a:Lcom/ea/sdk/SDKMIDlet;
+         8: return
+
+  public static void a();
+    descriptor: ()V
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=0, locals=0, args_size=0
+         0: invokestatic  #7                  // Method ae.a:()V
+         3: return
+
+  public static java.lang.String a(java.lang.String);
+    descriptor: (Ljava/lang/String;)Ljava/lang/String;
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokestatic  #8                  // Method ae.a:(Ljava/lang/String;)Ljava/lang/String;
+         4: dup
+         5: astore_0
+         6: ldc           #1                  // String NULL
+         8: invokevirtual #9                  // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+        11: ifeq          16
+        14: aconst_null
+        15: astore_0
+        16: aload_0
+        17: areturn
+      StackMap: number_of_entries = 1
+        frame_type = 255 offset = 16
+          locals = [ class java/lang/String ]
+          stack = []
+}

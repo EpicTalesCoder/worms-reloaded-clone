@@ -1,0 +1,2981 @@
+Classfile /Users/kd-qa-0294/Desktop/REV/rea/games/worms-reloaded/analysis/recovered/j.class
+  Last modified Nov 24, 2026; size 5821 bytes
+  SHA-256 checksum 94370f118acb62ee0b21eaa813eb418f593c1ef7b6696ce7a050778ee93c19bd
+public interface j
+  minor version: 3
+  major version: 45
+  flags: (0x0601) ACC_PUBLIC, ACC_INTERFACE, ACC_ABSTRACT
+  this_class: #5                          // j
+  super_class: #6                         // java/lang/Object
+  interfaces: 0, fields: 114, methods: 1, attributes: 0
+Constant pool:
+    #1 = Integer            26214400
+    #2 = String             #355          // {
+    #3 = Class              #260          // "[B"
+    #4 = Class              #334          // c
+    #5 = Class              #341          // j
+    #6 = Class              #342          // java/lang/Object
+    #7 = Fieldref           #5.#123       // j.K:I
+    #8 = Fieldref           #5.#124       // j.L:I
+    #9 = Fieldref           #5.#125       // j.M:I
+   #10 = Fieldref           #5.#126       // j.N:I
+   #11 = Fieldref           #5.#127       // j.O:I
+   #12 = Fieldref           #5.#128       // j.P:I
+   #13 = Fieldref           #5.#129       // j.Q:I
+   #14 = Fieldref           #5.#130       // j.R:I
+   #15 = Fieldref           #5.#131       // j.S:I
+   #16 = Fieldref           #5.#132       // j.T:I
+   #17 = Fieldref           #5.#133       // j.U:I
+   #18 = Fieldref           #5.#134       // j.V:I
+   #19 = Fieldref           #5.#135       // j.W:I
+   #20 = Fieldref           #5.#136       // j.X:I
+   #21 = Fieldref           #5.#137       // j.Y:I
+   #22 = Fieldref           #5.#138       // j.Z:I
+   #23 = Fieldref           #5.#139       // j.a:Lc;
+   #24 = Fieldref           #5.#140       // j.a:[[B
+   #25 = Fieldref           #5.#141       // j.aA:I
+   #26 = Fieldref           #5.#142       // j.aB:I
+   #27 = Fieldref           #5.#143       // j.aC:I
+   #28 = Fieldref           #5.#144       // j.aD:I
+   #29 = Fieldref           #5.#145       // j.aE:I
+   #30 = Fieldref           #5.#146       // j.aF:I
+   #31 = Fieldref           #5.#147       // j.aG:I
+   #32 = Fieldref           #5.#148       // j.aH:I
+   #33 = Fieldref           #5.#149       // j.aI:I
+   #34 = Fieldref           #5.#150       // j.aJ:I
+   #35 = Fieldref           #5.#151       // j.aK:I
+   #36 = Fieldref           #5.#152       // j.aL:I
+   #37 = Fieldref           #5.#153       // j.aM:I
+   #38 = Fieldref           #5.#154       // j.aN:I
+   #39 = Fieldref           #5.#155       // j.aO:I
+   #40 = Fieldref           #5.#156       // j.aP:I
+   #41 = Fieldref           #5.#157       // j.aQ:I
+   #42 = Fieldref           #5.#158       // j.aR:I
+   #43 = Fieldref           #5.#159       // j.aS:I
+   #44 = Fieldref           #5.#160       // j.aT:I
+   #45 = Fieldref           #5.#161       // j.aU:I
+   #46 = Fieldref           #5.#162       // j.aV:I
+   #47 = Fieldref           #5.#163       // j.aW:I
+   #48 = Fieldref           #5.#164       // j.aX:I
+   #49 = Fieldref           #5.#165       // j.aY:I
+   #50 = Fieldref           #5.#166       // j.aZ:I
+   #51 = Fieldref           #5.#167       // j.aa:I
+   #52 = Fieldref           #5.#168       // j.ab:I
+   #53 = Fieldref           #5.#169       // j.ac:I
+   #54 = Fieldref           #5.#170       // j.ad:I
+   #55 = Fieldref           #5.#171       // j.ae:I
+   #56 = Fieldref           #5.#172       // j.af:I
+   #57 = Fieldref           #5.#173       // j.ag:I
+   #58 = Fieldref           #5.#174       // j.ah:I
+   #59 = Fieldref           #5.#175       // j.ai:I
+   #60 = Fieldref           #5.#176       // j.aj:I
+   #61 = Fieldref           #5.#177       // j.ak:I
+   #62 = Fieldref           #5.#178       // j.al:I
+   #63 = Fieldref           #5.#179       // j.am:I
+   #64 = Fieldref           #5.#180       // j.an:I
+   #65 = Fieldref           #5.#181       // j.ao:I
+   #66 = Fieldref           #5.#182       // j.ap:I
+   #67 = Fieldref           #5.#183       // j.aq:I
+   #68 = Fieldref           #5.#184       // j.ar:I
+   #69 = Fieldref           #5.#185       // j.as:I
+   #70 = Fieldref           #5.#186       // j.at:I
+   #71 = Fieldref           #5.#187       // j.au:I
+   #72 = Fieldref           #5.#188       // j.av:I
+   #73 = Fieldref           #5.#189       // j.aw:I
+   #74 = Fieldref           #5.#190       // j.ax:I
+   #75 = Fieldref           #5.#191       // j.ay:I
+   #76 = Fieldref           #5.#192       // j.az:I
+   #77 = Fieldref           #5.#193       // j.b:[B
+   #78 = Fieldref           #5.#194       // j.b:[I
+   #79 = Fieldref           #5.#195       // j.ba:I
+   #80 = Fieldref           #5.#196       // j.bb:I
+   #81 = Fieldref           #5.#197       // j.bc:I
+   #82 = Fieldref           #5.#198       // j.bd:I
+   #83 = Fieldref           #5.#199       // j.be:I
+   #84 = Fieldref           #5.#200       // j.bf:I
+   #85 = Fieldref           #5.#201       // j.bg:I
+   #86 = Fieldref           #5.#202       // j.bh:I
+   #87 = Fieldref           #5.#203       // j.bi:I
+   #88 = Fieldref           #5.#204       // j.bj:I
+   #89 = Fieldref           #5.#205       // j.bk:I
+   #90 = Fieldref           #5.#206       // j.bl:I
+   #91 = Fieldref           #5.#207       // j.bm:I
+   #92 = Fieldref           #5.#208       // j.bn:I
+   #93 = Fieldref           #5.#209       // j.bo:I
+   #94 = Fieldref           #5.#210       // j.bp:I
+   #95 = Fieldref           #5.#211       // j.bq:I
+   #96 = Fieldref           #5.#212       // j.c:[B
+   #97 = Fieldref           #5.#213       // j.c:[I
+   #98 = Fieldref           #5.#214       // j.d:[B
+   #99 = Fieldref           #5.#215       // j.d:[I
+  #100 = Fieldref           #5.#216       // j.e:[B
+  #101 = Fieldref           #5.#217       // j.e:[I
+  #102 = Fieldref           #5.#218       // j.f:[B
+  #103 = Fieldref           #5.#219       // j.f:[I
+  #104 = Fieldref           #5.#220       // j.g:[B
+  #105 = Fieldref           #5.#221       // j.g:[I
+  #106 = Fieldref           #5.#222       // j.h:[B
+  #107 = Fieldref           #5.#223       // j.i:[B
+  #108 = Fieldref           #5.#224       // j.j:[B
+  #109 = Fieldref           #5.#225       // j.k:[B
+  #110 = Fieldref           #5.#226       // j.l:[B
+  #111 = Fieldref           #5.#227       // j.m:[B
+  #112 = Fieldref           #5.#228       // j.n:[B
+  #113 = Fieldref           #5.#229       // j.o:[B
+  #114 = Fieldref           #5.#230       // j.p:[B
+  #115 = Fieldref           #5.#231       // j.q:[B
+  #116 = Fieldref           #5.#232       // j.r:[B
+  #117 = Fieldref           #5.#233       // j.s:[B
+  #118 = Fieldref           #5.#234       // j.t:[B
+  #119 = Fieldref           #5.#235       // j.u:[B
+  #120 = Fieldref           #5.#236       // j.v:[B
+  #121 = Methodref          #4.#122       // c."<init>":(Ljava/lang/String;)V
+  #122 = NameAndType        #240:#238     // "<init>":(Ljava/lang/String;)V
+  #123 = NameAndType        #243:#242     // K:I
+  #124 = NameAndType        #244:#242     // L:I
+  #125 = NameAndType        #246:#242     // M:I
+  #126 = NameAndType        #247:#242     // N:I
+  #127 = NameAndType        #248:#242     // O:I
+  #128 = NameAndType        #249:#242     // P:I
+  #129 = NameAndType        #250:#242     // Q:I
+  #130 = NameAndType        #251:#242     // R:I
+  #131 = NameAndType        #252:#242     // S:I
+  #132 = NameAndType        #253:#242     // T:I
+  #133 = NameAndType        #254:#242     // U:I
+  #134 = NameAndType        #255:#242     // V:I
+  #135 = NameAndType        #256:#242     // W:I
+  #136 = NameAndType        #257:#242     // X:I
+  #137 = NameAndType        #258:#242     // Y:I
+  #138 = NameAndType        #259:#242     // Z:I
+  #139 = NameAndType        #263:#245     // a:Lc;
+  #140 = NameAndType        #263:#262     // a:[[B
+  #141 = NameAndType        #264:#242     // aA:I
+  #142 = NameAndType        #265:#242     // aB:I
+  #143 = NameAndType        #266:#242     // aC:I
+  #144 = NameAndType        #267:#242     // aD:I
+  #145 = NameAndType        #268:#242     // aE:I
+  #146 = NameAndType        #269:#242     // aF:I
+  #147 = NameAndType        #270:#242     // aG:I
+  #148 = NameAndType        #271:#242     // aH:I
+  #149 = NameAndType        #272:#242     // aI:I
+  #150 = NameAndType        #273:#242     // aJ:I
+  #151 = NameAndType        #274:#242     // aK:I
+  #152 = NameAndType        #275:#242     // aL:I
+  #153 = NameAndType        #276:#242     // aM:I
+  #154 = NameAndType        #277:#242     // aN:I
+  #155 = NameAndType        #278:#242     // aO:I
+  #156 = NameAndType        #279:#242     // aP:I
+  #157 = NameAndType        #280:#242     // aQ:I
+  #158 = NameAndType        #281:#242     // aR:I
+  #159 = NameAndType        #282:#242     // aS:I
+  #160 = NameAndType        #283:#242     // aT:I
+  #161 = NameAndType        #284:#242     // aU:I
+  #162 = NameAndType        #285:#242     // aV:I
+  #163 = NameAndType        #286:#242     // aW:I
+  #164 = NameAndType        #287:#242     // aX:I
+  #165 = NameAndType        #288:#242     // aY:I
+  #166 = NameAndType        #289:#242     // aZ:I
+  #167 = NameAndType        #290:#242     // aa:I
+  #168 = NameAndType        #291:#242     // ab:I
+  #169 = NameAndType        #292:#242     // ac:I
+  #170 = NameAndType        #293:#242     // ad:I
+  #171 = NameAndType        #294:#242     // ae:I
+  #172 = NameAndType        #295:#242     // af:I
+  #173 = NameAndType        #296:#242     // ag:I
+  #174 = NameAndType        #297:#242     // ah:I
+  #175 = NameAndType        #298:#242     // ai:I
+  #176 = NameAndType        #299:#242     // aj:I
+  #177 = NameAndType        #300:#242     // ak:I
+  #178 = NameAndType        #301:#242     // al:I
+  #179 = NameAndType        #302:#242     // am:I
+  #180 = NameAndType        #303:#242     // an:I
+  #181 = NameAndType        #304:#242     // ao:I
+  #182 = NameAndType        #305:#242     // ap:I
+  #183 = NameAndType        #306:#242     // aq:I
+  #184 = NameAndType        #307:#242     // ar:I
+  #185 = NameAndType        #308:#242     // as:I
+  #186 = NameAndType        #309:#242     // at:I
+  #187 = NameAndType        #310:#242     // au:I
+  #188 = NameAndType        #311:#242     // av:I
+  #189 = NameAndType        #312:#242     // aw:I
+  #190 = NameAndType        #313:#242     // ax:I
+  #191 = NameAndType        #314:#242     // ay:I
+  #192 = NameAndType        #315:#242     // az:I
+  #193 = NameAndType        #316:#260     // b:[B
+  #194 = NameAndType        #316:#261     // b:[I
+  #195 = NameAndType        #317:#242     // ba:I
+  #196 = NameAndType        #318:#242     // bb:I
+  #197 = NameAndType        #319:#242     // bc:I
+  #198 = NameAndType        #320:#242     // bd:I
+  #199 = NameAndType        #321:#242     // be:I
+  #200 = NameAndType        #322:#242     // bf:I
+  #201 = NameAndType        #323:#242     // bg:I
+  #202 = NameAndType        #324:#242     // bh:I
+  #203 = NameAndType        #325:#242     // bi:I
+  #204 = NameAndType        #326:#242     // bj:I
+  #205 = NameAndType        #327:#242     // bk:I
+  #206 = NameAndType        #328:#242     // bl:I
+  #207 = NameAndType        #329:#242     // bm:I
+  #208 = NameAndType        #330:#242     // bn:I
+  #209 = NameAndType        #331:#242     // bo:I
+  #210 = NameAndType        #332:#242     // bp:I
+  #211 = NameAndType        #333:#242     // bq:I
+  #212 = NameAndType        #334:#260     // c:[B
+  #213 = NameAndType        #334:#261     // c:[I
+  #214 = NameAndType        #335:#260     // d:[B
+  #215 = NameAndType        #335:#261     // d:[I
+  #216 = NameAndType        #336:#260     // e:[B
+  #217 = NameAndType        #336:#261     // e:[I
+  #218 = NameAndType        #337:#260     // f:[B
+  #219 = NameAndType        #337:#261     // f:[I
+  #220 = NameAndType        #338:#260     // g:[B
+  #221 = NameAndType        #338:#261     // g:[I
+  #222 = NameAndType        #339:#260     // h:[B
+  #223 = NameAndType        #340:#260     // i:[B
+  #224 = NameAndType        #341:#260     // j:[B
+  #225 = NameAndType        #343:#260     // k:[B
+  #226 = NameAndType        #344:#260     // l:[B
+  #227 = NameAndType        #345:#260     // m:[B
+  #228 = NameAndType        #346:#260     // n:[B
+  #229 = NameAndType        #347:#260     // o:[B
+  #230 = NameAndType        #348:#260     // p:[B
+  #231 = NameAndType        #349:#260     // q:[B
+  #232 = NameAndType        #350:#260     // r:[B
+  #233 = NameAndType        #351:#260     // s:[B
+  #234 = NameAndType        #352:#260     // t:[B
+  #235 = NameAndType        #353:#260     // u:[B
+  #236 = NameAndType        #354:#260     // v:[B
+  #237 = Utf8               ()V
+  #238 = Utf8               (Ljava/lang/String;)V
+  #239 = Utf8               <clinit>
+  #240 = Utf8               <init>
+  #241 = Utf8               Code
+  #242 = Utf8               I
+  #243 = Utf8               K
+  #244 = Utf8               L
+  #245 = Utf8               Lc;
+  #246 = Utf8               M
+  #247 = Utf8               N
+  #248 = Utf8               O
+  #249 = Utf8               P
+  #250 = Utf8               Q
+  #251 = Utf8               R
+  #252 = Utf8               S
+  #253 = Utf8               T
+  #254 = Utf8               U
+  #255 = Utf8               V
+  #256 = Utf8               W
+  #257 = Utf8               X
+  #258 = Utf8               Y
+  #259 = Utf8               Z
+  #260 = Utf8               [B
+  #261 = Utf8               [I
+  #262 = Utf8               [[B
+  #263 = Utf8               a
+  #264 = Utf8               aA
+  #265 = Utf8               aB
+  #266 = Utf8               aC
+  #267 = Utf8               aD
+  #268 = Utf8               aE
+  #269 = Utf8               aF
+  #270 = Utf8               aG
+  #271 = Utf8               aH
+  #272 = Utf8               aI
+  #273 = Utf8               aJ
+  #274 = Utf8               aK
+  #275 = Utf8               aL
+  #276 = Utf8               aM
+  #277 = Utf8               aN
+  #278 = Utf8               aO
+  #279 = Utf8               aP
+  #280 = Utf8               aQ
+  #281 = Utf8               aR
+  #282 = Utf8               aS
+  #283 = Utf8               aT
+  #284 = Utf8               aU
+  #285 = Utf8               aV
+  #286 = Utf8               aW
+  #287 = Utf8               aX
+  #288 = Utf8               aY
+  #289 = Utf8               aZ
+  #290 = Utf8               aa
+  #291 = Utf8               ab
+  #292 = Utf8               ac
+  #293 = Utf8               ad
+  #294 = Utf8               ae
+  #295 = Utf8               af
+  #296 = Utf8               ag
+  #297 = Utf8               ah
+  #298 = Utf8               ai
+  #299 = Utf8               aj
+  #300 = Utf8               ak
+  #301 = Utf8               al
+  #302 = Utf8               am
+  #303 = Utf8               an
+  #304 = Utf8               ao
+  #305 = Utf8               ap
+  #306 = Utf8               aq
+  #307 = Utf8               ar
+  #308 = Utf8               as
+  #309 = Utf8               at
+  #310 = Utf8               au
+  #311 = Utf8               av
+  #312 = Utf8               aw
+  #313 = Utf8               ax
+  #314 = Utf8               ay
+  #315 = Utf8               az
+  #316 = Utf8               b
+  #317 = Utf8               ba
+  #318 = Utf8               bb
+  #319 = Utf8               bc
+  #320 = Utf8               bd
+  #321 = Utf8               be
+  #322 = Utf8               bf
+  #323 = Utf8               bg
+  #324 = Utf8               bh
+  #325 = Utf8               bi
+  #326 = Utf8               bj
+  #327 = Utf8               bk
+  #328 = Utf8               bl
+  #329 = Utf8               bm
+  #330 = Utf8               bn
+  #331 = Utf8               bo
+  #332 = Utf8               bp
+  #333 = Utf8               bq
+  #334 = Utf8               c
+  #335 = Utf8               d
+  #336 = Utf8               e
+  #337 = Utf8               f
+  #338 = Utf8               g
+  #339 = Utf8               h
+  #340 = Utf8               i
+  #341 = Utf8               j
+  #342 = Utf8               java/lang/Object
+  #343 = Utf8               k
+  #344 = Utf8               l
+  #345 = Utf8               m
+  #346 = Utf8               n
+  #347 = Utf8               o
+  #348 = Utf8               p
+  #349 = Utf8               q
+  #350 = Utf8               r
+  #351 = Utf8               s
+  #352 = Utf8               t
+  #353 = Utf8               u
+  #354 = Utf8               v
+  #355 = Utf8               {
+{
+  public static final int K;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int L;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int M;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int N;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int O;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int P;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int[] b;
+    descriptor: [I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int[] c;
+    descriptor: [I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int[] d;
+    descriptor: [I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int Q;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int R;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int S;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int T;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int U;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int V;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int W;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int X;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int Y;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int Z;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int aa;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int ab;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int ac;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int ad;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int ae;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int af;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int ag;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int ah;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int ai;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int aj;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int ak;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int al;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int am;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int an;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int ao;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int ap;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int aq;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int ar;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int as;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int at;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int au;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int av;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int aw;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int ax;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int ay;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int az;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int aA;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int aB;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int aC;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int aD;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int aE;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int aF;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int aG;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int aH;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int aI;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int aJ;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int aK;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int aL;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int aM;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int aN;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int aO;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int aP;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int aQ;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int aR;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int aS;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int aT;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int aU;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int aV;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int aW;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int aX;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int aY;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int aZ;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int ba;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int bb;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int bc;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int bd;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int be;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int bf;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int bg;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int bh;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int bi;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final byte[] b;
+    descriptor: [B
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int bj;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int bk;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int bl;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int bm;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final c a;
+    descriptor: Lc;
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int[] e;
+    descriptor: [I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int[] f;
+    descriptor: [I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final byte[] c;
+    descriptor: [B
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final byte[][] a;
+    descriptor: [[B
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final byte[] d;
+    descriptor: [B
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final byte[] e;
+    descriptor: [B
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final byte[] f;
+    descriptor: [B
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final byte[] g;
+    descriptor: [B
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final byte[] h;
+    descriptor: [B
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final byte[] i;
+    descriptor: [B
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final byte[] j;
+    descriptor: [B
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final byte[] k;
+    descriptor: [B
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final byte[] l;
+    descriptor: [B
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final byte[] m;
+    descriptor: [B
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final byte[] n;
+    descriptor: [B
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final byte[] o;
+    descriptor: [B
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final byte[] p;
+    descriptor: [B
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final byte[] q;
+    descriptor: [B
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final byte[] r;
+    descriptor: [B
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final byte[] s;
+    descriptor: [B
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int[] g;
+    descriptor: [I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final byte[] t;
+    descriptor: [B
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final byte[] u;
+    descriptor: [B
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final byte[] v;
+    descriptor: [B
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int bn;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int bo;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int bp;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  public static final int bq;
+    descriptor: I
+    flags: (0x0019) ACC_PUBLIC, ACC_STATIC, ACC_FINAL
+
+  static {};
+    descriptor: ()V
+    flags: (0x0008) ACC_STATIC
+    Code:
+      stack=7, locals=0, args_size=0
+         0: sipush        320
+         3: putstatic     #7                  // Field K:I
+         6: sipush        240
+         9: dup
+        10: putstatic     #8                  // Field L:I
+        13: iconst_1
+        14: ishr
+        15: bipush        10
+        17: isub
+        18: putstatic     #9                  // Field M:I
+        21: getstatic     #7                  // Field K:I
+        24: iconst_1
+        25: ishr
+        26: putstatic     #10                 // Field N:I
+        29: getstatic     #7                  // Field K:I
+        32: iconst_1
+        33: ishr
+        34: dup
+        35: putstatic     #11                 // Field O:I
+        38: bipush        10
+        40: iadd
+        41: putstatic     #12                 // Field P:I
+        44: bipush        8
+        46: newarray       int
+        48: dup
+        49: iconst_0
+        50: iconst_0
+        51: iastore
+        52: dup
+        53: iconst_1
+        54: iconst_1
+        55: iastore
+        56: dup
+        57: iconst_2
+        58: iconst_2
+        59: iastore
+        60: dup
+        61: iconst_3
+        62: iconst_3
+        63: iastore
+        64: dup
+        65: iconst_4
+        66: iconst_4
+        67: iastore
+        68: dup
+        69: iconst_5
+        70: iconst_5
+        71: iastore
+        72: dup
+        73: bipush        6
+        75: bipush        6
+        77: iastore
+        78: dup
+        79: bipush        7
+        81: bipush        7
+        83: iastore
+        84: putstatic     #78                 // Field b:[I
+        87: bipush        6
+        89: newarray       int
+        91: dup
+        92: iconst_0
+        93: bipush        55
+        95: iastore
+        96: dup
+        97: iconst_1
+        98: bipush        73
+       100: iastore
+       101: dup
+       102: iconst_2
+       103: bipush        63
+       105: iastore
+       106: dup
+       107: iconst_3
+       108: bipush        74
+       110: iastore
+       111: dup
+       112: iconst_4
+       113: bipush        64
+       115: iastore
+       116: dup
+       117: iconst_5
+       118: bipush        55
+       120: iastore
+       121: putstatic     #97                 // Field c:[I
+       124: bipush        8
+       126: newarray       int
+       128: dup
+       129: iconst_0
+       130: iconst_0
+       131: iastore
+       132: dup
+       133: iconst_1
+       134: iconst_1
+       135: iastore
+       136: dup
+       137: iconst_2
+       138: iconst_2
+       139: iastore
+       140: dup
+       141: iconst_3
+       142: iconst_3
+       143: iastore
+       144: dup
+       145: iconst_4
+       146: iconst_4
+       147: iastore
+       148: dup
+       149: iconst_5
+       150: iconst_5
+       151: iastore
+       152: dup
+       153: bipush        6
+       155: bipush        6
+       157: iastore
+       158: dup
+       159: bipush        7
+       161: bipush        7
+       163: iastore
+       164: putstatic     #99                 // Field d:[I
+       167: getstatic     #8                  // Field L:I
+       170: bipush        42
+       172: isub
+       173: putstatic     #13                 // Field Q:I
+       176: getstatic     #7                  // Field K:I
+       179: iconst_2
+       180: idiv
+       181: putstatic     #14                 // Field R:I
+       184: bipush        9
+       186: getstatic     #8                  // Field L:I
+       189: imul
+       190: bipush        10
+       192: idiv
+       193: bipush        20
+       195: iadd
+       196: iconst_5
+       197: isub
+       198: putstatic     #15                 // Field S:I
+       201: getstatic     #7                  // Field K:I
+       204: bipush        20
+       206: isub
+       207: putstatic     #16                 // Field T:I
+       210: getstatic     #7                  // Field K:I
+       213: iconst_2
+       214: idiv
+       215: bipush        10
+       217: isub
+       218: putstatic     #17                 // Field U:I
+       221: getstatic     #8                  // Field L:I
+       224: bipush        22
+       226: isub
+       227: putstatic     #18                 // Field V:I
+       230: getstatic     #7                  // Field K:I
+       233: bipush        65
+       235: isub
+       236: bipush        30
+       238: iadd
+       239: putstatic     #19                 // Field W:I
+       242: getstatic     #7                  // Field K:I
+       245: bipush        48
+       247: isub
+       248: bipush        22
+       250: iadd
+       251: putstatic     #20                 // Field X:I
+       254: getstatic     #8                  // Field L:I
+       257: bipush        24
+       259: isub
+       260: dup
+       261: putstatic     #21                 // Field Y:I
+       264: putstatic     #22                 // Field Z:I
+       267: getstatic     #21                 // Field Y:I
+       270: bipush        24
+       272: isub
+       273: putstatic     #51                 // Field aa:I
+       276: getstatic     #7                  // Field K:I
+       279: sipush        170
+       282: isub
+       283: iconst_2
+       284: idiv
+       285: bipush        7
+       287: isub
+       288: dup
+       289: putstatic     #52                 // Field ab:I
+       292: bipush        33
+       294: iadd
+       295: putstatic     #53                 // Field ac:I
+       298: getstatic     #7                  // Field K:I
+       301: bipush        8
+       303: isub
+       304: putstatic     #54                 // Field ad:I
+       307: getstatic     #8                  // Field L:I
+       310: bipush        10
+       312: isub
+       313: putstatic     #55                 // Field ae:I
+       316: getstatic     #54                 // Field ad:I
+       319: iconst_5
+       320: idiv
+       321: dup
+       322: putstatic     #56                 // Field af:I
+       325: putstatic     #57                 // Field ag:I
+       328: getstatic     #7                  // Field K:I
+       331: iconst_2
+       332: idiv
+       333: putstatic     #58                 // Field ah:I
+       336: getstatic     #8                  // Field L:I
+       339: bipush        115
+       341: isub
+       342: putstatic     #59                 // Field ai:I
+       345: getstatic     #7                  // Field K:I
+       348: bipush        20
+       350: isub
+       351: putstatic     #60                 // Field aj:I
+       354: getstatic     #7                  // Field K:I
+       357: iconst_2
+       358: idiv
+       359: putstatic     #61                 // Field ak:I
+       362: getstatic     #8                  // Field L:I
+       365: bipush        20
+       367: isub
+       368: iconst_2
+       369: idiv
+       370: dup
+       371: putstatic     #62                 // Field al:I
+       374: bipush        25
+       376: iadd
+       377: bipush        35
+       379: iadd
+       380: bipush        7
+       382: isub
+       383: putstatic     #63                 // Field am:I
+       386: getstatic     #62                 // Field al:I
+       389: bipush        107
+       391: isub
+       392: bipush        7
+       394: iadd
+       395: putstatic     #64                 // Field an:I
+       398: getstatic     #62                 // Field al:I
+       401: bipush        80
+       403: isub
+       404: bipush        7
+       406: iadd
+       407: bipush        35
+       409: iadd
+       410: putstatic     #65                 // Field ao:I
+       413: getstatic     #7                  // Field K:I
+       416: bipush        50
+       418: isub
+       419: putstatic     #66                 // Field ap:I
+       422: getstatic     #7                  // Field K:I
+       425: bipush        45
+       427: isub
+       428: bipush        18
+       430: isub
+       431: putstatic     #67                 // Field aq:I
+       434: getstatic     #62                 // Field al:I
+       437: bipush        80
+       439: isub
+       440: bipush        50
+       442: iadd
+       443: bipush        35
+       445: iadd
+       446: putstatic     #68                 // Field ar:I
+       449: getstatic     #7                  // Field K:I
+       452: bipush        40
+       454: isub
+       455: bipush        50
+       457: isub
+       458: putstatic     #69                 // Field as:I
+       461: getstatic     #7                  // Field K:I
+       464: bipush        60
+       466: isub
+       467: putstatic     #70                 // Field at:I
+       470: getstatic     #7                  // Field K:I
+       473: bipush        14
+       475: isub
+       476: putstatic     #71                 // Field au:I
+       479: getstatic     #8                  // Field L:I
+       482: bipush        110
+       484: isub
+       485: bipush        18
+       487: iadd
+       488: putstatic     #72                 // Field av:I
+       491: getstatic     #61                 // Field ak:I
+       494: bipush        80
+       496: isub
+       497: putstatic     #73                 // Field aw:I
+       500: getstatic     #7                  // Field K:I
+       503: bipush        40
+       505: isub
+       506: putstatic     #74                 // Field ax:I
+       509: getstatic     #61                 // Field ak:I
+       512: bipush        87
+       514: isub
+       515: putstatic     #75                 // Field ay:I
+       518: getstatic     #61                 // Field ak:I
+       521: bipush        87
+       523: iadd
+       524: putstatic     #76                 // Field az:I
+       527: getstatic     #7                  // Field K:I
+       530: bipush        45
+       532: isub
+       533: bipush        35
+       535: isub
+       536: putstatic     #25                 // Field aA:I
+       539: getstatic     #7                  // Field K:I
+       542: bipush        70
+       544: isub
+       545: putstatic     #26                 // Field aB:I
+       548: getstatic     #8                  // Field L:I
+       551: getstatic     #8                  // Field L:I
+       554: bipush        90
+       556: isub
+       557: bipush        70
+       559: iadd
+       560: isub
+       561: bipush        15
+       563: iadd
+       564: bipush        85
+       566: iadd
+       567: putstatic     #27                 // Field aC:I
+       570: getstatic     #7                  // Field K:I
+       573: bipush        30
+       575: isub
+       576: putstatic     #28                 // Field aD:I
+       579: getstatic     #62                 // Field al:I
+       582: bipush        55
+       584: isub
+       585: dup
+       586: putstatic     #29                 // Field aE:I
+       589: bipush        18
+       591: iadd
+       592: bipush        25
+       594: iadd
+       595: bipush        10
+       597: isub
+       598: putstatic     #30                 // Field aF:I
+       601: getstatic     #7                  // Field K:I
+       604: bipush        10
+       606: isub
+       607: putstatic     #31                 // Field aG:I
+       610: getstatic     #29                 // Field aE:I
+       613: putstatic     #32                 // Field aH:I
+       616: getstatic     #8                  // Field L:I
+       619: bipush        30
+       621: isub
+       622: putstatic     #33                 // Field aI:I
+       625: getstatic     #62                 // Field al:I
+       628: putstatic     #34                 // Field aJ:I
+       631: getstatic     #62                 // Field al:I
+       634: bipush        20
+       636: isub
+       637: bipush        30
+       639: iadd
+       640: putstatic     #35                 // Field aK:I
+       643: getstatic     #34                 // Field aJ:I
+       646: bipush        6
+       648: iadd
+       649: bipush        13
+       651: iadd
+       652: iconst_2
+       653: isub
+       654: putstatic     #36                 // Field aL:I
+       657: getstatic     #34                 // Field aJ:I
+       660: bipush        19
+       662: iadd
+       663: putstatic     #37                 // Field aM:I
+       666: getstatic     #61                 // Field ak:I
+       669: bipush        40
+       671: isub
+       672: putstatic     #38                 // Field aN:I
+       675: getstatic     #34                 // Field aJ:I
+       678: bipush        67
+       680: iadd
+       681: putstatic     #39                 // Field aO:I
+       684: getstatic     #34                 // Field aJ:I
+       687: bipush        97
+       689: iadd
+       690: putstatic     #40                 // Field aP:I
+       693: getstatic     #34                 // Field aJ:I
+       696: bipush        87
+       698: iadd
+       699: putstatic     #41                 // Field aQ:I
+       702: getstatic     #61                 // Field ak:I
+       705: iconst_5
+       706: isub
+       707: putstatic     #42                 // Field aR:I
+       710: getstatic     #34                 // Field aJ:I
+       713: bipush        60
+       715: iadd
+       716: putstatic     #43                 // Field aS:I
+       719: getstatic     #34                 // Field aJ:I
+       722: bipush        98
+       724: iadd
+       725: putstatic     #44                 // Field aT:I
+       728: getstatic     #34                 // Field aJ:I
+       731: bipush        80
+       733: iadd
+       734: putstatic     #45                 // Field aU:I
+       737: getstatic     #62                 // Field al:I
+       740: bipush        10
+       742: iadd
+       743: putstatic     #46                 // Field aV:I
+       746: getstatic     #62                 // Field al:I
+       749: bipush        80
+       751: isub
+       752: bipush        25
+       754: iadd
+       755: putstatic     #47                 // Field aW:I
+       758: getstatic     #46                 // Field aV:I
+       761: iconst_2
+       762: iadd
+       763: dup
+       764: putstatic     #48                 // Field aX:I
+       767: bipush        11
+       769: iadd
+       770: iconst_2
+       771: isub
+       772: putstatic     #49                 // Field aY:I
+       775: getstatic     #8                  // Field L:I
+       778: bipush        87
+       780: isub
+       781: dup
+       782: putstatic     #50                 // Field aZ:I
+       785: bipush        30
+       787: iadd
+       788: putstatic     #79                 // Field ba:I
+       791: getstatic     #8                  // Field L:I
+       794: bipush        17
+       796: isub
+       797: putstatic     #80                 // Field bb:I
+       800: getstatic     #8                  // Field L:I
+       803: putstatic     #81                 // Field bc:I
+       806: getstatic     #7                  // Field K:I
+       809: bipush        10
+       811: isub
+       812: iconst_4
+       813: isub
+       814: putstatic     #82                 // Field bd:I
+       817: getstatic     #80                 // Field bb:I
+       820: bipush        10
+       822: iadd
+       823: putstatic     #83                 // Field be:I
+       826: getstatic     #8                  // Field L:I
+       829: iconst_2
+       830: ishr
+       831: putstatic     #84                 // Field bf:I
+       834: iconst_3
+       835: getstatic     #8                  // Field L:I
+       838: iconst_2
+       839: ishr
+       840: imul
+       841: bipush        20
+       843: isub
+       844: sipush        154
+       847: isub
+       848: iconst_1
+       849: ishr
+       850: putstatic     #85                 // Field bg:I
+       853: getstatic     #84                 // Field bf:I
+       856: bipush        25
+       858: iadd
+       859: getstatic     #85                 // Field bg:I
+       862: iadd
+       863: putstatic     #86                 // Field bh:I
+       866: getstatic     #7                  // Field K:I
+       869: bipush        34
+       871: isub
+       872: putstatic     #87                 // Field bi:I
+       875: iconst_5
+       876: newarray       byte
+       878: dup
+       879: iconst_0
+       880: bipush        23
+       882: bastore
+       883: dup
+       884: iconst_1
+       885: bipush        26
+       887: bastore
+       888: dup
+       889: iconst_2
+       890: bipush        29
+       892: bastore
+       893: dup
+       894: iconst_3
+       895: bipush        31
+       897: bastore
+       898: dup
+       899: iconst_4
+       900: iconst_0
+       901: bastore
+       902: putstatic     #77                 // Field b:[B
+       905: getstatic     #8                  // Field L:I
+       908: iconst_3
+       909: idiv
+       910: bipush        16
+       912: ishl
+       913: putstatic     #88                 // Field bj:I
+       916: iconst_2
+       917: getstatic     #8                  // Field L:I
+       920: imul
+       921: iconst_3
+       922: idiv
+       923: bipush        16
+       925: ishl
+       926: dup
+       927: putstatic     #89                 // Field bk:I
+       930: getstatic     #88                 // Field bj:I
+       933: isub
+       934: dup
+       935: putstatic     #90                 // Field bl:I
+       938: ldc           #1                  // int 26214400
+       940: iadd
+       941: putstatic     #91                 // Field bm:I
+       944: new           #4                  // class c
+       947: dup
+       948: ldc           #2                  // String {
+       950: invokespecial #121                // Method c."<init>":(Ljava/lang/String;)V
+       953: putstatic     #23                 // Field a:Lc;
+       956: iconst_4
+       957: newarray       int
+       959: dup
+       960: iconst_0
+       961: iconst_0
+       962: iastore
+       963: dup
+       964: iconst_1
+       965: iconst_0
+       966: iastore
+       967: dup
+       968: iconst_2
+       969: iconst_0
+       970: iastore
+       971: dup
+       972: iconst_3
+       973: iconst_0
+       974: iastore
+       975: putstatic     #101                // Field e:[I
+       978: iconst_4
+       979: newarray       int
+       981: dup
+       982: iconst_0
+       983: iconst_0
+       984: iastore
+       985: dup
+       986: iconst_1
+       987: iconst_0
+       988: iastore
+       989: dup
+       990: iconst_2
+       991: iconst_0
+       992: iastore
+       993: dup
+       994: iconst_3
+       995: iconst_0
+       996: iastore
+       997: putstatic     #103                // Field f:[I
+      1000: bipush        16
+      1002: newarray       byte
+      1004: dup
+      1005: iconst_0
+      1006: bipush        21
+      1008: bastore
+      1009: dup
+      1010: iconst_1
+      1011: bipush        15
+      1013: bastore
+      1014: dup
+      1015: iconst_2
+      1016: bipush        22
+      1018: bastore
+      1019: dup
+      1020: iconst_3
+      1021: bipush        29
+      1023: bastore
+      1024: dup
+      1025: iconst_4
+      1026: iconst_2
+      1027: bastore
+      1028: dup
+      1029: iconst_5
+      1030: bipush        14
+      1032: bastore
+      1033: dup
+      1034: bipush        6
+      1036: bipush        20
+      1038: bastore
+      1039: dup
+      1040: bipush        7
+      1042: bipush        18
+      1044: bastore
+      1045: dup
+      1046: bipush        8
+      1048: bipush        33
+      1050: bastore
+      1051: dup
+      1052: bipush        9
+      1054: bipush        27
+      1056: bastore
+      1057: dup
+      1058: bipush        10
+      1060: iconst_5
+      1061: bastore
+      1062: dup
+      1063: bipush        11
+      1065: bipush        25
+      1067: bastore
+      1068: dup
+      1069: bipush        12
+      1071: bipush        11
+      1073: bastore
+      1074: dup
+      1075: bipush        13
+      1077: bipush        28
+      1079: bastore
+      1080: dup
+      1081: bipush        14
+      1083: bipush        22
+      1085: bastore
+      1086: dup
+      1087: bipush        15
+      1089: bipush        8
+      1091: bastore
+      1092: putstatic     #96                 // Field c:[B
+      1095: iconst_4
+      1096: anewarray     #3                  // class "[B"
+      1099: dup
+      1100: iconst_0
+      1101: bipush        14
+      1103: newarray       byte
+      1105: dup
+      1106: iconst_0
+      1107: iconst_0
+      1108: bastore
+      1109: dup
+      1110: iconst_1
+      1111: iconst_m1
+      1112: bastore
+      1113: dup
+      1114: iconst_2
+      1115: bipush        7
+      1117: bastore
+      1118: dup
+      1119: iconst_3
+      1120: iconst_1
+      1121: bastore
+      1122: dup
+      1123: iconst_4
+      1124: bipush        27
+      1126: bastore
+      1127: dup
+      1128: iconst_5
+      1129: iconst_2
+      1130: bastore
+      1131: dup
+      1132: bipush        6
+      1134: bipush        17
+      1136: bastore
+      1137: dup
+      1138: bipush        7
+      1140: iconst_1
+      1141: bastore
+      1142: dup
+      1143: bipush        8
+      1145: bipush        9
+      1147: bastore
+      1148: dup
+      1149: bipush        9
+      1151: iconst_1
+      1152: bastore
+      1153: dup
+      1154: bipush        10
+      1156: iconst_1
+      1157: bastore
+      1158: dup
+      1159: bipush        11
+      1161: iconst_m1
+      1162: bastore
+      1163: dup
+      1164: bipush        12
+      1166: iconst_3
+      1167: bastore
+      1168: dup
+      1169: bipush        13
+      1171: iconst_m1
+      1172: bastore
+      1173: aastore
+      1174: dup
+      1175: iconst_1
+      1176: bipush        14
+      1178: newarray       byte
+      1180: dup
+      1181: iconst_0
+      1182: iconst_0
+      1183: bastore
+      1184: dup
+      1185: iconst_1
+      1186: iconst_m1
+      1187: bastore
+      1188: dup
+      1189: iconst_2
+      1190: iconst_1
+      1191: bastore
+      1192: dup
+      1193: iconst_3
+      1194: iconst_m1
+      1195: bastore
+      1196: dup
+      1197: iconst_4
+      1198: bipush        27
+      1200: bastore
+      1201: dup
+      1202: iconst_5
+      1203: iconst_2
+      1204: bastore
+      1205: dup
+      1206: bipush        6
+      1208: bipush        12
+      1210: bastore
+      1211: dup
+      1212: bipush        7
+      1214: iconst_2
+      1215: bastore
+      1216: dup
+      1217: bipush        8
+      1219: bipush        22
+      1221: bastore
+      1222: dup
+      1223: bipush        9
+      1225: iconst_1
+      1226: bastore
+      1227: dup
+      1228: bipush        10
+      1230: bipush        18
+      1232: bastore
+      1233: dup
+      1234: bipush        11
+      1236: iconst_1
+      1237: bastore
+      1238: dup
+      1239: bipush        12
+      1241: bipush        32
+      1243: bastore
+      1244: dup
+      1245: bipush        13
+      1247: iconst_1
+      1248: bastore
+      1249: aastore
+      1250: dup
+      1251: iconst_2
+      1252: bipush        14
+      1254: newarray       byte
+      1256: dup
+      1257: iconst_0
+      1258: iconst_0
+      1259: bastore
+      1260: dup
+      1261: iconst_1
+      1262: iconst_m1
+      1263: bastore
+      1264: dup
+      1265: iconst_2
+      1266: bipush        19
+      1268: bastore
+      1269: dup
+      1270: iconst_3
+      1271: iconst_3
+      1272: bastore
+      1273: dup
+      1274: iconst_4
+      1275: bipush        21
+      1277: bastore
+      1278: dup
+      1279: iconst_5
+      1280: iconst_2
+      1281: bastore
+      1282: dup
+      1283: bipush        6
+      1285: iconst_3
+      1286: bastore
+      1287: dup
+      1288: bipush        7
+      1290: iconst_m1
+      1291: bastore
+      1292: dup
+      1293: bipush        8
+      1295: bipush        6
+      1297: bastore
+      1298: dup
+      1299: bipush        9
+      1301: iconst_1
+      1302: bastore
+      1303: dup
+      1304: bipush        10
+      1306: iconst_1
+      1307: bastore
+      1308: dup
+      1309: bipush        11
+      1311: iconst_m1
+      1312: bastore
+      1313: dup
+      1314: bipush        12
+      1316: bipush        24
+      1318: bastore
+      1319: dup
+      1320: bipush        13
+      1322: iconst_1
+      1323: bastore
+      1324: aastore
+      1325: dup
+      1326: iconst_3
+      1327: bipush        14
+      1329: newarray       byte
+      1331: dup
+      1332: iconst_0
+      1333: iconst_0
+      1334: bastore
+      1335: dup
+      1336: iconst_1
+      1337: iconst_m1
+      1338: bastore
+      1339: dup
+      1340: iconst_2
+      1341: bipush        25
+      1343: bastore
+      1344: dup
+      1345: iconst_3
+      1346: iconst_1
+      1347: bastore
+      1348: dup
+      1349: iconst_4
+      1350: iconst_3
+      1351: bastore
+      1352: dup
+      1353: iconst_5
+      1354: iconst_m1
+      1355: bastore
+      1356: dup
+      1357: bipush        6
+      1359: bipush        12
+      1361: bastore
+      1362: dup
+      1363: bipush        7
+      1365: iconst_2
+      1366: bastore
+      1367: dup
+      1368: bipush        8
+      1370: iconst_4
+      1371: bastore
+      1372: dup
+      1373: bipush        9
+      1375: iconst_1
+      1376: bastore
+      1377: dup
+      1378: bipush        10
+      1380: bipush        26
+      1382: bastore
+      1383: dup
+      1384: bipush        11
+      1386: iconst_1
+      1387: bastore
+      1388: dup
+      1389: bipush        12
+      1391: bipush        13
+      1393: bastore
+      1394: dup
+      1395: bipush        13
+      1397: iconst_2
+      1398: bastore
+      1399: aastore
+      1400: putstatic     #24                 // Field a:[[B
+      1403: bipush        11
+      1405: newarray       byte
+      1407: dup
+      1408: iconst_0
+      1409: iconst_3
+      1410: bastore
+      1411: dup
+      1412: iconst_1
+      1413: iconst_3
+      1414: bastore
+      1415: dup
+      1416: iconst_2
+      1417: iconst_0
+      1418: bastore
+      1419: dup
+      1420: iconst_3
+      1421: iconst_1
+      1422: bastore
+      1423: dup
+      1424: iconst_4
+      1425: iconst_3
+      1426: bastore
+      1427: dup
+      1428: iconst_5
+      1429: iconst_4
+      1430: bastore
+      1431: dup
+      1432: bipush        6
+      1434: bipush        12
+      1436: bastore
+      1437: dup
+      1438: bipush        7
+      1440: iconst_0
+      1441: bastore
+      1442: dup
+      1443: bipush        8
+      1445: bipush        13
+      1447: bastore
+      1448: dup
+      1449: bipush        9
+      1451: iconst_1
+      1452: bastore
+      1453: dup
+      1454: bipush        10
+      1456: bipush        24
+      1458: bastore
+      1459: putstatic     #98                 // Field d:[B
+      1462: bipush        11
+      1464: newarray       byte
+      1466: dup
+      1467: iconst_0
+      1468: iconst_3
+      1469: bastore
+      1470: dup
+      1471: iconst_1
+      1472: iconst_2
+      1473: bastore
+      1474: dup
+      1475: iconst_2
+      1476: iconst_0
+      1477: bastore
+      1478: dup
+      1479: iconst_3
+      1480: iconst_2
+      1481: bastore
+      1482: dup
+      1483: iconst_4
+      1484: bipush        31
+      1486: bastore
+      1487: dup
+      1488: iconst_5
+      1489: iconst_3
+      1490: bastore
+      1491: dup
+      1492: bipush        6
+      1494: bipush        12
+      1496: bastore
+      1497: dup
+      1498: bipush        7
+      1500: iconst_0
+      1501: bastore
+      1502: dup
+      1503: bipush        8
+      1505: iconst_1
+      1506: bastore
+      1507: dup
+      1508: bipush        9
+      1510: bipush        34
+      1512: bastore
+      1513: dup
+      1514: bipush        10
+      1516: bipush        35
+      1518: bastore
+      1519: putstatic     #100                // Field e:[B
+      1522: bipush        8
+      1524: newarray       byte
+      1526: dup
+      1527: iconst_0
+      1528: iconst_3
+      1529: bastore
+      1530: dup
+      1531: iconst_1
+      1532: iconst_1
+      1533: bastore
+      1534: dup
+      1535: iconst_2
+      1536: iconst_0
+      1537: bastore
+      1538: dup
+      1539: iconst_3
+      1540: iconst_0
+      1541: bastore
+      1542: dup
+      1543: iconst_4
+      1544: iconst_3
+      1545: bastore
+      1546: dup
+      1547: iconst_5
+      1548: bipush        21
+      1550: bastore
+      1551: dup
+      1552: bipush        6
+      1554: bipush        15
+      1556: bastore
+      1557: dup
+      1558: bipush        7
+      1560: iconst_1
+      1561: bastore
+      1562: putstatic     #102                // Field f:[B
+      1565: bipush        10
+      1567: newarray       byte
+      1569: dup
+      1570: iconst_0
+      1571: iconst_3
+      1572: bastore
+      1573: dup
+      1574: iconst_1
+      1575: iconst_2
+      1576: bastore
+      1577: dup
+      1578: iconst_2
+      1579: iconst_0
+      1580: bastore
+      1581: dup
+      1582: iconst_3
+      1583: iconst_1
+      1584: bastore
+      1585: dup
+      1586: iconst_4
+      1587: iconst_3
+      1588: bastore
+      1589: dup
+      1590: iconst_5
+      1591: bipush        21
+      1593: bastore
+      1594: dup
+      1595: bipush        6
+      1597: bipush        15
+      1599: bastore
+      1600: dup
+      1601: bipush        7
+      1603: iconst_0
+      1604: bastore
+      1605: dup
+      1606: bipush        8
+      1608: iconst_1
+      1609: bastore
+      1610: dup
+      1611: bipush        9
+      1613: bipush        14
+      1615: bastore
+      1616: putstatic     #104                // Field g:[B
+      1619: bipush        12
+      1621: newarray       byte
+      1623: dup
+      1624: iconst_0
+      1625: iconst_4
+      1626: bastore
+      1627: dup
+      1628: iconst_1
+      1629: iconst_2
+      1630: bastore
+      1631: dup
+      1632: iconst_2
+      1633: iconst_0
+      1634: bastore
+      1635: dup
+      1636: iconst_3
+      1637: iconst_2
+      1638: bastore
+      1639: dup
+      1640: iconst_4
+      1641: iconst_3
+      1642: bastore
+      1643: dup
+      1644: iconst_5
+      1645: bipush        21
+      1647: bastore
+      1648: dup
+      1649: bipush        6
+      1651: bipush        15
+      1653: bastore
+      1654: dup
+      1655: bipush        7
+      1657: iconst_4
+      1658: bastore
+      1659: dup
+      1660: bipush        8
+      1662: iconst_0
+      1663: bastore
+      1664: dup
+      1665: bipush        9
+      1667: iconst_1
+      1668: bastore
+      1669: dup
+      1670: bipush        10
+      1672: bipush        14
+      1674: bastore
+      1675: dup
+      1676: bipush        11
+      1678: bipush        24
+      1680: bastore
+      1681: putstatic     #106                // Field h:[B
+      1684: bipush        9
+      1686: newarray       byte
+      1688: dup
+      1689: iconst_0
+      1690: iconst_2
+      1691: bastore
+      1692: dup
+      1693: iconst_1
+      1694: iconst_2
+      1695: bastore
+      1696: dup
+      1697: iconst_2
+      1698: iconst_0
+      1699: bastore
+      1700: dup
+      1701: iconst_3
+      1702: iconst_1
+      1703: bastore
+      1704: dup
+      1705: iconst_4
+      1706: iconst_3
+      1707: bastore
+      1708: dup
+      1709: iconst_5
+      1710: bipush        21
+      1712: bastore
+      1713: dup
+      1714: bipush        6
+      1716: iconst_0
+      1717: bastore
+      1718: dup
+      1719: bipush        7
+      1721: bipush        17
+      1723: bastore
+      1724: dup
+      1725: bipush        8
+      1727: bipush        14
+      1729: bastore
+      1730: putstatic     #107                // Field i:[B
+      1733: bipush        11
+      1735: newarray       byte
+      1737: dup
+      1738: iconst_0
+      1739: iconst_3
+      1740: bastore
+      1741: dup
+      1742: iconst_1
+      1743: iconst_2
+      1744: bastore
+      1745: dup
+      1746: iconst_2
+      1747: iconst_0
+      1748: bastore
+      1749: dup
+      1750: iconst_3
+      1751: iconst_2
+      1752: bastore
+      1753: dup
+      1754: iconst_4
+      1755: iconst_3
+      1756: bastore
+      1757: dup
+      1758: iconst_5
+      1759: bipush        21
+      1761: bastore
+      1762: dup
+      1763: bipush        6
+      1765: iconst_4
+      1766: bastore
+      1767: dup
+      1768: bipush        7
+      1770: iconst_0
+      1771: bastore
+      1772: dup
+      1773: bipush        8
+      1775: bipush        17
+      1777: bastore
+      1778: dup
+      1779: bipush        9
+      1781: bipush        14
+      1783: bastore
+      1784: dup
+      1785: bipush        10
+      1787: bipush        24
+      1789: bastore
+      1790: putstatic     #108                // Field j:[B
+      1793: bipush        12
+      1795: newarray       byte
+      1797: dup
+      1798: iconst_0
+      1799: iconst_3
+      1800: bastore
+      1801: dup
+      1802: iconst_1
+      1803: iconst_3
+      1804: bastore
+      1805: dup
+      1806: iconst_2
+      1807: iconst_0
+      1808: bastore
+      1809: dup
+      1810: iconst_3
+      1811: iconst_2
+      1812: bastore
+      1813: dup
+      1814: iconst_4
+      1815: iconst_3
+      1816: bastore
+      1817: dup
+      1818: iconst_5
+      1819: bipush        21
+      1821: bastore
+      1822: dup
+      1823: bipush        6
+      1825: iconst_4
+      1826: bastore
+      1827: dup
+      1828: bipush        7
+      1830: iconst_0
+      1831: bastore
+      1832: dup
+      1833: bipush        8
+      1835: iconst_1
+      1836: bastore
+      1837: dup
+      1838: bipush        9
+      1840: bipush        17
+      1842: bastore
+      1843: dup
+      1844: bipush        10
+      1846: bipush        14
+      1848: bastore
+      1849: dup
+      1850: bipush        11
+      1852: bipush        24
+      1854: bastore
+      1855: putstatic     #109                // Field k:[B
+      1858: bipush        10
+      1860: newarray       byte
+      1862: dup
+      1863: iconst_0
+      1864: iconst_2
+      1865: bastore
+      1866: dup
+      1867: iconst_1
+      1868: iconst_2
+      1869: bastore
+      1870: dup
+      1871: iconst_2
+      1872: iconst_1
+      1873: bastore
+      1874: dup
+      1875: iconst_3
+      1876: iconst_1
+      1877: bastore
+      1878: dup
+      1879: iconst_4
+      1880: iconst_3
+      1881: bastore
+      1882: dup
+      1883: iconst_5
+      1884: bipush        27
+      1886: bastore
+      1887: dup
+      1888: bipush        6
+      1890: iconst_0
+      1891: bastore
+      1892: dup
+      1893: bipush        7
+      1895: bipush        7
+      1897: bastore
+      1898: dup
+      1899: bipush        8
+      1901: iconst_5
+      1902: bastore
+      1903: dup
+      1904: bipush        9
+      1906: bipush        14
+      1908: bastore
+      1909: putstatic     #110                // Field l:[B
+      1912: bipush        15
+      1914: newarray       byte
+      1916: dup
+      1917: iconst_0
+      1918: iconst_3
+      1919: bastore
+      1920: dup
+      1921: iconst_1
+      1922: iconst_5
+      1923: bastore
+      1924: dup
+      1925: iconst_2
+      1926: iconst_2
+      1927: bastore
+      1928: dup
+      1929: iconst_3
+      1930: iconst_1
+      1931: bastore
+      1932: dup
+      1933: iconst_4
+      1934: iconst_3
+      1935: bastore
+      1936: dup
+      1937: iconst_5
+      1938: bipush        27
+      1940: bastore
+      1941: dup
+      1942: bipush        6
+      1944: iconst_4
+      1945: bastore
+      1946: dup
+      1947: bipush        7
+      1949: iconst_0
+      1950: bastore
+      1951: dup
+      1952: bipush        8
+      1954: bipush        7
+      1956: bastore
+      1957: dup
+      1958: bipush        9
+      1960: iconst_1
+      1961: bastore
+      1962: dup
+      1963: bipush        10
+      1965: bipush        19
+      1967: bastore
+      1968: dup
+      1969: bipush        11
+      1971: bipush        13
+      1973: bastore
+      1974: dup
+      1975: bipush        12
+      1977: iconst_5
+      1978: bastore
+      1979: dup
+      1980: bipush        13
+      1982: bipush        11
+      1984: bastore
+      1985: dup
+      1986: bipush        14
+      1988: bipush        14
+      1990: bastore
+      1991: putstatic     #111                // Field m:[B
+      1994: bipush        16
+      1996: newarray       byte
+      1998: dup
+      1999: iconst_0
+      2000: iconst_3
+      2001: bastore
+      2002: dup
+      2003: iconst_1
+      2004: bipush        6
+      2006: bastore
+      2007: dup
+      2008: iconst_2
+      2009: iconst_2
+      2010: bastore
+      2011: dup
+      2012: iconst_3
+      2013: iconst_1
+      2014: bastore
+      2015: dup
+      2016: iconst_4
+      2017: iconst_3
+      2018: bastore
+      2019: dup
+      2020: iconst_5
+      2021: bipush        27
+      2023: bastore
+      2024: dup
+      2025: bipush        6
+      2027: iconst_4
+      2028: bastore
+      2029: dup
+      2030: bipush        7
+      2032: iconst_0
+      2033: bastore
+      2034: dup
+      2035: bipush        8
+      2037: bipush        7
+      2039: bastore
+      2040: dup
+      2041: bipush        9
+      2043: iconst_1
+      2044: bastore
+      2045: dup
+      2046: bipush        10
+      2048: bipush        19
+      2050: bastore
+      2051: dup
+      2052: bipush        11
+      2054: bipush        13
+      2056: bastore
+      2057: dup
+      2058: bipush        12
+      2060: bipush        17
+      2062: bastore
+      2063: dup
+      2064: bipush        13
+      2066: iconst_5
+      2067: bastore
+      2068: dup
+      2069: bipush        14
+      2071: bipush        11
+      2073: bastore
+      2074: dup
+      2075: bipush        15
+      2077: bipush        14
+      2079: bastore
+      2080: putstatic     #112                // Field n:[B
+      2083: bipush        13
+      2085: newarray       byte
+      2087: dup
+      2088: iconst_0
+      2089: iconst_2
+      2090: bastore
+      2091: dup
+      2092: iconst_1
+      2093: iconst_4
+      2094: bastore
+      2095: dup
+      2096: iconst_2
+      2097: iconst_1
+      2098: bastore
+      2099: dup
+      2100: iconst_3
+      2101: iconst_2
+      2102: bastore
+      2103: dup
+      2104: iconst_4
+      2105: iconst_3
+      2106: bastore
+      2107: dup
+      2108: iconst_5
+      2109: iconst_4
+      2110: bastore
+      2111: dup
+      2112: bipush        6
+      2114: iconst_0
+      2115: bastore
+      2116: dup
+      2117: bipush        7
+      2119: bipush        7
+      2121: bastore
+      2122: dup
+      2123: bipush        8
+      2125: bipush        13
+      2127: bastore
+      2128: dup
+      2129: bipush        9
+      2131: bipush        17
+      2133: bastore
+      2134: dup
+      2135: bipush        10
+      2137: bipush        11
+      2139: bastore
+      2140: dup
+      2141: bipush        11
+      2143: bipush        14
+      2145: bastore
+      2146: dup
+      2147: bipush        12
+      2149: bipush        24
+      2151: bastore
+      2152: putstatic     #113                // Field o:[B
+      2155: bipush        19
+      2157: newarray       byte
+      2159: dup
+      2160: iconst_0
+      2161: iconst_3
+      2162: bastore
+      2163: dup
+      2164: iconst_1
+      2165: bipush        7
+      2167: bastore
+      2168: dup
+      2169: iconst_2
+      2170: iconst_3
+      2171: bastore
+      2172: dup
+      2173: iconst_3
+      2174: iconst_2
+      2175: bastore
+      2176: dup
+      2177: iconst_4
+      2178: iconst_3
+      2179: bastore
+      2180: dup
+      2181: iconst_5
+      2182: iconst_4
+      2183: bastore
+      2184: dup
+      2185: bipush        6
+      2187: bipush        31
+      2189: bastore
+      2190: dup
+      2191: bipush        7
+      2193: iconst_0
+      2194: bastore
+      2195: dup
+      2196: bipush        8
+      2198: bipush        7
+      2200: bastore
+      2201: dup
+      2202: bipush        9
+      2204: bipush        13
+      2206: bastore
+      2207: dup
+      2208: bipush        10
+      2210: iconst_1
+      2211: bastore
+      2212: dup
+      2213: bipush        11
+      2215: bipush        19
+      2217: bastore
+      2218: dup
+      2219: bipush        12
+      2221: bipush        25
+      2223: bastore
+      2224: dup
+      2225: bipush        13
+      2227: bipush        17
+      2229: bastore
+      2230: dup
+      2231: bipush        14
+      2233: bipush        11
+      2235: bastore
+      2236: dup
+      2237: bipush        15
+      2239: iconst_5
+      2240: bastore
+      2241: dup
+      2242: bipush        16
+      2244: bipush        22
+      2246: bastore
+      2247: dup
+      2248: bipush        17
+      2250: bipush        14
+      2252: bastore
+      2253: dup
+      2254: bipush        18
+      2256: bipush        24
+      2258: bastore
+      2259: putstatic     #114                // Field p:[B
+      2262: bipush        20
+      2264: newarray       byte
+      2266: dup
+      2267: iconst_0
+      2268: iconst_3
+      2269: bastore
+      2270: dup
+      2271: iconst_1
+      2272: bipush        7
+      2274: bastore
+      2275: dup
+      2276: iconst_2
+      2277: iconst_4
+      2278: bastore
+      2279: dup
+      2280: iconst_3
+      2281: iconst_2
+      2282: bastore
+      2283: dup
+      2284: iconst_4
+      2285: iconst_3
+      2286: bastore
+      2287: dup
+      2288: iconst_5
+      2289: iconst_4
+      2290: bastore
+      2291: dup
+      2292: bipush        6
+      2294: bipush        31
+      2296: bastore
+      2297: dup
+      2298: bipush        7
+      2300: iconst_0
+      2301: bastore
+      2302: dup
+      2303: bipush        8
+      2305: bipush        7
+      2307: bastore
+      2308: dup
+      2309: bipush        9
+      2311: bipush        13
+      2313: bastore
+      2314: dup
+      2315: bipush        10
+      2317: iconst_1
+      2318: bastore
+      2319: dup
+      2320: bipush        11
+      2322: bipush        19
+      2324: bastore
+      2325: dup
+      2326: bipush        12
+      2328: bipush        25
+      2330: bastore
+      2331: dup
+      2332: bipush        13
+      2334: bipush        17
+      2336: bastore
+      2337: dup
+      2338: bipush        14
+      2340: bipush        11
+      2342: bastore
+      2343: dup
+      2344: bipush        15
+      2346: iconst_5
+      2347: bastore
+      2348: dup
+      2349: bipush        16
+      2351: bipush        22
+      2353: bastore
+      2354: dup
+      2355: bipush        17
+      2357: bipush        10
+      2359: bastore
+      2360: dup
+      2361: bipush        18
+      2363: bipush        14
+      2365: bastore
+      2366: dup
+      2367: bipush        19
+      2369: bipush        24
+      2371: bastore
+      2372: putstatic     #115                // Field q:[B
+      2375: bipush        16
+      2377: newarray       byte
+      2379: dup
+      2380: iconst_0
+      2381: iconst_2
+      2382: bastore
+      2383: dup
+      2384: iconst_1
+      2385: iconst_5
+      2386: bastore
+      2387: dup
+      2388: iconst_2
+      2389: iconst_2
+      2390: bastore
+      2391: dup
+      2392: iconst_3
+      2393: iconst_3
+      2394: bastore
+      2395: dup
+      2396: iconst_4
+      2397: bipush        31
+      2399: bastore
+      2400: dup
+      2401: iconst_5
+      2402: bipush        27
+      2404: bastore
+      2405: dup
+      2406: bipush        6
+      2408: bipush        7
+      2410: bastore
+      2411: dup
+      2412: bipush        7
+      2414: bipush        19
+      2416: bastore
+      2417: dup
+      2418: bipush        8
+      2420: iconst_0
+      2421: bastore
+      2422: dup
+      2423: bipush        9
+      2425: iconst_1
+      2426: bastore
+      2427: dup
+      2428: bipush        10
+      2430: bipush        17
+      2432: bastore
+      2433: dup
+      2434: bipush        11
+      2436: iconst_5
+      2437: bastore
+      2438: dup
+      2439: bipush        12
+      2441: bipush        11
+      2443: bastore
+      2444: dup
+      2445: bipush        13
+      2447: bipush        14
+      2449: bastore
+      2450: dup
+      2451: bipush        14
+      2453: bipush        24
+      2455: bastore
+      2456: dup
+      2457: bipush        15
+      2459: iconst_2
+      2460: bastore
+      2461: putstatic     #116                // Field r:[B
+      2464: bipush        23
+      2466: newarray       byte
+      2468: dup
+      2469: iconst_0
+      2470: bipush        7
+      2472: bastore
+      2473: dup
+      2474: iconst_1
+      2475: iconst_4
+      2476: bastore
+      2477: dup
+      2478: iconst_2
+      2479: iconst_1
+      2480: bastore
+      2481: dup
+      2482: iconst_3
+      2483: bipush        7
+      2485: bastore
+      2486: dup
+      2487: iconst_4
+      2488: iconst_3
+      2489: bastore
+      2490: dup
+      2491: iconst_5
+      2492: iconst_4
+      2493: bastore
+      2494: dup
+      2495: bipush        6
+      2497: bipush        12
+      2499: bastore
+      2500: dup
+      2501: bipush        7
+      2503: bipush        21
+      2505: bastore
+      2506: dup
+      2507: bipush        8
+      2509: bipush        27
+      2511: bastore
+      2512: dup
+      2513: bipush        9
+      2515: bipush        30
+      2517: bastore
+      2518: dup
+      2519: bipush        10
+      2521: bipush        31
+      2523: bastore
+      2524: dup
+      2525: bipush        11
+      2527: iconst_0
+      2528: bastore
+      2529: dup
+      2530: bipush        12
+      2532: iconst_1
+      2533: bastore
+      2534: dup
+      2535: bipush        13
+      2537: bipush        6
+      2539: bastore
+      2540: dup
+      2541: bipush        14
+      2543: bipush        7
+      2545: bastore
+      2546: dup
+      2547: bipush        15
+      2549: iconst_5
+      2550: bastore
+      2551: dup
+      2552: bipush        16
+      2554: iconst_2
+      2555: bastore
+      2556: dup
+      2557: bipush        17
+      2559: bipush        8
+      2561: bastore
+      2562: dup
+      2563: bipush        18
+      2565: bipush        14
+      2567: bastore
+      2568: dup
+      2569: bipush        19
+      2571: bipush        20
+      2573: bastore
+      2574: dup
+      2575: bipush        20
+      2577: bipush        26
+      2579: bastore
+      2580: dup
+      2581: bipush        21
+      2583: bipush        34
+      2585: bastore
+      2586: dup
+      2587: bipush        22
+      2589: bipush        35
+      2591: bastore
+      2592: putstatic     #117                // Field s:[B
+      2595: bipush        10
+      2597: newarray       int
+      2599: dup
+      2600: iconst_0
+      2601: bipush        7
+      2603: iastore
+      2604: dup
+      2605: iconst_1
+      2606: bipush        12
+      2608: iastore
+      2609: dup
+      2610: iconst_2
+      2611: bipush        8
+      2613: iastore
+      2614: dup
+      2615: iconst_3
+      2616: bipush        27
+      2618: iastore
+      2619: dup
+      2620: iconst_4
+      2621: bipush        31
+      2623: iastore
+      2624: dup
+      2625: iconst_5
+      2626: iconst_5
+      2627: iastore
+      2628: dup
+      2629: bipush        6
+      2631: bipush        26
+      2633: iastore
+      2634: dup
+      2635: bipush        7
+      2637: bipush        14
+      2639: iastore
+      2640: dup
+      2641: bipush        8
+      2643: bipush        20
+      2645: iastore
+      2646: dup
+      2647: bipush        9
+      2649: bipush        30
+      2651: iastore
+      2652: putstatic     #105                // Field g:[I
+      2655: bipush        19
+      2657: newarray       byte
+      2659: dup
+      2660: iconst_0
+      2661: iconst_0
+      2662: bastore
+      2663: dup
+      2664: iconst_1
+      2665: iconst_1
+      2666: bastore
+      2667: dup
+      2668: iconst_2
+      2669: iconst_4
+      2670: bastore
+      2671: dup
+      2672: iconst_3
+      2673: iconst_3
+      2674: bastore
+      2675: dup
+      2676: iconst_4
+      2677: bipush        6
+      2679: bastore
+      2680: dup
+      2681: iconst_5
+      2682: iconst_2
+      2683: bastore
+      2684: dup
+      2685: bipush        6
+      2687: bipush        34
+      2689: bastore
+      2690: dup
+      2691: bipush        7
+      2693: bipush        35
+      2695: bastore
+      2696: dup
+      2697: bipush        8
+      2699: bipush        21
+      2701: bastore
+      2702: dup
+      2703: bipush        9
+      2705: bipush        7
+      2707: bastore
+      2708: dup
+      2709: bipush        10
+      2711: bipush        12
+      2713: bastore
+      2714: dup
+      2715: bipush        11
+      2717: bipush        8
+      2719: bastore
+      2720: dup
+      2721: bipush        12
+      2723: bipush        27
+      2725: bastore
+      2726: dup
+      2727: bipush        13
+      2729: bipush        31
+      2731: bastore
+      2732: dup
+      2733: bipush        14
+      2735: iconst_5
+      2736: bastore
+      2737: dup
+      2738: bipush        15
+      2740: bipush        26
+      2742: bastore
+      2743: dup
+      2744: bipush        16
+      2746: bipush        14
+      2748: bastore
+      2749: dup
+      2750: bipush        17
+      2752: bipush        20
+      2754: bastore
+      2755: dup
+      2756: bipush        18
+      2758: bipush        30
+      2760: bastore
+      2761: putstatic     #118                // Field t:[B
+      2764: bipush        19
+      2766: newarray       byte
+      2768: dup
+      2769: iconst_0
+      2770: iconst_m1
+      2771: bastore
+      2772: dup
+      2773: iconst_1
+      2774: iconst_m1
+      2775: bastore
+      2776: dup
+      2777: iconst_2
+      2778: iconst_m1
+      2779: bastore
+      2780: dup
+      2781: iconst_3
+      2782: iconst_m1
+      2783: bastore
+      2784: dup
+      2785: iconst_4
+      2786: iconst_2
+      2787: bastore
+      2788: dup
+      2789: iconst_5
+      2790: iconst_2
+      2791: bastore
+      2792: dup
+      2793: bipush        6
+      2795: iconst_m1
+      2796: bastore
+      2797: dup
+      2798: bipush        7
+      2800: iconst_m1
+      2801: bastore
+      2802: dup
+      2803: bipush        8
+      2805: iconst_m1
+      2806: bastore
+      2807: dup
+      2808: bipush        9
+      2810: iconst_3
+      2811: bastore
+      2812: dup
+      2813: bipush        10
+      2815: iconst_3
+      2816: bastore
+      2817: dup
+      2818: bipush        11
+      2820: iconst_1
+      2821: bastore
+      2822: dup
+      2823: bipush        12
+      2825: iconst_2
+      2826: bastore
+      2827: dup
+      2828: bipush        13
+      2830: iconst_2
+      2831: bastore
+      2832: dup
+      2833: bipush        14
+      2835: iconst_3
+      2836: bastore
+      2837: dup
+      2838: bipush        15
+      2840: iconst_1
+      2841: bastore
+      2842: dup
+      2843: bipush        16
+      2845: iconst_1
+      2846: bastore
+      2847: dup
+      2848: bipush        17
+      2850: iconst_1
+      2851: bastore
+      2852: dup
+      2853: bipush        18
+      2855: iconst_2
+      2856: bastore
+      2857: putstatic     #119                // Field u:[B
+      2860: bipush        36
+      2862: newarray       byte
+      2864: dup
+      2865: iconst_0
+      2866: iconst_1
+      2867: bastore
+      2868: dup
+      2869: iconst_1
+      2870: iconst_1
+      2871: bastore
+      2872: dup
+      2873: iconst_2
+      2874: iconst_3
+      2875: bastore
+      2876: dup
+      2877: iconst_3
+      2878: iconst_0
+      2879: bastore
+      2880: dup
+      2881: iconst_4
+      2882: iconst_0
+      2883: bastore
+      2884: dup
+      2885: iconst_5
+      2886: iconst_2
+      2887: bastore
+      2888: dup
+      2889: bipush        6
+      2891: iconst_1
+      2892: bastore
+      2893: dup
+      2894: bipush        7
+      2896: iconst_1
+      2897: bastore
+      2898: dup
+      2899: bipush        8
+      2901: iconst_3
+      2902: bastore
+      2903: dup
+      2904: bipush        9
+      2906: iconst_3
+      2907: bastore
+      2908: dup
+      2909: bipush        10
+      2911: iconst_1
+      2912: bastore
+      2913: dup
+      2914: bipush        11
+      2916: iconst_2
+      2917: bastore
+      2918: dup
+      2919: bipush        12
+      2921: iconst_0
+      2922: bastore
+      2923: dup
+      2924: bipush        13
+      2926: iconst_1
+      2927: bastore
+      2928: dup
+      2929: bipush        14
+      2931: iconst_3
+      2932: bastore
+      2933: dup
+      2934: bipush        15
+      2936: iconst_0
+      2937: bastore
+      2938: dup
+      2939: bipush        16
+      2941: iconst_2
+      2942: bastore
+      2943: dup
+      2944: bipush        17
+      2946: iconst_1
+      2947: bastore
+      2948: dup
+      2949: bipush        18
+      2951: iconst_2
+      2952: bastore
+      2953: dup
+      2954: bipush        19
+      2956: iconst_1
+      2957: bastore
+      2958: dup
+      2959: bipush        20
+      2961: iconst_3
+      2962: bastore
+      2963: dup
+      2964: bipush        21
+      2966: iconst_0
+      2967: bastore
+      2968: dup
+      2969: bipush        22
+      2971: iconst_1
+      2972: bastore
+      2973: dup
+      2974: bipush        23
+      2976: iconst_1
+      2977: bastore
+      2978: dup
+      2979: bipush        24
+      2981: iconst_3
+      2982: bastore
+      2983: dup
+      2984: bipush        25
+      2986: iconst_1
+      2987: bastore
+      2988: dup
+      2989: bipush        26
+      2991: iconst_3
+      2992: bastore
+      2993: dup
+      2994: bipush        27
+      2996: iconst_0
+      2997: bastore
+      2998: dup
+      2999: bipush        28
+      3001: iconst_2
+      3002: bastore
+      3003: dup
+      3004: bipush        29
+      3006: iconst_2
+      3007: bastore
+      3008: dup
+      3009: bipush        30
+      3011: iconst_0
+      3012: bastore
+      3013: dup
+      3014: bipush        31
+      3016: iconst_0
+      3017: bastore
+      3018: dup
+      3019: bipush        32
+      3021: iconst_1
+      3022: bastore
+      3023: dup
+      3024: bipush        33
+      3026: iconst_3
+      3027: bastore
+      3028: dup
+      3029: bipush        34
+      3031: iconst_3
+      3032: bastore
+      3033: dup
+      3034: bipush        35
+      3036: iconst_3
+      3037: bastore
+      3038: putstatic     #120                // Field v:[B
+      3041: getstatic     #8                  // Field L:I
+      3044: bipush        63
+      3046: imul
+      3047: bipush        100
+      3049: idiv
+      3050: putstatic     #92                 // Field bn:I
+      3053: getstatic     #8                  // Field L:I
+      3056: bipush        47
+      3058: imul
+      3059: bipush        100
+      3061: idiv
+      3062: putstatic     #93                 // Field bo:I
+      3065: getstatic     #8                  // Field L:I
+      3068: bipush        31
+      3070: imul
+      3071: bipush        100
+      3073: idiv
+      3074: putstatic     #94                 // Field bp:I
+      3077: getstatic     #7                  // Field K:I
+      3080: iconst_2
+      3081: ishr
+      3082: putstatic     #95                 // Field bq:I
+      3085: return
+}

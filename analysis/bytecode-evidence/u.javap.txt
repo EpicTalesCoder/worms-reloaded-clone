@@ -1,0 +1,167 @@
+Classfile /Users/kd-qa-0294/Desktop/REV/rea/games/worms-reloaded/analysis/recovered/u.class
+  Last modified Nov 24, 2026; size 970 bytes
+  SHA-256 checksum 20306abbda1f2b383b945caa58a0295235479f2a39e18a7f8b7776e3408f84e5
+public final class u extends af
+  minor version: 0
+  major version: 46
+  flags: (0x0031) ACC_PUBLIC, ACC_FINAL, ACC_SUPER
+  this_class: #7                          // u
+  super_class: #2                         // af
+  interfaces: 0, fields: 1, methods: 3, attributes: 0
+Constant pool:
+   #1 = Class              #51            // ae
+   #2 = Class              #52            // af
+   #3 = Class              #59            // java/lang/Exception
+   #4 = Class              #60            // java/lang/String
+   #5 = Class              #61            // java/lang/StringBuffer
+   #6 = Class              #62            // javax/microedition/lcdui/Image
+   #7 = Class              #64            // u
+   #8 = Fieldref           #2.#26         // af.a:S
+   #9 = Fieldref           #2.#29         // af.b:S
+  #10 = Fieldref           #7.#25         // u.a:Ljavax/microedition/lcdui/Image;
+  #11 = Methodref          #1.#24         // ae.a:(Lx;)Ljava/lang/String;
+  #12 = Methodref          #2.#22         // af."<init>":()V
+  #13 = Methodref          #4.#23         // java/lang/String."<init>":(Ljava/lang/String;)V
+  #14 = Methodref          #4.#30         // java/lang/String.charAt:(I)C
+  #15 = Methodref          #5.#22         // java/lang/StringBuffer."<init>":()V
+  #16 = Methodref          #5.#27         // java/lang/StringBuffer.append:(C)Ljava/lang/StringBuffer;
+  #17 = Methodref          #5.#28         // java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+  #18 = Methodref          #5.#34         // java/lang/StringBuffer.toString:()Ljava/lang/String;
+  #19 = Methodref          #6.#31         // javax/microedition/lcdui/Image.createImage:(Ljava/lang/String;)Ljavax/microedition/lcdui/Image;
+  #20 = Methodref          #6.#32         // javax/microedition/lcdui/Image.getHeight:()I
+  #21 = Methodref          #6.#33         // javax/microedition/lcdui/Image.getWidth:()I
+  #22 = NameAndType        #46:#38        // "<init>":()V
+  #23 = NameAndType        #46:#43        // "<init>":(Ljava/lang/String;)V
+  #24 = NameAndType        #50:#44        // a:(Lx;)Ljava/lang/String;
+  #25 = NameAndType        #50:#48        // a:Ljavax/microedition/lcdui/Image;
+  #26 = NameAndType        #50:#49        // a:S
+  #27 = NameAndType        #53:#39        // append:(C)Ljava/lang/StringBuffer;
+  #28 = NameAndType        #53:#41        // append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+  #29 = NameAndType        #54:#49        // b:S
+  #30 = NameAndType        #55:#40        // charAt:(I)C
+  #31 = NameAndType        #56:#42        // createImage:(Ljava/lang/String;)Ljavax/microedition/lcdui/Image;
+  #32 = NameAndType        #57:#35        // getHeight:()I
+  #33 = NameAndType        #58:#35        // getWidth:()I
+  #34 = NameAndType        #63:#36        // toString:()Ljava/lang/String;
+  #35 = Utf8               ()I
+  #36 = Utf8               ()Ljava/lang/String;
+  #37 = Utf8               ()Ljavax/microedition/lcdui/Image;
+  #38 = Utf8               ()V
+  #39 = Utf8               (C)Ljava/lang/StringBuffer;
+  #40 = Utf8               (I)C
+  #41 = Utf8               (Ljava/lang/String;)Ljava/lang/StringBuffer;
+  #42 = Utf8               (Ljava/lang/String;)Ljavax/microedition/lcdui/Image;
+  #43 = Utf8               (Ljava/lang/String;)V
+  #44 = Utf8               (Lx;)Ljava/lang/String;
+  #45 = Utf8               (Lx;)V
+  #46 = Utf8               <init>
+  #47 = Utf8               Code
+  #48 = Utf8               Ljavax/microedition/lcdui/Image;
+  #49 = Utf8               S
+  #50 = Utf8               a
+  #51 = Utf8               ae
+  #52 = Utf8               af
+  #53 = Utf8               append
+  #54 = Utf8               b
+  #55 = Utf8               charAt
+  #56 = Utf8               createImage
+  #57 = Utf8               getHeight
+  #58 = Utf8               getWidth
+  #59 = Utf8               java/lang/Exception
+  #60 = Utf8               java/lang/String
+  #61 = Utf8               java/lang/StringBuffer
+  #62 = Utf8               javax/microedition/lcdui/Image
+  #63 = Utf8               toString
+  #64 = Utf8               u
+  #65 = Utf8               StackMap
+{
+  public javax.microedition.lcdui.Image a;
+    descriptor: Ljavax/microedition/lcdui/Image;
+    flags: (0x0001) ACC_PUBLIC
+
+  public u();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #12                 // Method af."<init>":()V
+         4: return
+
+  public u(x);
+    descriptor: (Lx;)V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=3, args_size=2
+         0: aload_0
+         1: invokespecial #12                 // Method af."<init>":()V
+         4: new           #4                  // class java/lang/String
+         7: dup
+         8: astore_2
+         9: aload_1
+        10: invokestatic  #11                 // Method ae.a:(Lx;)Ljava/lang/String;
+        13: invokespecial #13                 // Method java/lang/String."<init>":(Ljava/lang/String;)V
+        16: aload_2
+        17: astore_1
+        18: aload_2
+        19: iconst_0
+        20: invokevirtual #14                 // Method java/lang/String.charAt:(I)C
+        23: bipush        47
+        25: if_icmpeq     48
+        28: new           #5                  // class java/lang/StringBuffer
+        31: dup
+        32: invokespecial #15                 // Method java/lang/StringBuffer."<init>":()V
+        35: bipush        47
+        37: invokevirtual #16                 // Method java/lang/StringBuffer.append:(C)Ljava/lang/StringBuffer;
+        40: aload_2
+        41: invokevirtual #17                 // Method java/lang/StringBuffer.append:(Ljava/lang/String;)Ljava/lang/StringBuffer;
+        44: invokevirtual #18                 // Method java/lang/StringBuffer.toString:()Ljava/lang/String;
+        47: astore_1
+        48: aload_0
+        49: aload_1
+        50: invokestatic  #19                 // Method javax/microedition/lcdui/Image.createImage:(Ljava/lang/String;)Ljavax/microedition/lcdui/Image;
+        53: putfield      #10                 // Field a:Ljavax/microedition/lcdui/Image;
+        56: goto          60
+        59: pop
+        60: aload_0
+        61: getfield      #10                 // Field a:Ljavax/microedition/lcdui/Image;
+        64: ifnull        91
+        67: aload_0
+        68: aload_0
+        69: getfield      #10                 // Field a:Ljavax/microedition/lcdui/Image;
+        72: invokevirtual #21                 // Method javax/microedition/lcdui/Image.getWidth:()I
+        75: i2s
+        76: putfield      #8                  // Field af.a:S
+        79: aload_0
+        80: aload_0
+        81: getfield      #10                 // Field a:Ljavax/microedition/lcdui/Image;
+        84: invokevirtual #20                 // Method javax/microedition/lcdui/Image.getHeight:()I
+        87: i2s
+        88: putfield      #9                  // Field af.b:S
+        91: return
+      Exception table:
+         from    to  target type
+            48    56    59   Class java/lang/Exception
+      StackMap: number_of_entries = 4
+        frame_type = 255 offset = 48
+          locals = [ class u, class java/lang/String, class java/lang/String ]
+          stack = []
+        frame_type = 255 offset = 59
+          locals = [ class u, class java/lang/String, class java/lang/String ]
+          stack = [ class java/lang/Exception ]
+        frame_type = 255 offset = 60
+          locals = [ class u, class java/lang/String, class java/lang/String ]
+          stack = []
+        frame_type = 255 offset = 91
+          locals = [ class u, class java/lang/String, class java/lang/String ]
+          stack = []
+
+  public final javax.microedition.lcdui.Image a();
+    descriptor: ()Ljavax/microedition/lcdui/Image;
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: getfield      #10                 // Field a:Ljavax/microedition/lcdui/Image;
+         4: areturn
+}

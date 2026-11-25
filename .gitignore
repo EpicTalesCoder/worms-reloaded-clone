@@ -1,0 +1,35 @@
+# Build & dist
+dist/
+build/
+cpp-port/build/
+node_modules/
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Heavy local J2ME emulator scratch
+analysis/rebuild-attempt/captures/campaign-state-*
+analysis/rebuild-attempt/captures/candidate-*
+analysis/rebuild-attempt/captures/current-test-*
+analysis/rebuild-attempt/captures/mouse-*
+analysis/rebuild-attempt/captures/original-campaign-probe*
+analysis/rebuild-attempt/captures/original-flow/
+analysis/rebuild-attempt/captures/original-initial.png
+analysis/rebuild-attempt/captures/original-menu-*
+analysis/rebuild-attempt/captures/original-progress/
+analysis/rebuild-attempt/captures/original-t*
+analysis/rebuild-attempt/captures/probe-*
+analysis/rebuild-attempt/captures/web-strategy/
+analysis/rebuild-attempt/freej2me*
+analysis/rebuild-attempt/*.jar
+analysis/rebuild-attempt/*-classes*/
+
+# OS & IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+*~

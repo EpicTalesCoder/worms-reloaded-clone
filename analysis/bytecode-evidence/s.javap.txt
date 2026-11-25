@@ -1,0 +1,592 @@
+Classfile /Users/kd-qa-0294/Desktop/REV/rea/games/worms-reloaded/analysis/recovered/s.class
+  Last modified Nov 24, 2026; size 2103 bytes
+  SHA-256 checksum 2f531139177ed6709c988f795b0ca6eb0e10fb6b69b1972bb84eaccdbf650df5
+public final class s extends javax.microedition.lcdui.Canvas
+  minor version: 0
+  major version: 46
+  flags: (0x0031) ACC_PUBLIC, ACC_FINAL, ACC_SUPER
+  this_class: #14                         // s
+  super_class: #11                        // javax/microedition/lcdui/Canvas
+  interfaces: 0, fields: 5, methods: 13, attributes: 0
+Constant pool:
+   #1 = Integer            32768
+   #2 = Integer            65536
+   #3 = Integer            131072
+   #4 = Integer            262144
+   #5 = Integer            524288
+   #6 = Integer            1048576
+   #7 = Integer            2097152
+   #8 = Integer            4194304
+   #9 = Integer            8388608
+  #10 = Class              #83            // ae
+  #11 = Class              #89            // javax/microedition/lcdui/Canvas
+  #12 = Class              #93            // l
+  #13 = Class              #94            // p
+  #14 = Class              #96            // s
+  #15 = Class              #97            // w
+  #16 = Fieldref           #12.#50        // l.a:J
+  #17 = Fieldref           #12.#52        // l.a:Ls;
+  #18 = Fieldref           #12.#53        // l.a:Lw;
+  #19 = Fieldref           #14.#49        // s.a:I
+  #20 = Fieldref           #14.#51        // s.a:Ln;
+  #21 = Fieldref           #14.#57        // s.b:I
+  #22 = Fieldref           #14.#59        // s.c:I
+  #23 = Fieldref           #14.#60        // s.d:I
+  #24 = Methodref          #10.#40        // ae.a:()J
+  #25 = Methodref          #10.#41        // ae.a:()Ll;
+  #26 = Methodref          #10.#43        // ae.a:()[I
+  #27 = Methodref          #10.#44        // ae.a:(I)I
+  #28 = Methodref          #10.#47        // ae.a:(ZLg;)V
+  #29 = Methodref          #10.#48        // ae.a:([I)I
+  #30 = Methodref          #10.#54        // ae.b:(I)I
+  #31 = Methodref          #10.#56        // ae.b:([I)I
+  #32 = Methodref          #10.#58        // ae.c:()Lg;
+  #33 = Methodref          #11.#39        // javax/microedition/lcdui/Canvas."<init>":()V
+  #34 = Methodref          #13.#42        // p.a:()Ln;
+  #35 = Methodref          #14.#40        // s.a:()J
+  #36 = Methodref          #14.#46        // s.a:(IZ)V
+  #37 = Methodref          #14.#55        // s.b:(I)Z
+  #38 = InterfaceMethodref #15.#45        // w.a:(I)V
+  #39 = NameAndType        #75:#66        // "<init>":()V
+  #40 = NameAndType        #82:#62        // a:()J
+  #41 = NameAndType        #82:#64        // a:()Ll;
+  #42 = NameAndType        #82:#65        // a:()Ln;
+  #43 = NameAndType        #82:#67        // a:()[I
+  #44 = NameAndType        #82:#68        // a:(I)I
+  #45 = NameAndType        #82:#69        // a:(I)V
+  #46 = NameAndType        #82:#71        // a:(IZ)V
+  #47 = NameAndType        #82:#73        // a:(ZLg;)V
+  #48 = NameAndType        #82:#74        // a:([I)I
+  #49 = NameAndType        #82:#77        // a:I
+  #50 = NameAndType        #82:#78        // a:J
+  #51 = NameAndType        #82:#79        // a:Ln;
+  #52 = NameAndType        #82:#80        // a:Ls;
+  #53 = NameAndType        #82:#81        // a:Lw;
+  #54 = NameAndType        #84:#68        // b:(I)I
+  #55 = NameAndType        #84:#70        // b:(I)Z
+  #56 = NameAndType        #84:#74        // b:([I)I
+  #57 = NameAndType        #84:#77        // b:I
+  #58 = NameAndType        #85:#63        // c:()Lg;
+  #59 = NameAndType        #85:#77        // c:I
+  #60 = NameAndType        #86:#77        // d:I
+  #61 = Utf8               ()I
+  #62 = Utf8               ()J
+  #63 = Utf8               ()Lg;
+  #64 = Utf8               ()Ll;
+  #65 = Utf8               ()Ln;
+  #66 = Utf8               ()V
+  #67 = Utf8               ()[I
+  #68 = Utf8               (I)I
+  #69 = Utf8               (I)V
+  #70 = Utf8               (I)Z
+  #71 = Utf8               (IZ)V
+  #72 = Utf8               (Ljavax/microedition/lcdui/Graphics;)V
+  #73 = Utf8               (ZLg;)V
+  #74 = Utf8               ([I)I
+  #75 = Utf8               <init>
+  #76 = Utf8               Code
+  #77 = Utf8               I
+  #78 = Utf8               J
+  #79 = Utf8               Ln;
+  #80 = Utf8               Ls;
+  #81 = Utf8               Lw;
+  #82 = Utf8               a
+  #83 = Utf8               ae
+  #84 = Utf8               b
+  #85 = Utf8               c
+  #86 = Utf8               d
+  #87 = Utf8               getHeight
+  #88 = Utf8               getWidth
+  #89 = Utf8               javax/microedition/lcdui/Canvas
+  #90 = Utf8               keyPressed
+  #91 = Utf8               keyReleased
+  #92 = Utf8               keyRepeated
+  #93 = Utf8               l
+  #94 = Utf8               p
+  #95 = Utf8               paint
+  #96 = Utf8               s
+  #97 = Utf8               w
+  #98 = Utf8               StackMap
+{
+  public int a;
+    descriptor: I
+    flags: (0x0001) ACC_PUBLIC
+
+  public int b;
+    descriptor: I
+    flags: (0x0001) ACC_PUBLIC
+
+  public int c;
+    descriptor: I
+    flags: (0x0001) ACC_PUBLIC
+
+  public int d;
+    descriptor: I
+    flags: (0x0001) ACC_PUBLIC
+
+  public n a;
+    descriptor: Ln;
+    flags: (0x0001) ACC_PUBLIC
+
+  public static boolean a(int);
+    descriptor: (I)Z
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: invokestatic  #25                 // Method ae.a:()Ll;
+         3: getfield      #17                 // Field l.a:Ls;
+         6: getfield      #19                 // Field a:I
+         9: iload_0
+        10: iand
+        11: ifeq          19
+        14: iconst_1
+        15: istore_0
+        16: goto          21
+        19: iconst_0
+        20: istore_0
+        21: iload_0
+        22: ireturn
+      StackMap: number_of_entries = 2
+        frame_type = 255 offset = 19
+          locals = [ int ]
+          stack = []
+        frame_type = 255 offset = 21
+          locals = [ int ]
+          stack = []
+
+  public static boolean b(int);
+    descriptor: (I)Z
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: invokestatic  #25                 // Method ae.a:()Ll;
+         3: getfield      #17                 // Field l.a:Ls;
+         6: getfield      #21                 // Field b:I
+         9: iload_0
+        10: iand
+        11: ifeq          19
+        14: iconst_1
+        15: istore_0
+        16: goto          21
+        19: iconst_0
+        20: istore_0
+        21: iload_0
+        22: ireturn
+      StackMap: number_of_entries = 2
+        frame_type = 255 offset = 19
+          locals = [ int ]
+          stack = []
+        frame_type = 255 offset = 21
+          locals = [ int ]
+          stack = []
+
+  public static boolean c(int);
+    descriptor: (I)Z
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: iload_0
+         1: invokestatic  #37                 // Method b:(I)Z
+         4: ifne          13
+         7: iconst_0
+         8: iload_0
+         9: iand
+        10: ifeq          18
+        13: iconst_1
+        14: istore_0
+        15: goto          20
+        18: iconst_0
+        19: istore_0
+        20: iload_0
+        21: ireturn
+      StackMap: number_of_entries = 3
+        frame_type = 255 offset = 13
+          locals = [ int ]
+          stack = []
+        frame_type = 255 offset = 18
+          locals = [ int ]
+          stack = []
+        frame_type = 255 offset = 20
+          locals = [ int ]
+          stack = []
+
+  public static boolean d(int);
+    descriptor: (I)Z
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: invokestatic  #25                 // Method ae.a:()Ll;
+         3: getfield      #17                 // Field l.a:Ls;
+         6: getfield      #22                 // Field c:I
+         9: sipush        4112
+        12: iand
+        13: ifeq          21
+        16: iconst_1
+        17: istore_0
+        18: goto          23
+        21: iconst_0
+        22: istore_0
+        23: iload_0
+        24: ireturn
+      StackMap: number_of_entries = 2
+        frame_type = 255 offset = 21
+          locals = [ int ]
+          stack = []
+        frame_type = 255 offset = 23
+          locals = [ int ]
+          stack = []
+
+  public static long a();
+    descriptor: ()J
+    flags: (0x0009) ACC_PUBLIC, ACC_STATIC
+    Code:
+      stack=4, locals=0, args_size=0
+         0: invokestatic  #24                 // Method ae.a:()J
+         3: invokestatic  #25                 // Method ae.a:()Ll;
+         6: getfield      #16                 // Field l.a:J
+         9: lsub
+        10: lreturn
+
+  public final int getWidth();
+    descriptor: ()I
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=1, locals=1, args_size=1
+         0: invokestatic  #26                 // Method ae.a:()[I
+         3: invokestatic  #31                 // Method ae.b:([I)I
+         6: ireturn
+
+  public final int getHeight();
+    descriptor: ()I
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=1, locals=1, args_size=1
+         0: invokestatic  #26                 // Method ae.a:()[I
+         3: invokestatic  #29                 // Method ae.a:([I)I
+         6: ireturn
+
+  public final void keyPressed(int);
+    descriptor: (I)V
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=3, locals=2, args_size=2
+         0: aload_0
+         1: iload_1
+         2: invokestatic  #27                 // Method ae.a:(I)I
+         5: iconst_1
+         6: invokevirtual #36                 // Method a:(IZ)V
+         9: return
+
+  public final void keyReleased(int);
+    descriptor: (I)V
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=3, locals=2, args_size=2
+         0: aload_0
+         1: iload_1
+         2: invokestatic  #27                 // Method ae.a:(I)I
+         5: iconst_0
+         6: invokevirtual #36                 // Method a:(IZ)V
+         9: return
+
+  public final void keyRepeated(int);
+    descriptor: (I)V
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=0, locals=2, args_size=2
+         0: return
+
+  public s();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=2, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #33                 // Method javax/microedition/lcdui/Canvas."<init>":()V
+         4: aload_0
+         5: invokestatic  #34                 // Method p.a:()Ln;
+         8: putfield      #20                 // Field a:Ln;
+        11: invokestatic  #32                 // Method ae.c:()Lg;
+        14: astore_0
+        15: iconst_1
+        16: aload_0
+        17: invokestatic  #28                 // Method ae.a:(ZLg;)V
+        20: return
+
+  public final void paint(javax.microedition.lcdui.Graphics);
+    descriptor: (Ljavax/microedition/lcdui/Graphics;)V
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=0, locals=2, args_size=2
+         0: return
+
+  public final void a(int, boolean);
+    descriptor: (IZ)V
+    flags: (0x0011) ACC_PUBLIC, ACC_FINAL
+    Code:
+      stack=4, locals=4, args_size=3
+         0: aload_0
+         1: getfield      #23                 // Field d:I
+         4: ifle          8
+         7: return
+         8: iload_1
+         9: tableswitch   { // 1 to 57
+                       1: 252
+                       2: 256
+                       3: 260
+                       4: 264
+                       5: 377
+                       6: 377
+                       7: 269
+                       8: 274
+                       9: 279
+                      10: 284
+                      11: 289
+                      12: 294
+                      13: 299
+                      14: 304
+                      15: 377
+                      16: 377
+                      17: 377
+                      18: 377
+                      19: 377
+                      20: 377
+                      21: 377
+                      22: 377
+                      23: 377
+                      24: 377
+                      25: 377
+                      26: 377
+                      27: 377
+                      28: 377
+                      29: 377
+                      30: 377
+                      31: 377
+                      32: 377
+                      33: 377
+                      34: 377
+                      35: 309
+                      36: 377
+                      37: 377
+                      38: 377
+                      39: 377
+                      40: 377
+                      41: 377
+                      42: 314
+                      43: 377
+                      44: 377
+                      45: 377
+                      46: 377
+                      47: 377
+                      48: 319
+                      49: 325
+                      50: 331
+                      51: 337
+                      52: 343
+                      53: 349
+                      54: 355
+                      55: 361
+                      56: 367
+                      57: 372
+                 default: 377
+            }
+       252: iconst_1
+       253: goto          378
+       256: iconst_2
+       257: goto          378
+       260: iconst_4
+       261: goto          378
+       264: bipush        8
+       266: goto          378
+       269: bipush        16
+       271: goto          378
+       274: ldc           #6                  // int 1048576
+       276: goto          378
+       279: ldc           #5                  // int 524288
+       281: goto          378
+       284: ldc           #9                  // int 8388608
+       286: goto          378
+       289: ldc           #7                  // int 2097152
+       291: goto          378
+       294: ldc           #8                  // int 4194304
+       296: goto          378
+       299: bipush        32
+       301: goto          378
+       304: bipush        64
+       306: goto          378
+       309: ldc           #4                  // int 262144
+       311: goto          378
+       314: ldc           #3                  // int 131072
+       316: goto          378
+       319: sipush        128
+       322: goto          378
+       325: sipush        256
+       328: goto          378
+       331: sipush        512
+       334: goto          378
+       337: sipush        1024
+       340: goto          378
+       343: sipush        2048
+       346: goto          378
+       349: sipush        4096
+       352: goto          378
+       355: sipush        8192
+       358: goto          378
+       361: sipush        16384
+       364: goto          378
+       367: ldc           #1                  // int 32768
+       369: goto          378
+       372: ldc           #2                  // int 65536
+       374: goto          378
+       377: iconst_0
+       378: dup
+       379: istore_3
+       380: ifne          400
+       383: iload_1
+       384: invokestatic  #30                 // Method ae.b:(I)I
+       387: ifeq          471
+       390: invokestatic  #35                 // Method a:()J
+       393: pop2
+       394: iload_2
+       395: ifeq          399
+       398: return
+       399: return
+       400: aload_0
+       401: iload_3
+       402: iload_2
+       403: istore_1
+       404: istore_0
+       405: astore_3
+       406: invokestatic  #35                 // Method a:()J
+       409: pop2
+       410: invokestatic  #25                 // Method ae.a:()Ll;
+       413: getfield      #18                 // Field l.a:Lw;
+       416: astore_2
+       417: iload_1
+       418: ifeq          449
+       421: aload_3
+       422: aload_3
+       423: getfield      #21                 // Field b:I
+       426: iload_0
+       427: ior
+       428: putfield      #21                 // Field b:I
+       431: aload_3
+       432: aload_3
+       433: getfield      #19                 // Field a:I
+       436: iload_0
+       437: ior
+       438: putfield      #19                 // Field a:I
+       441: aload_2
+       442: iload_0
+       443: invokeinterface #38,  2           // InterfaceMethod w.a:(I)V
+       448: return
+       449: aload_3
+       450: aload_3
+       451: getfield      #22                 // Field c:I
+       454: iload_0
+       455: ior
+       456: putfield      #22                 // Field c:I
+       459: aload_3
+       460: aload_3
+       461: getfield      #19                 // Field a:I
+       464: iload_0
+       465: iconst_m1
+       466: ixor
+       467: iand
+       468: putfield      #19                 // Field a:I
+       471: return
+      StackMap: number_of_entries = 31
+        frame_type = 255 offset = 8
+          locals = [ class s, int, int ]
+          stack = []
+        frame_type = 255 offset = 252
+          locals = [ class s, int, int ]
+          stack = []
+        frame_type = 255 offset = 256
+          locals = [ class s, int, int ]
+          stack = []
+        frame_type = 255 offset = 260
+          locals = [ class s, int, int ]
+          stack = []
+        frame_type = 255 offset = 264
+          locals = [ class s, int, int ]
+          stack = []
+        frame_type = 255 offset = 269
+          locals = [ class s, int, int ]
+          stack = []
+        frame_type = 255 offset = 274
+          locals = [ class s, int, int ]
+          stack = []
+        frame_type = 255 offset = 279
+          locals = [ class s, int, int ]
+          stack = []
+        frame_type = 255 offset = 284
+          locals = [ class s, int, int ]
+          stack = []
+        frame_type = 255 offset = 289
+          locals = [ class s, int, int ]
+          stack = []
+        frame_type = 255 offset = 294
+          locals = [ class s, int, int ]
+          stack = []
+        frame_type = 255 offset = 299
+          locals = [ class s, int, int ]
+          stack = []
+        frame_type = 255 offset = 304
+          locals = [ class s, int, int ]
+          stack = []
+        frame_type = 255 offset = 309
+          locals = [ class s, int, int ]
+          stack = []
+        frame_type = 255 offset = 314
+          locals = [ class s, int, int ]
+          stack = []
+        frame_type = 255 offset = 319
+          locals = [ class s, int, int ]
+          stack = []
+        frame_type = 255 offset = 325
+          locals = [ class s, int, int ]
+          stack = []
+        frame_type = 255 offset = 331
+          locals = [ class s, int, int ]
+          stack = []
+        frame_type = 255 offset = 337
+          locals = [ class s, int, int ]
+          stack = []
+        frame_type = 255 offset = 343
+          locals = [ class s, int, int ]
+          stack = []
+        frame_type = 255 offset = 349
+          locals = [ class s, int, int ]
+          stack = []
+        frame_type = 255 offset = 355
+          locals = [ class s, int, int ]
+          stack = []
+        frame_type = 255 offset = 361
+          locals = [ class s, int, int ]
+          stack = []
+        frame_type = 255 offset = 367
+          locals = [ class s, int, int ]
+          stack = []
+        frame_type = 255 offset = 372
+          locals = [ class s, int, int ]
+          stack = []
+        frame_type = 255 offset = 377
+          locals = [ class s, int, int ]
+          stack = []
+        frame_type = 255 offset = 378
+          locals = [ class s, int, int ]
+          stack = [ int ]
+        frame_type = 255 offset = 399
+          locals = [ class s, int, int, int ]
+          stack = []
+        frame_type = 255 offset = 400
+          locals = [ class s, int, int, int ]
+          stack = []
+        frame_type = 255 offset = 449
+          locals = [ int, int, class w, class s ]
+          stack = []
+        frame_type = 255 offset = 471
+          locals = [ top, int ]
+          stack = []
+}

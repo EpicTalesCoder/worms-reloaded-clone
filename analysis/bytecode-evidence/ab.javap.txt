@@ -1,0 +1,66 @@
+Classfile /Users/kd-qa-0294/Desktop/REV/rea/games/worms-reloaded/analysis/recovered/ab.class
+  Last modified Nov 24, 2026; size 216 bytes
+  SHA-256 checksum dee438f181b7ff0ac80dc955bd633f31a8ff8ee7f2f0307433147eeafbedfe97
+public final class ab
+  minor version: 0
+  major version: 46
+  flags: (0x0031) ACC_PUBLIC, ACC_FINAL, ACC_SUPER
+  this_class: #1                          // ab
+  super_class: #2                         // java/lang/Object
+  interfaces: 0, fields: 7, methods: 1, attributes: 0
+Constant pool:
+   #1 = Class              #14            // ab
+   #2 = Class              #17            // java/lang/Object
+   #3 = Methodref          #2.#4          // java/lang/Object."<init>":()V
+   #4 = NameAndType        #6:#5          // "<init>":()V
+   #5 = Utf8               ()V
+   #6 = Utf8               <init>
+   #7 = Utf8               Code
+   #8 = Utf8               Lag;
+   #9 = Utf8               Ld;
+  #10 = Utf8               Lg;
+  #11 = Utf8               Lv;
+  #12 = Utf8               Lz;
+  #13 = Utf8               a
+  #14 = Utf8               ab
+  #15 = Utf8               b
+  #16 = Utf8               c
+  #17 = Utf8               java/lang/Object
+{
+  public v a;
+    descriptor: Lv;
+    flags: (0x0001) ACC_PUBLIC
+
+  public z a;
+    descriptor: Lz;
+    flags: (0x0001) ACC_PUBLIC
+
+  public ag a;
+    descriptor: Lag;
+    flags: (0x0001) ACC_PUBLIC
+
+  public d a;
+    descriptor: Ld;
+    flags: (0x0001) ACC_PUBLIC
+
+  public g a;
+    descriptor: Lg;
+    flags: (0x0001) ACC_PUBLIC
+
+  public g b;
+    descriptor: Lg;
+    flags: (0x0001) ACC_PUBLIC
+
+  public g c;
+    descriptor: Lg;
+    flags: (0x0001) ACC_PUBLIC
+
+  public ab();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=1, locals=1, args_size=1
+         0: aload_0
+         1: invokespecial #3                  // Method java/lang/Object."<init>":()V
+         4: return
+}

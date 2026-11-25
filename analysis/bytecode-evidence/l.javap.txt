@@ -1,0 +1,208 @@
+Classfile /Users/kd-qa-0294/Desktop/REV/rea/games/worms-reloaded/analysis/recovered/l.class
+  Last modified Nov 24, 2026; size 687 bytes
+  SHA-256 checksum 03eaa23dee4e9a08557e8eefea0c9f3ce470b3a44af73e7953462ffc5352e621
+public final class l extends v
+  minor version: 0
+  major version: 46
+  flags: (0x0031) ACC_PUBLIC, ACC_FINAL, ACC_SUPER
+  this_class: #5                          // l
+  super_class: #8                         // v
+  interfaces: 0, fields: 7, methods: 1, attributes: 0
+Constant pool:
+   #1 = Class              #57            // ae
+   #2 = Class              #61            // g
+   #3 = Class              #62            // i
+   #4 = Class              #63            // java/lang/System
+   #5 = Class              #64            // l
+   #6 = Class              #65            // m
+   #7 = Class              #66            // s
+   #8 = Class              #67            // v
+   #9 = Class              #68            // w
+  #10 = Class              #69            // y
+  #11 = Fieldref           #2.#33         // g.a:Li;
+  #12 = Fieldref           #3.#37         // i.a:Z
+  #13 = Fieldref           #5.#34         // l.a:Lm;
+  #14 = Fieldref           #5.#35         // l.a:Ls;
+  #15 = Fieldref           #5.#36         // l.a:Lw;
+  #16 = Fieldref           #5.#39         // l.b:J
+  #17 = Fieldref           #8.#38         // v.a:[S
+  #18 = Methodref          #1.#29         // ae.a:()Lg;
+  #19 = Methodref          #1.#31         // ae.a:(IILv;)V
+  #20 = Methodref          #1.#32         // ae.a:(Lv;)V
+  #21 = Methodref          #4.#40         // java/lang/System.currentTimeMillis:()J
+  #22 = Methodref          #6.#27         // m."<init>":()V
+  #23 = Methodref          #7.#27         // s."<init>":()V
+  #24 = Methodref          #8.#27         // v."<init>":()V
+  #25 = Methodref          #10.#28        // y."<init>":(Ls;)V
+  #26 = InterfaceMethodref #9.#30         // w.a:()V
+  #27 = NameAndType        #47:#43        // "<init>":()V
+  #28 = NameAndType        #47:#45        // "<init>":(Ls;)V
+  #29 = NameAndType        #56:#42        // a:()Lg;
+  #30 = NameAndType        #56:#43        // a:()V
+  #31 = NameAndType        #56:#44        // a:(IILv;)V
+  #32 = NameAndType        #56:#46        // a:(Lv;)V
+  #33 = NameAndType        #56:#50        // a:Li;
+  #34 = NameAndType        #56:#51        // a:Lm;
+  #35 = NameAndType        #56:#52        // a:Ls;
+  #36 = NameAndType        #56:#53        // a:Lw;
+  #37 = NameAndType        #56:#54        // a:Z
+  #38 = NameAndType        #56:#55        // a:[S
+  #39 = NameAndType        #58:#49        // b:J
+  #40 = NameAndType        #60:#41        // currentTimeMillis:()J
+  #41 = Utf8               ()J
+  #42 = Utf8               ()Lg;
+  #43 = Utf8               ()V
+  #44 = Utf8               (IILv;)V
+  #45 = Utf8               (Ls;)V
+  #46 = Utf8               (Lv;)V
+  #47 = Utf8               <init>
+  #48 = Utf8               Code
+  #49 = Utf8               J
+  #50 = Utf8               Li;
+  #51 = Utf8               Lm;
+  #52 = Utf8               Ls;
+  #53 = Utf8               Lw;
+  #54 = Utf8               Z
+  #55 = Utf8               [S
+  #56 = Utf8               a
+  #57 = Utf8               ae
+  #58 = Utf8               b
+  #59 = Utf8               c
+  #60 = Utf8               currentTimeMillis
+  #61 = Utf8               g
+  #62 = Utf8               i
+  #63 = Utf8               java/lang/System
+  #64 = Utf8               l
+  #65 = Utf8               m
+  #66 = Utf8               s
+  #67 = Utf8               v
+  #68 = Utf8               w
+  #69 = Utf8               y
+  #70 = Utf8               StackMap
+{
+  public s a;
+    descriptor: Ls;
+    flags: (0x0001) ACC_PUBLIC
+
+  public w a;
+    descriptor: Lw;
+    flags: (0x0001) ACC_PUBLIC
+
+  public m a;
+    descriptor: Lm;
+    flags: (0x0001) ACC_PUBLIC
+
+  public long a;
+    descriptor: J
+    flags: (0x0001) ACC_PUBLIC
+
+  public long b;
+    descriptor: J
+    flags: (0x0001) ACC_PUBLIC
+
+  public boolean a;
+    descriptor: Z
+    flags: (0x0001) ACC_PUBLIC
+
+  public long c;
+    descriptor: J
+    flags: (0x0001) ACC_PUBLIC
+
+  public l();
+    descriptor: ()V
+    flags: (0x0001) ACC_PUBLIC
+    Code:
+      stack=4, locals=2, args_size=1
+         0: aload_0
+         1: invokespecial #24                 // Method v."<init>":()V
+         4: bipush        9
+         6: iconst_0
+         7: aload_0
+         8: invokestatic  #19                 // Method ae.a:(IILv;)V
+        11: bipush        7
+        13: iconst_0
+        14: aload_0
+        15: invokestatic  #19                 // Method ae.a:(IILv;)V
+        18: bipush        13
+        20: iconst_0
+        21: aload_0
+        22: invokestatic  #19                 // Method ae.a:(IILv;)V
+        25: bipush        14
+        27: iconst_0
+        28: aload_0
+        29: invokestatic  #19                 // Method ae.a:(IILv;)V
+        32: bipush        10
+        34: iconst_0
+        35: aload_0
+        36: invokestatic  #19                 // Method ae.a:(IILv;)V
+        39: aload_0
+        40: invokestatic  #20                 // Method ae.a:(Lv;)V
+        43: iconst_0
+        44: istore_1
+        45: iload_1
+        46: sipush        149
+        49: if_icmpge     76
+        52: aload_0
+        53: getfield      #17                 // Field v.a:[S
+        56: iload_1
+        57: saload
+        58: ifne          68
+        61: aload_0
+        62: getfield      #17                 // Field v.a:[S
+        65: iload_1
+        66: iload_1
+        67: sastore
+        68: iload_1
+        69: iconst_1
+        70: iadd
+        71: i2s
+        72: istore_1
+        73: goto          45
+        76: invokestatic  #18                 // Method ae.a:()Lg;
+        79: getfield      #11                 // Field g.a:Li;
+        82: dup
+        83: astore_1
+        84: getfield      #12                 // Field i.a:Z
+        87: iconst_1
+        88: if_icmpeq     96
+        91: aload_1
+        92: iconst_1
+        93: putfield      #12                 // Field i.a:Z
+        96: aload_0
+        97: new           #6                  // class m
+       100: dup
+       101: invokespecial #22                 // Method m."<init>":()V
+       104: putfield      #13                 // Field a:Lm;
+       107: aload_0
+       108: new           #7                  // class s
+       111: dup
+       112: invokespecial #23                 // Method s."<init>":()V
+       115: putfield      #14                 // Field a:Ls;
+       118: aload_0
+       119: new           #10                 // class y
+       122: dup
+       123: aload_0
+       124: getfield      #14                 // Field a:Ls;
+       127: invokespecial #25                 // Method y."<init>":(Ls;)V
+       130: putfield      #15                 // Field a:Lw;
+       133: aload_0
+       134: getfield      #15                 // Field a:Lw;
+       137: invokeinterface #26,  1           // InterfaceMethod w.a:()V
+       142: aload_0
+       143: invokestatic  #21                 // Method java/lang/System.currentTimeMillis:()J
+       146: putfield      #16                 // Field b:J
+       149: return
+      StackMap: number_of_entries = 4
+        frame_type = 255 offset = 45
+          locals = [ class l, int ]
+          stack = []
+        frame_type = 255 offset = 68
+          locals = [ class l, int ]
+          stack = []
+        frame_type = 255 offset = 76
+          locals = [ class l, int ]
+          stack = []
+        frame_type = 255 offset = 96
+          locals = [ class l, class i ]
+          stack = []
+}
