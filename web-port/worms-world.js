@@ -232,6 +232,23 @@ export function sinDegFP(trigCos, deg) {
   return cosDegFP(trigCos, 90 - (deg | 0));
 }
 
+export const AIM_ORIGIN_OFFSET_Y = -6;
+
+// Weapons that aim via aimAngle and display the aiming crosshair (port of y.java:6588-6614 y.b(byte))
+const AIMABLE_WEAPONS = new Set([0, 1, 6, 7, 12, 13, 19, 21, 25, 26, 30, 32]);
+
+export function isAimableWeapon(weaponId) {
+  return AIMABLE_WEAPONS.has(weaponId);
+}
+
+export function getAimDirection(dir, aimAngle) {
+  const rad = (aimAngle * Math.PI) / 180;
+  return {
+    dirX: (dir >= 0 ? 1 : -1) * Math.sin(rad),
+    dirY: -Math.cos(rad),
+  };
+}
+
 /**
  * Destructible Worms World Simulation (Port of a.java + ah.java + y.java gameplay)
  */
@@ -957,6 +974,7 @@ export class WormsWorld {
     this.retreatMsLeft = 0;
     this.charging = false;
     this.chargePower = 0;
+    this.targetPicked = false;
     this.aiPlan = null;
     this.targetCursor = { x: chosen.x + chosen.dir * 80, y: Math.max(MARGIN_Y + 30, chosen.y - 40), dir: chosen.dir };
     return chosen;
@@ -1225,11 +1243,13 @@ export class WormsWorld {
       if (aw.parachuteOpen) this.consumeAmmo(aw.team, 8);
     }
 
-    // Aim up/down (0..180 deg)
-    if ((this.heldKeys & MASK_UP) !== 0) {
-      aw.aimAngle = Math.max(5, aw.aimAngle - 3);
-    } else if ((this.heldKeys & MASK_DOWN) !== 0) {
-      aw.aimAngle = Math.min(170, aw.aimAngle + 3);
+    // Aim up/down (0..180 deg: 0=up, 90=horizontal, 180=down)
+    if (isAimableWeapon(aw.weaponId)) {
+      if ((this.heldKeys & MASK_UP) !== 0) {
+        aw.aimAngle = Math.max(0, aw.aimAngle - 3);
+      } else if ((this.heldKeys & MASK_DOWN) !== 0) {
+        aw.aimAngle = Math.min(180, aw.aimAngle + 3);
+      }
     }
 
     // Binoculars camera pan toggle (KEY.NUM9)
@@ -1239,7 +1259,7 @@ export class WormsWorld {
 
     // Fire / Charge
     const wId = aw.weaponId;
-    const isTargetWeapon = wId === 5 || wId === 6 || wId === 11 || wId === 14 || wId === 24 || wId === 28;
+    const isTargetWeapon = wId === 5 || wId === 6 || wId === 9 || wId === 11 || wId === 14 || wId === 17 || wId === 24 || wId === 28;
     const needsCharge = wId === 0 || wId === 1 || wId === 7 || wId === 13 || wId === 19 || wId === 25;
 
     if ((this.pressedKeys & MASK_FIRE) !== 0) {
@@ -1308,6 +1328,9 @@ export class WormsWorld {
       const aw = this.getActiveWorm();
       if (aw && team && team.ammo[this.backpackCursor] !== 0) {
         aw.weaponId = this.backpackCursor;
+        if (!isAimableWeapon(aw.weaponId)) {
+          aw.aimAngle = 90;
+        }
         this.selectedWeapon = this.backpackCursor;
         this.targetPicked = false;
         this.phase = 'PLAY';
@@ -1369,32 +1392,29 @@ export class WormsWorld {
     this.charging = false;
     const pwr = Math.max(15, this.chargePower || 65) / 100;
     this.chargePower = 0;
+    this.targetPicked = false;
 
-    const trig = this.assets?.trigCos;
-    const rad = ((90 - aw.aimAngle) * Math.PI) / 180;
-    const cosA = trig ? cosDegFP(trig, aw.aimAngle) / FP_ONE : Math.sin(rad);
-    const sinA = trig ? sinDegFP(trig, aw.aimAngle) / FP_ONE : Math.cos(rad);
-    // Notice aimAngle=0 points UP (x=0, y=-1), 90 horizontal (x=dir, y=0)
-    const dirX = aw.dir * Math.sin((aw.aimAngle * Math.PI) / 180);
-    const dirY = -Math.cos((aw.aimAngle * Math.PI) / 180);
+    const { dirX, dirY } = getAimDirection(aw.dir, aw.aimAngle);
+    const spawnX = aw.x + dirX * 10;
+    const spawnY = aw.y + AIM_ORIGIN_OFFSET_Y + dirY * 10;
     const speedBase = 3.2 + pwr * 8.4;
 
-    this.consumeAmmo(aw.team, wId);
+    if (wId !== 12 || !this.shotgunSecondShotDone) {
+      this.consumeAmmo(aw.team, wId);
+    }
 
     switch (wId) {
       case 0: // Bazooka
       case 6: // Homing Missile
-      case 17: // Bunker Buster
       {
-        const spd = wId === 17 ? 5.5 : speedBase;
         this.projectiles.push({
           kind: wId,
           ownerTeam: aw.team,
           ownerWorm: aw.id,
-          x: aw.x + dirX * 10,
-          y: aw.y - 4 + dirY * 10,
-          vx: dirX * spd,
-          vy: dirY * spd,
+          x: spawnX,
+          y: spawnY,
+          vx: dirX * speedBase,
+          vy: dirY * speedBase,
           gravity: WEAPON_STATS[wId][4] / FP_ONE,
           windScale: WEAPON_STATS[wId][5] / FP_ONE,
           bounces: 0,
@@ -1402,7 +1422,31 @@ export class WormsWorld {
           targetX: this.targetCursor.x,
           targetY: this.targetCursor.y,
           homingTicks: wId === 6 ? 12 : 0,
-          drillTicks: wId === 17 ? 24 : 0,
+          drillTicks: 0,
+        });
+        this.audio?.playSfx?.('launch');
+        this.beginRetreatOrResolve(2500);
+        break;
+      }
+
+      case 17: // Bunker Buster (Target sky-drop drill, ah.java:2660-2673)
+      {
+        this.projectiles.push({
+          kind: 17,
+          ownerTeam: aw.team,
+          ownerWorm: aw.id,
+          x: this.targetCursor.x,
+          y: MARGIN_Y - 12,
+          vx: 0,
+          vy: 5.5,
+          gravity: WEAPON_STATS[17][4] / FP_ONE,
+          windScale: 0,
+          bounces: 0,
+          fuseMs: 12000,
+          targetX: this.targetCursor.x,
+          targetY: this.targetCursor.y,
+          homingTicks: 0,
+          drillTicks: 24,
         });
         this.audio?.playSfx?.('launch');
         this.beginRetreatOrResolve(2500);
@@ -1420,8 +1464,8 @@ export class WormsWorld {
           kind: wId,
           ownerTeam: aw.team,
           ownerWorm: aw.id,
-          x: aw.x + dirX * 10,
-          y: aw.y - 4 + dirY * 10,
+          x: spawnX,
+          y: spawnY,
           vx: dirX * spd,
           vy: dirY * spd,
           gravity: 0.45,
@@ -1450,8 +1494,8 @@ export class WormsWorld {
       {
         const isBat = wId === 21;
         const isAxe = wId === 15;
-        const hitX = aw.x + aw.dir * 16;
-        const hitY = aw.y - 2;
+        const hitX = isBat ? aw.x + dirX * 16 : aw.x + aw.dir * 16;
+        const hitY = isBat ? aw.y + AIM_ORIGIN_OFFSET_Y + dirY * 16 : aw.y - 2;
         if (wId === 3) {
           aw.vy = -5.4;
           aw.vx = aw.dir * 1.4;
@@ -1460,11 +1504,13 @@ export class WormsWorld {
         if (wId === 27) {
           this.projectiles.push({
             kind: 27, ownerTeam: aw.team, ownerWorm: aw.id,
-            x: hitX, y: hitY, vx: aw.dir * 7.5, vy: 0,
+            x: aw.x + aw.dir * 12, y: aw.y + AIM_ORIGIN_OFFSET_Y, vx: aw.dir * 7.5, vy: 0,
             gravity: 0, windScale: 0, bounces: 0, fuseMs: 700,
           });
+        } else if (isBat) {
+          this.applyMeleeHit(hitX, hitY, 24, 30, aw, false, true, dirX * 9.5, dirY * 9.5 - 1.5);
         } else {
-          this.applyMeleeHit(hitX, hitY, isAxe ? 22 : 24, isBat ? 30 : 30, aw, isAxe, isBat);
+          this.applyMeleeHit(hitX, hitY, isAxe ? 22 : 24, 30, aw, isAxe, false);
         }
         this.audio?.playSfx?.('punch');
         this.beginRetreatOrResolve(2500);
@@ -1492,16 +1538,23 @@ export class WormsWorld {
       case 11: // Napalm Strike
       {
         const count = 5;
+        const strikeVx = (this.targetCursor.dir || 1) * 1.5;
+        const strikeVy = 2.2;
+        const strikeAccY = 0.32 * 0.46;
+        const midY = MARGIN_Y - 10 - 2 * 14;
+        const dy = Math.max(10, this.targetCursor.y - midY);
+        const estFallTicks = (-strikeVy + Math.sqrt(strikeVy * strikeVy + 2 * strikeAccY * dy)) / strikeAccY;
+        const leadX = strikeVx * estFallTicks;
         for (let i = 0; i < count; i++) {
           const offsetX = (i - 2) * 20;
           this.projectiles.push({
             kind: wId,
             ownerTeam: aw.team,
             ownerWorm: aw.id,
-            x: this.targetCursor.x + offsetX,
+            x: this.targetCursor.x + offsetX - leadX,
             y: MARGIN_Y - 10 - i * 14,
-            vx: (this.targetCursor.dir || 1) * 1.5,
-            vy: 2.2,
+            vx: strikeVx,
+            vy: strikeVy,
             gravity: 0.32,
             windScale: wId === 5 ? 0.35 : 0.15,
             bounces: 0,
@@ -1561,10 +1614,19 @@ export class WormsWorld {
       {
         const shots = wId === 30 ? 8 : 1;
         for (let s = 0; s < shots; s++) {
-          const spread = wId === 30 ? (this.randRange(-12, 13) * 0.012) : 0;
-          const bvx = (dirX + spread) * 14;
-          const bvy = (dirY + spread) * 14;
-          this.traceBulletHit(aw, aw.x + dirX * 10, aw.y - 4 + dirY * 10, bvx, bvy, wId === 30 ? 6 : 25, wId === 30 ? 5 : 14);
+          const spreadDeg = wId === 30 ? this.randRange(-7, 8) : 0;
+          const shotAim = getAimDirection(aw.dir, aw.aimAngle + spreadDeg);
+          const bvx = shotAim.dirX * 14;
+          const bvy = shotAim.dirY * 14;
+          this.traceBulletHit(
+            aw,
+            aw.x + shotAim.dirX * 4,
+            aw.y + AIM_ORIGIN_OFFSET_Y + shotAim.dirY * 4,
+            bvx,
+            bvy,
+            wId === 30 ? 6 : 25,
+            wId === 30 ? 5 : 14,
+          );
         }
         this.audio?.playSfx?.(wId === 30 ? 'uzi' : 'shotgun');
         if (wId === 12 && !this.shotgunSecondShotDone) {
@@ -1613,11 +1675,17 @@ export class WormsWorld {
       {
         const steps = 6;
         for (let i = 0; i < steps; i++) {
-          const cx = wId === 20 ? aw.x : aw.x + aw.dir * (10 + i * 7);
-          const cy = wId === 20 ? aw.y + i * 8 : aw.y - 3;
+          const cx = wId === 20 ? aw.x : Math.max(MARGIN_X + 6, Math.min(MARGIN_X + MASK_W - 6, aw.x + dirX * (10 + i * 7)));
+          const cy = wId === 20
+            ? Math.min(WATER_Y - 10, aw.y + i * 8)
+            : Math.max(MARGIN_Y + 6, Math.min(WATER_Y - 10, aw.y + AIM_ORIGIN_OFFSET_Y + dirY * (10 + i * 7)));
           this.carveCrater(cx, cy, 12);
-          if (wId === 26) aw.x = cx;
-          else aw.y = cy;
+          if (wId === 26) {
+            aw.x = cx;
+            aw.y = Math.min(WATER_Y - 10, cy - AIM_ORIGIN_OFFSET_Y);
+          } else {
+            aw.y = cy;
+          }
         }
         this.audio?.playSfx?.('drill');
         this.beginRetreatOrResolve(1500);
@@ -1678,8 +1746,21 @@ export class WormsWorld {
         break;
       }
 
-      case 32: // Kamikaze
+      case 32: // Kamikaze (dash along aim direction before blast, ah.java:6731-6764)
       {
+        for (let step = 1; step <= 14; step++) {
+          const nx = aw.x + dirX * 5;
+          const ny = aw.y + dirY * 5;
+          if (nx < MARGIN_X + 6 || nx > MARGIN_X + MASK_W - 6 || ny < MARGIN_Y + 6 || ny >= WATER_Y - 4) {
+            break;
+          }
+          aw.x = nx;
+          aw.y = ny;
+          this.carveCrater(aw.x, aw.y + AIM_ORIGIN_OFFSET_Y, 12);
+          if (this.worms.some((w) => w.alive && w.id !== aw.id && Math.hypot(w.x - aw.x, w.y - aw.y) < 16)) {
+            break;
+          }
+        }
         aw.hp = 0;
         aw.alive = false;
         this.explodeAt(aw.x, aw.y, 50, 75, 32, aw.team);
@@ -1704,7 +1785,7 @@ export class WormsWorld {
       default: // Fallback tactical shot
         this.projectiles.push({
           kind: 0, ownerTeam: aw.team, ownerWorm: aw.id,
-          x: aw.x + dirX * 10, y: aw.y - 4 + dirY * 10,
+          x: spawnX, y: spawnY,
           vx: dirX * speedBase, vy: dirY * speedBase,
           gravity: 0.45, windScale: 0.25, bounces: 0, fuseMs: 8000,
         });
@@ -1717,19 +1798,21 @@ export class WormsWorld {
   traceBulletHit(shooter, sx, sy, vx, vy, dmg, blastR) {
     let px = sx;
     let py = sy;
-    const stepX = vx / 4;
-    const stepY = vy / 4;
-    for (let s = 0; s < 120; s++) {
+    const mag = Math.hypot(vx, vy) || 1;
+    const stepLen = 1.5;
+    const stepX = (vx / mag) * stepLen;
+    const stepY = (vy / mag) * stepLen;
+    for (let s = 0; s < 450; s++) {
       px += stepX;
       py += stepY;
-      if (py >= WATER_Y || px < MARGIN_X || px > MARGIN_X + MASK_W) break;
+      if (py >= WATER_Y || py < MARGIN_Y - 80 || px < MARGIN_X || px > MARGIN_X + MASK_W) break;
       if (this.isSolid(px, py)) {
         this.carveCrater(px, py, blastR);
         this.spawnExplosionParticles(px, py, blastR, '#ffaa44');
         return;
       }
       for (const w of this.worms) {
-        if (w.alive && w.id !== shooter.id && Math.hypot(w.x - px, w.y - py) < 10) {
+        if (w.alive && w.id !== shooter.id && Math.hypot(w.x - px, (w.y - 8) - py) < 11) {
           this.damageWorm(w, dmg, stepX >= 0 ? 3.5 : -3.5, -2.5, shooter.team);
           this.spawnExplosionParticles(px, py, 10, '#ff4444');
           return;
@@ -1745,13 +1828,13 @@ export class WormsWorld {
     }
   }
 
-  applyMeleeHit(hx, hy, radius, baseDmg, attacker, halveHp = false, superBat = false) {
+  applyMeleeHit(hx, hy, radius, baseDmg, attacker, halveHp = false, superBat = false, customKx = null, customKy = null) {
     for (const w of this.worms) {
       if (!w.alive || w.id === attacker.id) continue;
-      if (Math.hypot(w.x - hx, w.y - hy) <= radius) {
+      if (Math.hypot(w.x - hx, (w.y - 8) - hy) <= radius || Math.hypot(w.x - hx, w.y - hy) <= radius) {
         const dmg = halveHp ? Math.max(1, Math.floor(w.hp * 0.5)) : baseDmg;
-        const kx = attacker.dir * (superBat ? 8.2 : 3.8);
-        const ky = superBat ? -5.8 : -3.4;
+        const kx = customKx !== null ? customKx : attacker.dir * (superBat ? 8.2 : 3.8);
+        const ky = customKy !== null ? customKy : (superBat ? -5.8 : -3.4);
         this.damageWorm(w, dmg, kx, ky, attacker.team);
       }
     }
@@ -2356,11 +2439,10 @@ export class WormsWorld {
   }
 
   simulateBallisticDist(aw, dir, angle, power, weaponId, tx, ty) {
-    const dirX = dir * Math.sin((angle * Math.PI) / 180);
-    const dirY = -Math.cos((angle * Math.PI) / 180);
+    const { dirX, dirY } = getAimDirection(dir, angle);
     const spd = 3.2 + (power / 100) * 8.4;
     let x = aw.x + dirX * 10;
-    let y = aw.y - 4 + dirY * 10;
+    let y = aw.y + AIM_ORIGIN_OFFSET_Y + dirY * 10;
     let vx = dirX * spd;
     let vy = dirY * spd;
     const windScale = weaponId === 0 ? 1 : 0;

@@ -12,7 +12,7 @@ import { WormsAudio } from './worms-audio.js';
 import {
   WormsWorld,
   SCREEN_W, SCREEN_H, MARGIN_X, MARGIN_Y, WATER_Y,
-  KEY, TEAM_STYLES, writePersistentSave,
+  KEY, TEAM_STYLES, writePersistentSave, isAimableWeapon,
 } from './worms-world.js';
 import { WormsRenderer } from './render-original.js';
 import {
@@ -76,6 +76,35 @@ async function boot() {
 
   const isVI = () => world.assets?.locale?.activeCode === 'vi';
 
+  function applyWeaponSelection(teamIdx, weaponId) {
+    const aw = world.getActiveWorm();
+    const team = world.teams[teamIdx];
+    if (!aw || !team || team.ammo[weaponId] === 0) return false;
+    aw.weaponId = weaponId;
+    if (!isAimableWeapon(aw.weaponId)) {
+      aw.aimAngle = 90;
+    }
+    world.selectedWeapon = weaponId;
+    world.backpackCursor = weaponId;
+    world.targetPicked = false;
+    world.phase = 'PLAY';
+    return true;
+  }
+
+  function selectWeaponFromUI(weaponId) {
+    audio.ensureCtx();
+    if (world.o !== 6 || !world.canLocalControlActiveTeam()) return false;
+    if (world.phase !== 'PLAY' && world.phase !== 'BACKPACK' && world.phase !== 'TARGET') return false;
+    const team = world.teams[world.activeTeamIdx];
+    if (!team || team.ammo[weaponId] === 0) return false;
+    if (world.mp.enabled && !world.mp.isHost) {
+      world.backpackCursor = weaponId;
+      mpClient.sendGuestInput({ selectWeapon: weaponId });
+      return true;
+    }
+    return applyWeaponSelection(world.activeTeamIdx, weaponId);
+  }
+
   function refreshLobbyText() {
     const vi = isVI();
     const set = (id, t) => { const el = document.getElementById(id); if (el) el.textContent = t; };
@@ -89,6 +118,22 @@ async function boot() {
     set('btn-mp-start', vi ? '🚀 BẮT ĐẦU TRẬN' : '🚀 START MATCH');
     set('btn-lang', vi ? '🌐 VI' : (world.assets?.locale?.activeCode === 'th' ? '🌐 TH' : '🌐 EN'));
     set('btn-sound', world.save.soundOn ? (vi ? '🔊 Âm: BẬT' : '🔊 Sound: ON') : (vi ? '🔇 Âm: TẮT' : '🔇 Sound: OFF'));
+    set('left-menu-title', vi ? '🔫 VŨ KHÍ [Q]' : '🔫 WEAPONS [Q]');
+    set('right-menu-title', vi ? '⚙ MENU [E]' : '⚙ MENU [E]');
+    set('btn-left-backpack', vi ? '🎒 Kho [Q]' : '🎒 Arms [Q]');
+    set('btn-right-menu', vi ? '⏸ Menu [E]' : '⏸ Menu [E]');
+    set('btn-right-map', vi ? '🗺 Bản đồ [7]' : '🗺 Map [7]');
+    set('btn-right-look', vi ? '👀 Nhìn quanh [9]' : '👀 Look [9]');
+    set('btn-right-back', vi ? '↩ Quay lại' : '↩ Back');
+    set('btn-right-fire', vi ? '🔥 BẮN / CHỌN' : '🔥 FIRE / OK');
+    set('btn-right-bflip', vi ? '↶ Lộn [1]' : '↶ Flip [1]');
+    set('btn-right-hjump', vi ? '⬆ Cao [2]' : '⬆ High [2]');
+    set('btn-right-jump', vi ? '↷ Nhảy [3]' : '↷ Jump [3]');
+    for (const btn of weaponBarButtons) {
+      const id = Number(btn.dataset.weaponId);
+      btn.title = assets.locale?.getString?.(345 + id) || `Weapon ${id}`;
+    }
+    lastSideUiKey = '';
   }
 
   function openLobby() {
@@ -179,13 +224,7 @@ async function boot() {
       if (pkt.pressed) guestPressedKeys |= pkt.pressed;
       if (pkt.held !== undefined) guestHeldKeys = pkt.held;
       if (pkt.selectWeapon !== undefined) {
-        const aw = world.getActiveWorm();
-        const team = world.teams[pkt.seat];
-        if (aw && team && team.ammo[pkt.selectWeapon] !== 0) {
-          aw.weaponId = pkt.selectWeapon;
-          world.selectedWeapon = pkt.selectWeapon;
-          world.phase = 'PLAY';
-        }
+        applyWeaponSelection(pkt.seat, pkt.selectWeapon);
       }
       if (pkt.targetX !== undefined && pkt.targetY !== undefined) {
         world.targetCursor.x = pkt.targetX;
@@ -325,23 +364,142 @@ async function boot() {
     if (mask) triggerKeyUp(mask);
   });
 
-  document.querySelectorAll('[data-key]').forEach((btn) => {
-    const mask = Number(btn.getAttribute('data-key'));
+  document.querySelectorAll('[data-key], [data-key-name]').forEach((btn) => {
+    const mask = btn.hasAttribute('data-key')
+      ? Number(btn.getAttribute('data-key'))
+      : (KEY[btn.getAttribute('data-key-name')] || 0);
+    if (!mask) return;
     const down = (e) => { e.preventDefault(); triggerKeyDown(mask); };
     const up = (e) => { e.preventDefault(); triggerKeyUp(mask); };
     btn.addEventListener('pointerdown', down);
     btn.addEventListener('pointerup', up);
     btn.addEventListener('pointerleave', up);
+    btn.addEventListener('pointercancel', up);
   });
 
-  // Canvas pointer click ergonomics (Menus, Softkeys, Backpack, Target)
+  // Left & Right Side Menu Bars (Weapon Selection + Match Actions)
+  const leftMenuBar = document.getElementById('left-menu-bar');
+  const rightMenuBar = document.getElementById('right-menu-bar');
+  const weaponBarGrid = document.getElementById('weapon-bar-grid');
+  const leftActiveCanvas = document.getElementById('left-active-icon');
+  const leftActiveName = document.getElementById('left-active-name');
+  const leftActiveMeta = document.getElementById('left-active-meta');
+  const btnLeftBackpack = document.getElementById('btn-left-backpack');
+  const btnLeftFuse = document.getElementById('btn-left-fuse');
+  const btnRightMap = document.getElementById('btn-right-map');
+  const btnRightLook = document.getElementById('btn-right-look');
+  const rightTurnStatus = document.getElementById('right-turn-status');
+
+  const weaponBarButtons = [];
+  if (weaponBarGrid) {
+    const ac1 = assets.sprites?.[1];
+    for (let id = 0; id < 36; id++) {
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'weapon-slot-btn';
+      btn.dataset.weaponId = String(id);
+      btn.title = assets.locale?.getString?.(345 + id) || `Weapon ${id}`;
+
+      const iconCanvas = document.createElement('canvas');
+      iconCanvas.width = 28;
+      iconCanvas.height = 28;
+      const ictx = iconCanvas.getContext('2d');
+      if (ictx && ac1) {
+        ictx.imageSmoothingEnabled = false;
+        ac1.drawFrame(ictx, id, 14, 14, 0);
+      }
+
+      const ammoEl = document.createElement('span');
+      ammoEl.className = 'w-ammo';
+      ammoEl.textContent = '∞';
+
+      btn.append(iconCanvas, ammoEl);
+      btn.addEventListener('click', () => { btn.blur(); selectWeaponFromUI(id); });
+      weaponBarGrid.appendChild(btn);
+      weaponBarButtons.push(btn);
+    }
+  }
+
+  let drawnActiveWeapon = -999;
+  let lastSideUiKey = '';
+  function syncSideMenuBars() {
+    const inMatch = world.o === 6;
+    const aw = world.getActiveWorm();
+    const team = world.teams?.[world.activeTeamIdx];
+    const canControl = inMatch && world.canLocalControlActiveTeam()
+      && (world.phase === 'PLAY' || world.phase === 'BACKPACK' || world.phase === 'TARGET');
+    const curWeaponId = aw ? aw.weaponId : (world.selectedWeapon ?? 0);
+    const ammoKey = team?.ammo ? Array.from(team.ammo).join(',') : '';
+    const langCode = world.assets?.locale?.activeCode || 'en';
+    const uiKey = `${world.o}|${world.phase}|${world.activeTeamIdx}|${curWeaponId}|${world.fuseSeconds}|${world.minimapOpen}|${world.lookMode}|${canControl}|${langCode}|${ammoKey}`;
+    if (uiKey === lastSideUiKey) return;
+    lastSideUiKey = uiKey;
+
+    leftMenuBar?.classList.toggle('is-inactive', !canControl);
+    btnLeftBackpack?.classList.toggle('is-active', inMatch && world.phase === 'BACKPACK');
+    btnRightMap?.classList.toggle('is-active', inMatch && Boolean(world.minimapOpen));
+    btnRightLook?.classList.toggle('is-active', inMatch && Boolean(world.lookMode));
+    if (btnLeftFuse) {
+      btnLeftFuse.textContent = `⏱ ${world.fuseSeconds}s [#]`;
+    }
+
+    const vi = isVI();
+    if (inMatch && curWeaponId >= 0) {
+      if (drawnActiveWeapon !== curWeaponId && leftActiveCanvas) {
+        drawnActiveWeapon = curWeaponId;
+        const ctx2 = leftActiveCanvas.getContext('2d');
+        const ac1 = assets.sprites?.[1];
+        if (ctx2) {
+          ctx2.clearRect(0, 0, 28, 28);
+          ctx2.imageSmoothingEnabled = false;
+          if (ac1) ac1.drawFrame(ctx2, curWeaponId, 14, 14, 0);
+        }
+      }
+      const wName = assets.locale?.getString?.(345 + curWeaponId) || `#${curWeaponId}`;
+      const qty = team?.ammo?.[curWeaponId] ?? -1;
+      if (leftActiveName) leftActiveName.textContent = wName;
+      if (leftActiveMeta) {
+        const ammoLabel = qty < 0 ? '∞' : `x${qty}`;
+        leftActiveMeta.textContent = `${ammoLabel} • ${world.fuseSeconds}s`;
+      }
+    } else {
+      if (leftActiveName) leftActiveName.textContent = vi ? 'Đang ở Menu' : 'In Menu';
+      if (leftActiveMeta) leftActiveMeta.textContent = vi ? 'Bắt đầu để chọn súng' : 'Start match to equip';
+    }
+
+    for (const btn of weaponBarButtons) {
+      const id = Number(btn.dataset.weaponId);
+      const qty = inMatch && team?.ammo ? team.ammo[id] : -1;
+      const badge = btn.querySelector('.w-ammo');
+      if (badge) badge.textContent = qty < 0 ? '∞' : String(qty);
+      btn.disabled = inMatch ? (!canControl || qty === 0) : true;
+      btn.classList.toggle('selected', inMatch && id === curWeaponId);
+    }
+
+    if (rightTurnStatus) {
+      if (!inMatch) {
+        rightTurnStatus.textContent = vi ? 'Menu chính' : 'Main Menu';
+      } else {
+        const tStyle = TEAM_STYLES[world.activeTeamIdx];
+        const sec = Math.max(0, Math.ceil((world.turnMsLeft || 0) / 1000));
+        rightTurnStatus.textContent = `${tStyle?.name || 'Team'} • ${sec}s (${world.phase})`;
+      }
+    }
+    void rightMenuBar;
+  }
+
+  // Canvas pointer click ergonomics (Menus, Softkeys, Weapon Badge, Backpack, Target)
   canvas.addEventListener('pointerdown', (e) => {
     audio.ensureCtx();
     const rect = canvas.getBoundingClientRect();
     const sx = ((e.clientX - rect.left) / rect.width) * SCREEN_W;
     const sy = ((e.clientY - rect.top) / rect.height) * SCREEN_H;
 
-    // Softkey hit boxes bottom-left & bottom-right
+    // Softkey & HUD badge hit boxes bottom-left (LSK / Weapon badge) & bottom-right (RSK / Pause clock)
+    if (sy >= SCREEN_H - 54 && world.o === 6 && world.phase !== 'BACKPACK') {
+      if (sx <= 48) { triggerKeyDown(KEY.LSK); triggerKeyUp(KEY.LSK); return; }
+      if (sx >= SCREEN_W - 64) { triggerKeyDown(KEY.RSK); triggerKeyUp(KEY.RSK); return; }
+    }
     if (sy >= SCREEN_H - 26) {
       if (sx <= 44) { triggerKeyDown(KEY.LSK); triggerKeyUp(KEY.LSK); return; }
       if (sx >= SCREEN_W - 44) { triggerKeyDown(KEY.RSK); triggerKeyUp(KEY.RSK); return; }
@@ -450,11 +608,13 @@ async function boot() {
     },
     onRenderFrame(ctx) {
       renderer.renderFrame(ctx, world);
+      syncSideMenuBars();
     },
   });
 
   // Expose live state & QA harness hook
   refreshLobbyText();
+  syncSideMenuBars();
   window.__WR_APP__ = {
     world,
     renderer,
@@ -464,6 +624,7 @@ async function boot() {
     runtime,
     openLobby,
     closeLobby,
+    selectWeapon: selectWeaponFromUI,
     setLanguage(code) {
       assets.locale.setLanguage(code);
       world.save.langIdx = assets.locale.getLanguageIndex();

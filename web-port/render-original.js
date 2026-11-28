@@ -10,6 +10,7 @@ import {
   SCREEN_W, SCREEN_H, WORLD_W, WORLD_H, MARGIN_X, MARGIN_Y, WATER_Y,
   MASK_W, MASK_H, MINIMAP_W, MINIMAP_H,
   THEME_CONFIGS, TEAM_STYLES, SHOP_PACKS,
+  AIM_ORIGIN_OFFSET_Y, isAimableWeapon, getAimDirection,
 } from './worms-world.js';
 import {
   drawImageAnchor, fillRectMIDP, fillARGBRectMIDP, drawRectMIDP,
@@ -23,8 +24,8 @@ export function getHeldWeaponFrame(modId, weaponId) {
   if (modId < 0 || modId > 10) return -1;
   switch (weaponId) {
     case -1: case 2: case 3: case 5: case 8: case 9: case 11: case 14: case 15:
-    case 17: case 18: case 21: case 24: case 26: case 27: case 28: case 29:
-    case 32: case 33: case 34:
+    case 17: case 18: case 20: case 21: case 24: case 26: case 27: case 28: case 29:
+    case 32: case 33: case 34: case 35:
       return -1;
     case 1: return modId + 68;
     case 4: return 157;
@@ -41,6 +42,74 @@ export function getHeldWeaponFrame(modId, weaponId) {
     case 30: return modId + 112;
     case 31: return 108;
     default: return weaponId * 11 + modId;
+  }
+}
+
+/**
+ * Port of ah.java:6335-6341 & ah.java:6495-6502:
+ * Unflipped ac[0]/ac[2] sprites face LEFT (flipFlag=0); facing RIGHT sets flipFlag=1.
+ * Aim animations 27..37 map 0=DOWN .. 5=HORIZONTAL(32) .. 10=UP(37), inverted from aimAngle (0=UP .. 180=DOWN).
+ */
+export function getWormRenderState(w, isActive, phase) {
+  const flipFlag = w.dir === 1 ? 1 : 0;
+  let animId = 7; // idle
+  if (w.state === 'JETPACK') animId = 39;
+  else if (w.parachuteOpen) animId = 65;
+  else if (!w.onGround && Math.abs(w.vy) > 1.5) animId = 8;
+  else if (w.state === 'WALK') animId = 11;
+  else if (isActive && phase === 'PLAY') {
+    if (isAimableWeapon(w.weaponId)) {
+      animId = Math.min(37, Math.max(27, 27 + Math.floor((11 * (180 - w.aimAngle)) / 180)));
+    } else {
+      animId = getHeldWeaponFrame(5, w.weaponId) >= 0 ? 32 : 7;
+    }
+  }
+  return { flipFlag, animId };
+}
+
+/**
+ * Port of ah.java:2168-2256: projectile frame index & flip flag from velocity vector.
+ */
+export function getProjectileSpriteInfo(p, tickCount = 0) {
+  const mag = Math.hypot(p.vx || 0, p.vy || 0) || 1;
+  const degFromUp = (Math.acos(Math.max(-1, Math.min(1, -(p.vy || 0) / mag))) * 180) / Math.PI;
+  const angleIdx = Math.min(10, Math.max(0, Math.floor((degFromUp * 11) / 180)));
+  const flipFlag = (p.vx ?? 0) >= 0 ? 1 : 0;
+
+  switch (p.kind) {
+    case 0:
+    case 5:
+    case 11:
+    case 29:
+      return { frameId: 45 + angleIdx, flipFlag };
+    case 1: return { frameId: 22 + angleIdx, flipFlag };
+    case 6: return { frameId: 34 + angleIdx, flipFlag };
+    case 7: return { frameId: 124 + angleIdx, flipFlag };
+    case 70: return { frameId: 123, flipFlag: 0 };
+    case 10: return { frameId: 79 + ((tickCount >> 1) % 3), flipFlag };
+    case 16: {
+      if (p.flyMode) {
+        const dirBand = Math.min(4, Math.floor((angleIdx * 5) / 11));
+        return { frameId: 147 + dirBand * 2 + (tickCount % 2), flipFlag };
+      }
+      return { frameId: 79 + ((tickCount >> 1) % 3), flipFlag };
+    }
+    case 13: return { frameId: 159 + angleIdx, flipFlag };
+    case 17: return { frameId: 187 + angleIdx, flipFlag };
+    case 19: return { frameId: 96 + angleIdx, flipFlag };
+    case 22: return { frameId: 182 + ((tickCount >> 1) % 4), flipFlag };
+    case 25:
+    case 250:
+      return { frameId: 85 + angleIdx, flipFlag };
+    case 27:
+      return { frameId: -1, flipFlag }; // Rendered with ac[3] anim 19 fireball
+    case 28:
+      return { frameId: 181, flipFlag: 0 };
+    case 31:
+      // ac[2] 109..111 are lit dynamite without hand m:27 (108 includes gripped hand)
+      return { frameId: 109 + (tickCount % 3), flipFlag: 0 };
+    default:
+      return { frameId: -1, flipFlag };
   }
 }
 
@@ -178,11 +247,11 @@ export class WormsRenderer {
     const ac14 = this.assets?.sprites?.[14];
     if (!ac14) return;
     if (leftIcon >= 0) {
-      ac14.drawFrame(ctx, 41, 0, SCREEN_H, 0);
+      ac14.drawFrame(ctx, 4, 0, SCREEN_H, 0); // y.java:7316 left corner backing
       ac14.drawFrame(ctx, leftIcon, 10, SCREEN_H - 7, 0);
     }
     if (rightIcon >= 0) {
-      ac14.drawFrame(ctx, 40, SCREEN_W, SCREEN_H, 0);
+      ac14.drawFrame(ctx, 3, SCREEN_W, SCREEN_H, 0); // y.java:7325 right corner backing
       ac14.drawFrame(ctx, rightIcon, SCREEN_W - 14, SCREEN_H - 7, 0);
     }
   }
@@ -399,8 +468,10 @@ export class WormsRenderer {
       if (!d.alive) continue;
       const dx = Math.round(d.x - cx);
       const dy = Math.round(d.y - cy);
-      if (ac2 && ac2.numFrames > 233) ac2.drawFrame(ctx, 233, dx, dy, 0);
-      else {
+      if (ac10 && ac10.numAnims > 0) {
+        const fi = ac10.resolveAnimFrameIndex(0, world.tickCount, true);
+        ac10.drawAnim(ctx, 0, fi, dx, dy, 0); // ah.java:389-390 oil drum
+      } else {
         fillRectMIDP(ctx, dx - 6, dy - 10, 12, 16, '#bb2211');
         fillRectMIDP(ctx, dx - 6, dy - 4, 12, 3, '#ffcc22');
       }
@@ -408,9 +479,9 @@ export class WormsRenderer {
     for (const m of world.mines) {
       const mx = Math.round(m.x - cx);
       const my = Math.round(m.y - cy);
-      if (ac2 && ac2.numFrames > 111) {
-        const frame = 109 + ((m.triggered ? (world.tickCount % 3) : 0));
-        ac2.drawFrame(ctx, frame, mx, my, 0);
+      if (ac10 && ac10.numFrames > 4) {
+        const frame = (m.triggered && (world.tickCount % 4 < 2)) ? 4 : 3; // ah.java:394 mine
+        ac10.drawFrame(ctx, frame, mx, my, 0);
       } else {
         fillRectMIDP(ctx, mx - 4, my - 3, 8, 5, m.triggered && (world.tickCount % 4 < 2) ? '#ff2200' : '#444444');
       }
@@ -449,23 +520,14 @@ export class WormsRenderer {
       if (wx < -30 || wx > SCREEN_W + 30 || wy < -40 || wy > SCREEN_H + 40) continue;
 
       const isActive = i === world.activeWormIdx && world.phase !== 'RESOLVE';
-      const flipFlag = w.dir === 1 ? 0 : 1; // ac.java:1=flipX when facing right vs left! Wait: check orientation visually if needed!
-
-      let animId = 7; // idle
-      if (w.state === 'JETPACK') animId = 39;
-      else if (w.parachuteOpen) animId = 65;
-      else if (!w.onGround && Math.abs(w.vy) > 1.5) animId = 8;
-      else if (w.state === 'WALK') animId = 11;
-      else if (isActive && world.phase === 'PLAY') {
-        animId = Math.min(37, 27 + Math.floor((11 * w.aimAngle) / 180));
-      }
+      const { flipFlag, animId } = getWormRenderState(w, isActive, world.phase);
 
       if (ac0) {
         const frameIdx = ac0.resolveAnimFrameIndex(animId, w.animTick, true);
         ac0.drawAnim(ctx, animId, frameIdx, wx, wy, flipFlag, {
           hat: TEAM_STYLES[w.team]?.hat ?? 0,
           hatsPack: ac4,
-          weaponId: isActive ? w.weaponId : -1,
+          weaponId: (isActive && world.phase === 'PLAY') ? w.weaponId : -1,
           handsPack: ac2,
           weaponFrameFn: getHeldWeaponFrame,
           fxPack: ac3,
@@ -501,19 +563,19 @@ export class WormsRenderer {
       }
 
       // Active Aiming Crosshair & Power Charge Dots (ah.java:5921-5946)
-      if (isActive && (world.phase === 'PLAY' || world.phase === 'INTRO')) {
-        const dirX = w.dir * Math.sin((w.aimAngle * Math.PI) / 180);
-        const dirY = -Math.cos((w.aimAngle * Math.PI) / 180);
+      if (isActive && isAimableWeapon(w.weaponId) && (world.phase === 'PLAY' || world.phase === 'INTRO')) {
+        const { dirX, dirY } = getAimDirection(w.dir, w.aimAngle);
+        const pivotY = wy + AIM_ORIGIN_OFFSET_Y;
         if (ac11) {
           const crossX = Math.round(wx + dirX * 52);
-          const crossY = Math.round(wy - 6 + dirY * 52);
-          ac11.drawAnim(ctx, 0, Math.floor(world.tickCount / 5) % 4, crossX, crossY, flipFlag);
+          const crossY = Math.round(pivotY + dirY * 52);
+          ac11.drawAnim(ctx, 0, Math.floor(world.tickCount / 5) % 4, crossX, crossY, 0);
         }
         if (world.charging && ac7) {
           const dots = Math.min(5, Math.ceil(world.chargePower / 20));
           for (let d = 0; d < dots; d++) {
             const dist = 14 + d * 8;
-            ac7.drawFrame(ctx, 7 + d, Math.round(wx + dirX * dist), Math.round(wy - 6 + dirY * dist), 0);
+            ac7.drawFrame(ctx, 7 + d, Math.round(wx + dirX * dist), Math.round(pivotY + dirY * dist), 0);
           }
         }
       }
@@ -530,12 +592,28 @@ export class WormsRenderer {
     for (const p of world.projectiles) {
       const px = Math.round(p.x - cx);
       const py = Math.round(p.y - cy);
-      if (p.kind === 28) { // Concrete Donkey
-        fillRoundRectMIDP(ctx, px - 12, py - 14, 24, 24, 5, 5, '#8c949e');
-        drawRectMIDP(ctx, px - 12, py - 14, 24, 24, '#444b54');
-      } else if (ac2 && p.kind < ac2.numFrames) {
-        const frameId = p.kind === 1 ? 68 : p.kind === 19 ? 209 : p.kind === 10 ? 79 : p.kind === 31 ? 108 : p.kind;
-        ac2.drawFrame(ctx, Math.min(ac2.numFrames - 1, Math.max(0, frameId)), px, py, p.vx < 0 ? 1 : 0);
+      if (p.kind === 27) { // Dragon Ball fireball (ah.java ac[3] anim 19)
+        if (ac3 && ac3.numAnims > 19) {
+          ac3.drawAnim(ctx, 19, world.tickCount % Math.max(1, ac3.getAnimFrameCount(19)), px, py + 8, 0);
+        } else {
+          fillRoundRectMIDP(ctx, px - 6, py - 6, 12, 12, 6, 6, '#33ddff');
+          fillRoundRectMIDP(ctx, px - 3, py - 3, 6, 6, 3, 3, '#ffffff');
+        }
+      } else if (p.kind === 28) { // Concrete Donkey
+        const { frameId } = getProjectileSpriteInfo(p, world.tickCount);
+        if (ac2 && frameId >= 0 && frameId < ac2.numFrames) {
+          ac2.drawFrame(ctx, frameId, px, py + 12, 0);
+        } else {
+          fillRoundRectMIDP(ctx, px - 12, py - 14, 24, 24, 5, 5, '#8c949e');
+          drawRectMIDP(ctx, px - 12, py - 14, 24, 24, '#444b54');
+        }
+      } else if (ac2) {
+        const { frameId, flipFlag } = getProjectileSpriteInfo(p, world.tickCount);
+        if (frameId >= 0 && frameId < ac2.numFrames) {
+          ac2.drawFrame(ctx, frameId, px, py, flipFlag);
+        } else {
+          fillRoundRectMIDP(ctx, px - 3, py - 3, 6, 6, 3, 3, p.kind === 25 ? '#ffe833' : '#ff4422');
+        }
       } else {
         fillRoundRectMIDP(ctx, px - 3, py - 3, 6, 6, 3, 3, p.kind === 25 ? '#ffe833' : '#ff4422');
       }
@@ -627,10 +705,15 @@ export class WormsRenderer {
       fnt.drawString(ctx, `${secLeft}`, SCREEN_W - 49, SCREEN_H - 50, 17);
     }
 
-    // Active Weapon Slot Badge bottom-left (above LSK)
+    // Active Weapon Slot Badge bottom-left with bezel ac[5] frame 24 (y.java:6674)
     const aw = world.getActiveWorm();
-    if (aw && world.phase === 'PLAY') {
-      if (ac1) ac1.drawFrame(ctx, aw.weaponId, 26, SCREEN_H - 36, 0);
+    if (aw && (world.phase === 'PLAY' || world.phase === 'TARGET')) {
+      if (ac5) ac5.drawFrame(ctx, 24, 25, SCREEN_H - 36, 0);
+      if (ac1) ac1.drawFrame(ctx, aw.weaponId, 25, SCREEN_H - 36, 0);
+      if (fonts) {
+        const qty = world.teams[world.activeTeamIdx]?.ammo?.[aw.weaponId] ?? -1;
+        if (qty > 0) fonts.white.drawString(ctx, String(qty), 46, SCREEN_H - 34, 20);
+      }
       if (world.charging) {
         fillRoundRectMIDP(ctx, 50, SCREEN_H - 20, 82, 10, 4, 4, '#111111');
         fillRectMIDP(ctx, 52, SCREEN_H - 18, Math.round((world.chargePower / 100) * 78), 6, '#ff6622');

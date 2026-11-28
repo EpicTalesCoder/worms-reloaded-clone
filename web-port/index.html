@@ -9,32 +9,81 @@
 </head>
 <body>
   <main id="game-shell">
-    <section id="stage-wrap" aria-label="Worms Reloaded 320x240 Stage">
-      <canvas id="game" width="320" height="240" aria-label="Worms Reloaded Game Canvas"></canvas>
-
-      <aside id="keypad-drawer" class="hidden" aria-label="J2ME Virtual Keypad">
-        <div class="kp-row">
-          <button type="button" class="kp-btn" data-key="32">LSK</button>
-          <button type="button" class="kp-btn" data-key="1">▲</button>
-          <button type="button" class="kp-btn" data-key="64">RSK</button>
+    <div id="stage-row">
+      <aside id="left-menu-bar" class="side-menu side-menu-left" aria-label="Left Weapon Menu">
+        <header class="side-menu-header">
+          <span id="left-menu-title">🔫 VŨ KHÍ [Q]</span>
+        </header>
+        <div class="active-weapon-card">
+          <canvas id="left-active-icon" width="28" height="28" aria-hidden="true"></canvas>
+          <div class="active-weapon-info">
+            <div id="left-active-name">—</div>
+            <div id="left-active-meta">∞</div>
+          </div>
         </div>
-        <div class="kp-row">
-          <button type="button" class="kp-btn" data-key="4">◀</button>
-          <button type="button" class="kp-btn" data-key="16">OK/5</button>
-          <button type="button" class="kp-btn" data-key="8">▶</button>
+        <div class="side-action-row">
+          <button type="button" id="btn-left-backpack" class="side-btn accent" data-key-name="LSK">🎒 Kho [Q]</button>
+          <button type="button" id="btn-left-fuse" class="side-btn" data-key-name="HASH">⏱ 3s [#]</button>
         </div>
-        <div class="kp-row">
-          <button type="button" class="kp-btn" data-key="256">1 B.Flip</button>
-          <button type="button" class="kp-btn" data-key="2">▼</button>
-          <button type="button" class="kp-btn" data-key="1024">3 Jump</button>
-        </div>
-        <div class="kp-row">
-          <button type="button" class="kp-btn" data-key="16384">7 Map</button>
-          <button type="button" class="kp-btn" data-key="262144"># Fuse</button>
-          <button type="button" class="kp-btn" data-key="65536">9 Look</button>
-        </div>
+        <div id="weapon-bar-grid" class="weapon-grid" role="listbox" aria-label="Weapon Selection"></div>
       </aside>
-    </section>
+
+      <section id="stage-wrap" aria-label="Worms Reloaded 320x240 Stage">
+        <canvas id="game" width="320" height="240" aria-label="Worms Reloaded Game Canvas"></canvas>
+
+        <aside id="keypad-drawer" class="hidden" aria-label="J2ME Virtual Keypad">
+          <div class="kp-row">
+            <button type="button" class="kp-btn" data-key="32">LSK</button>
+            <button type="button" class="kp-btn" data-key="1">▲</button>
+            <button type="button" class="kp-btn" data-key="64">RSK</button>
+          </div>
+          <div class="kp-row">
+            <button type="button" class="kp-btn" data-key="4">◀</button>
+            <button type="button" class="kp-btn" data-key="16">OK/5</button>
+            <button type="button" class="kp-btn" data-key="8">▶</button>
+          </div>
+          <div class="kp-row">
+            <button type="button" class="kp-btn" data-key="256">1 B.Flip</button>
+            <button type="button" class="kp-btn" data-key="2">▼</button>
+            <button type="button" class="kp-btn" data-key="1024">3 Jump</button>
+          </div>
+          <div class="kp-row">
+            <button type="button" class="kp-btn" data-key="16384">7 Map</button>
+            <button type="button" class="kp-btn" data-key="262144"># Fuse</button>
+            <button type="button" class="kp-btn" data-key="65536">9 Look</button>
+          </div>
+        </aside>
+      </section>
+
+      <aside id="right-menu-bar" class="side-menu side-menu-right" aria-label="Right Game Menu">
+        <header class="side-menu-header">
+          <span id="right-menu-title">⚙ MENU [E]</span>
+        </header>
+        <div class="right-menu-actions">
+          <button type="button" id="btn-right-menu" class="side-btn accent" data-key-name="RSK">⏸ Menu [E]</button>
+          <button type="button" id="btn-right-map" class="side-btn" data-key-name="NUM7">🗺 Bản đồ [7]</button>
+          <button type="button" id="btn-right-look" class="side-btn" data-key-name="NUM9">👀 Nhìn quanh [9]</button>
+          <button type="button" id="btn-right-back" class="side-btn" data-key-name="BACK">↩ Quay lại</button>
+        </div>
+        <div class="right-controls-box">
+          <button type="button" id="btn-right-fire" class="side-btn fire-btn" data-key-name="FIRE">🔥 BẮN / CHỌN</button>
+          <div class="side-dpad">
+            <span></span>
+            <button type="button" class="side-btn" data-key-name="UP" title="Aim Up [W]">▲</button>
+            <span></span>
+            <button type="button" class="side-btn" data-key-name="LEFT" title="Left [A]">◀</button>
+            <button type="button" class="side-btn" data-key-name="DOWN" title="Aim Down [S]">▼</button>
+            <button type="button" class="side-btn" data-key-name="RIGHT" title="Right [D]">▶</button>
+          </div>
+          <div class="side-jump-row">
+            <button type="button" id="btn-right-bflip" class="side-btn" data-key-name="NUM1">↶ Lộn [1]</button>
+            <button type="button" id="btn-right-hjump" class="side-btn" data-key-name="NUM2">⬆ Cao [2]</button>
+            <button type="button" id="btn-right-jump" class="side-btn" data-key-name="NUM3">↷ Nhảy [3]</button>
+          </div>
+        </div>
+        <div id="right-turn-status" class="side-status">—</div>
+      </aside>
+    </div>
 
     <nav class="floating-toolbar" aria-label="Game Controls & Multiplayer">
       <button type="button" id="btn-mp-lobby" class="tb-btn accent">⚔️ Multiplayer (2–4)</button>
