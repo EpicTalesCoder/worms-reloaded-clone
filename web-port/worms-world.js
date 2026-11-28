@@ -335,7 +335,8 @@ export class WormsWorld {
     this.targetCursor = { x: WORLD_W >> 1, y: WORLD_H >> 1, dir: 1 };
     this.minimapOpen = false;
     this.minimapSlide = -64;
-    this.backpackSlide = 320;
+    this.backpackSlide = -SCREEN_W;
+    this.rightMenuSlide = SCREEN_W;
     this.teamBarsTimerMs = 0;
     this.binocularsMode = false;
     this.cameraLockTimer = 0;
@@ -1024,10 +1025,16 @@ export class WormsWorld {
     }
 
     if (this.o === 4 || this.o === 7 || this.o === 9) {
+      if (this.o === 7) {
+        this.rightMenuSlide = Math.max(SCREEN_W - 148, this.rightMenuSlide - 36);
+      } else {
+        this.rightMenuSlide = SCREEN_W;
+      }
       this.handleMenuInput();
       this.pressedKeys = 0;
       return;
     }
+    this.rightMenuSlide = Math.min(SCREEN_W, this.rightMenuSlide + 36);
 
     if (this.o !== 6) {
       this.pressedKeys = 0;
@@ -1050,15 +1057,18 @@ export class WormsWorld {
   }
 
   stepMatch(dtMs) {
-    // Pause shortcut (RSK or Esc/E when not targeting)
-    if ((this.pressedKeys & KEY.BACK) !== 0 || ((this.pressedKeys & KEY.RSK) !== 0 && this.phase === 'PLAY')) {
-      if (this.phase === 'BACKPACK') {
+    // Pause / Right Pop-Out Menu toggle (RSK or Esc/E across PLAY/INTRO/RETREAT; BACKPACK/TARGET close back to PLAY)
+    if ((this.pressedKeys & (KEY.RSK | KEY.BACK)) !== 0) {
+      if (this.phase === 'BACKPACK' || this.phase === 'TARGET') {
         this.phase = 'PLAY';
-      } else if (!this.mp.enabled) {
-        this.o = 7; // Pause Menu
-        this.cn = 0;
+        this.audio?.playSfx?.('uiBack');
         return;
       }
+      this.o = 7; // Right Pop-Out Pause & Action Menu
+      this.cn = 0;
+      this.rightMenuSlide = SCREEN_W - 36;
+      this.audio?.playSfx?.('uiSelect');
+      return;
     }
 
     // Minimap slide toggle (KEY.NUM7)
@@ -1099,12 +1109,12 @@ export class WormsWorld {
     }
 
     if (this.phase === 'BACKPACK') {
-      this.backpackSlide = Math.max(0, this.backpackSlide - 48);
+      this.backpackSlide = Math.min(0, this.backpackSlide + 48);
       this.handleBackpackInput();
       this.updateCamera();
       return;
     } else {
-      this.backpackSlide = Math.min(SCREEN_W, this.backpackSlide + 48);
+      this.backpackSlide = Math.max(-SCREEN_W, this.backpackSlide - 48);
     }
 
     if (this.phase === 'TARGET') {
@@ -1147,7 +1157,7 @@ export class WormsWorld {
         this.handleActiveWormInput(aw, dtMs, true);
       }
       this.retreatMsLeft -= dtMs;
-      if (this.retreatMsLeft <= 0 || this.projectiles.length > 0) {
+      if (this.retreatMsLeft <= 0 || !aw || !aw.alive) {
         this.phase = 'RESOLVE';
         this.phaseTimerMs = 600;
       }
@@ -1174,6 +1184,7 @@ export class WormsWorld {
     if (!retreatOnly && !this.charging && (this.pressedKeys & KEY.LSK) !== 0) {
       this.phase = 'BACKPACK';
       this.backpackCursor = Math.max(0, aw.weaponId);
+      this.backpackSlide = Math.min(0, this.backpackSlide + 48);
       this.audio?.playSfx?.('uiSelect');
       return;
     }
@@ -1185,19 +1196,27 @@ export class WormsWorld {
       this.audio?.playSfx?.('uiMove');
     }
 
-    // Jetpack movement when equipped (weaponId === 2)
+    // Jetpack flight when activated (weaponId === 2, ah.java:6847-6913)
     if (aw.weaponId === 2 && aw.state === 'JETPACK') {
       if ((this.heldKeys & MASK_UP) !== 0 && aw.jetpackFuel > 0) {
-        aw.vy = Math.max(-3.6, aw.vy - 0.55);
-        aw.jetpackFuel = Math.max(0, aw.jetpackFuel - 0.35);
+        aw.vy = Math.max(-3.8, aw.vy - 0.65);
+        aw.onGround = false;
+        aw.jetpackFuel = Math.max(0, aw.jetpackFuel - 0.22);
         this.spawnFlameParticle(aw.x - aw.dir * 4, aw.y + 8);
       }
-      if ((this.heldKeys & MASK_LEFT) !== 0) { aw.vx = -2.2; aw.dir = -1; }
-      else if ((this.heldKeys & MASK_RIGHT) !== 0) { aw.vx = 2.2; aw.dir = 1; }
-      if ((this.pressedKeys & MASK_FIRE) !== 0 || aw.jetpackFuel <= 0 || aw.onGround) {
+      if ((this.heldKeys & MASK_LEFT) !== 0 && aw.jetpackFuel > 0) {
+        aw.vx = -2.4;
+        aw.dir = -1;
+        if (!aw.onGround) aw.jetpackFuel = Math.max(0, aw.jetpackFuel - 0.1);
+      } else if ((this.heldKeys & MASK_RIGHT) !== 0 && aw.jetpackFuel > 0) {
+        aw.vx = 2.4;
+        aw.dir = 1;
+        if (!aw.onGround) aw.jetpackFuel = Math.max(0, aw.jetpackFuel - 0.1);
+      }
+      if ((this.pressedKeys & MASK_FIRE) !== 0 || aw.jetpackFuel <= 0) {
         aw.state = 'IDLE';
-        this.consumeAmmo(aw.team, 2);
-        this.beginRetreatOrResolve(1500);
+        aw.weaponId = 0;
+        this.selectedWeapon = 0;
       }
       return;
     }
@@ -1219,7 +1238,7 @@ export class WormsWorld {
         aw.state = 'IDLE';
       }
 
-      // Forward Jump (NUM3 / Space/J? Also NUM1 backflip!)
+      // Forward Jump (NUM3), Backflip (NUM1), Vertical High Jump (NUM2)
       if (aw.onGround && (this.pressedKeys & KEY.NUM3) !== 0) {
         aw.vx = aw.dir * 2.2;
         aw.vy = -4.2;
@@ -1229,6 +1248,12 @@ export class WormsWorld {
       } else if (aw.onGround && (this.pressedKeys & KEY.NUM1) !== 0) {
         aw.vx = -aw.dir * 1.25;
         aw.vy = -5.6;
+        aw.onGround = false;
+        aw.state = 'JUMP';
+        this.audio?.playSfx?.('jump');
+      } else if (aw.onGround && (this.pressedKeys & KEY.NUM2) !== 0) {
+        aw.vx = aw.dir * 0.45;
+        aw.vy = -5.0;
         aw.onGround = false;
         aw.state = 'JUMP';
         this.audio?.playSfx?.('jump');
@@ -1477,13 +1502,17 @@ export class WormsWorld {
         });
         if (wId === 19) this.audio?.playSfx?.('holy');
         else this.audio?.playSfx?.('throw');
-        this.beginRetreatOrResolve(3000);
+        this.beginRetreatOrResolve(Math.max(3000, this.fuseSeconds * 1000), true);
         break;
       }
 
-      case 2: // Jetpack active flight!
+      case 2: // Jetpack active flight! (ah.java:6847-6913)
         aw.state = 'JETPACK';
+        aw.jetpackFuel = 30;
+        aw.vy = -1.8;
+        aw.y = Math.max(MARGIN_Y + 8, aw.y - 2);
         aw.onGround = false;
+        this.spawnFlameParticle(aw.x - aw.dir * 4, aw.y + 8);
         this.audio?.playSfx?.('jetpack');
         break;
 
@@ -1513,24 +1542,33 @@ export class WormsWorld {
           this.applyMeleeHit(hitX, hitY, isAxe ? 22 : 24, 30, aw, isAxe, false);
         }
         this.audio?.playSfx?.('punch');
-        this.beginRetreatOrResolve(2500);
+        this.beginRetreatOrResolve(2500, true);
         break;
       }
 
-      case 4: // Drop Mine
+      case 4: // Drop Mine (ah.java:5448-5460, 6351: 5s retreat + arming delay)
       case 31: // Dynamite
       {
         if (wId === 4) {
-          this.mines.push({ x: aw.x + aw.dir * 8, y: aw.y, vx: aw.dir * 1.1, vy: -1.5, triggered: false, fuseMs: 3000, armed: true });
+          this.mines.push({
+            x: aw.x + aw.dir * 8,
+            y: aw.y - 2,
+            vx: aw.dir * 1.1,
+            vy: -1.5,
+            triggered: false,
+            fuseMs: 3000,
+            armMs: 2800,
+            armed: true,
+          });
         } else {
           this.projectiles.push({
             kind: 31, ownerTeam: aw.team, ownerWorm: aw.id,
             x: aw.x + aw.dir * 6, y: aw.y - 2, vx: 0, vy: 0,
-            gravity: 0.45, windScale: 0, bounces: 0, fuseMs: 5000,
+            gravity: 0.45, windScale: 0, bounces: 0, fuseMs: this.fuseSeconds * 1000,
           });
         }
         this.audio?.playSfx?.('place');
-        this.beginRetreatOrResolve(5000);
+        this.beginRetreatOrResolve(5000, true);
         break;
       }
 
@@ -1558,11 +1596,24 @@ export class WormsWorld {
             gravity: 0.32,
             windScale: wId === 5 ? 0.35 : 0.15,
             bounces: 0,
+            impactDetonate: wId === 11,
             fuseMs: 9000,
           });
         }
         this.audio?.playSfx?.('airstrike');
         this.beginRetreatOrResolve(0);
+        break;
+      }
+
+      case 8: // Parachute toggle (never falls through to Bazooka!)
+      {
+        if (!aw.onGround) {
+          aw.parachuteOpen = !aw.parachuteOpen;
+          if (!aw.parachuteOpen && this.teams[aw.team]?.ammo?.[8] > 0) this.teams[aw.team].ammo[8]++;
+        } else {
+          if (this.teams[aw.team]?.ammo?.[8] >= 0) this.teams[aw.team].ammo[8]++;
+          this.spawnPopup(aw.x, aw.y - 26, 'PARACHUTE', '#ffffff');
+        }
         break;
       }
 
@@ -1636,7 +1687,7 @@ export class WormsWorld {
           this.bannerMs = 900;
         } else {
           this.shotgunSecondShotDone = false;
-          this.beginRetreatOrResolve(1500);
+          this.beginRetreatOrResolve(1500, true);
         }
         break;
       }
@@ -1688,7 +1739,25 @@ export class WormsWorld {
           }
         }
         this.audio?.playSfx?.('drill');
-        this.beginRetreatOrResolve(1500);
+        this.beginRetreatOrResolve(1500, true);
+        break;
+      }
+
+      case 23: // Gas Pump (poison cloud, ah.java:5648-5662)
+      {
+        const gx = aw.x + aw.dir * 26;
+        const gy = aw.y - 4;
+        for (const w of this.worms) {
+          if (!w.alive || w.id === aw.id) continue;
+          if (Math.hypot(w.x - gx, w.y - gy) <= 52) {
+            w.poisoned = Math.max(w.poisoned || 0, 8);
+            this.damageWorm(w, 18, aw.dir * 2.5, -2.0, aw.team);
+          }
+        }
+        this.spawnExplosionParticles(gx, gy, 24, '#55ee55');
+        this.spawnPopup(gx, gy - 18, 'GAS!', '#66ff66');
+        this.audio?.playSfx?.('powerup');
+        this.beginRetreatOrResolve(2500, true);
         break;
       }
 
@@ -1782,15 +1851,8 @@ export class WormsWorld {
         this.beginTurnResolve();
         break;
 
-      default: // Fallback tactical shot
-        this.projectiles.push({
-          kind: 0, ownerTeam: aw.team, ownerWorm: aw.id,
-          x: spawnX, y: spawnY,
-          vx: dirX * speedBase, vy: dirY * speedBase,
-          gravity: 0.45, windScale: 0.25, bounces: 0, fuseMs: 8000,
-        });
-        this.audio?.playSfx?.('launch');
-        this.beginRetreatOrResolve(2000);
+      default:
+        this.beginTurnResolve();
         break;
     }
   }
@@ -1841,9 +1903,9 @@ export class WormsWorld {
     this.spawnExplosionParticles(hx, hy, 16, '#ffffff');
   }
 
-  beginRetreatOrResolve(retreatMs) {
+  beginRetreatOrResolve(retreatMs, allowRetreat = false) {
     this.shotgunSecondShotDone = false;
-    if (retreatMs > 0 && this.projectiles.some((p) => p.bounces > 0 || p.kind === 4 || p.kind === 31)) {
+    if (retreatMs > 0 && (allowRetreat || this.projectiles.some((p) => p.bounces > 0 || p.kind === 31))) {
       this.phase = 'RETREAT';
       this.retreatMsLeft = retreatMs;
     } else {
@@ -1873,7 +1935,16 @@ export class WormsWorld {
         continue;
       }
 
-      if (w.state !== 'JETPACK') {
+      if (w.state === 'JETPACK') {
+        if (!w.onGround) {
+          w.vy = Math.min(3.2, w.vy + 0.22);
+        }
+        w.vx *= 0.88;
+        if (w.y < MARGIN_Y + 6) {
+          w.y = MARGIN_Y + 6;
+          if (w.vy < 0) w.vy = 0;
+        }
+      } else {
         if (w.parachuteOpen && w.vy > 1.2) {
           w.vy = 1.2;
           w.vx += (this.windDisplay * 0.008);
@@ -2018,7 +2089,11 @@ export class WormsWorld {
       p.vx += (this.windDisplay * 0.0022) * p.windScale;
 
       if (this.tickCount % 2 === 0) {
-        this.particles.push({ kind: 'smoke', x: p.x, y: p.y, ttl: 280, maxTtl: 280, color: '#eeeeee' });
+        if (p.kind === 0 || p.kind === 5 || p.kind === 6 || p.kind === 17 || p.kind === 29) {
+          this.particles.push({ kind: 'smoke', x: p.x, y: p.y, ttl: 280, maxTtl: 280, color: '#eeeeee' });
+        } else if (p.kind === 11 || p.kind === 13) {
+          this.particles.push({ kind: 'smoke', x: p.x, y: p.y, ttl: 220, maxTtl: 220, color: '#ff8822' });
+        }
       }
 
       // Sub-step collision
@@ -2219,6 +2294,16 @@ export class WormsWorld {
 
     for (let i = this.mines.length - 1; i >= 0; i--) {
       const m = this.mines[i];
+      if ((m.armMs || 0) > 0) {
+        m.armMs = Math.max(0, m.armMs - dtMs);
+      }
+      if (Math.abs(m.vx || 0) > 0.05) {
+        const nmx = m.x + m.vx;
+        if (nmx >= MARGIN_X + 6 && nmx <= MARGIN_X + MASK_W - 6 && !this.isSolid(nmx, m.y - 2)) {
+          m.x = nmx;
+        }
+        m.vx *= 0.82;
+      }
       if (!this.isSolid(m.x, m.y + 5)) {
         m.vy += 0.35;
         m.y += m.vy;
@@ -2228,13 +2313,16 @@ export class WormsWorld {
         }
       } else {
         m.vy = 0;
+        m.vx *= 0.5;
       }
 
       if (!m.triggered) {
-        const nearWorm = this.worms.some((w) => w.alive && Math.hypot(w.x - m.x, w.y - m.y) < 22);
-        if (nearWorm) {
-          m.triggered = true;
-          this.audio?.playSfx?.('mineBeep');
+        if ((m.armMs || 0) <= 0 && this.phase !== 'RETREAT') {
+          const nearWorm = this.worms.some((w) => w.alive && Math.hypot(w.x - m.x, w.y - m.y) < 22);
+          if (nearWorm) {
+            m.triggered = true;
+            this.audio?.playSfx?.('mineBeep');
+          }
         }
       } else {
         m.fuseMs -= dtMs;
@@ -2663,22 +2751,34 @@ export class WormsWorld {
       return;
     }
 
-    if (this.o === 7) { // Pause Menu
-      const pauseItems = [0, 1, 2, 3]; // Resume, Restart, Options, Main Menu
+    if (this.o === 7) { // Right Pop-Out Pause & Action Menu
+      const count = 7; // Resume, Map, Look, Sound, Restart, Options, Main Menu
       if ((this.pressedKeys & MASK_UP) !== 0) {
-        this.cn = (this.cn + pauseItems.length - 1) % pauseItems.length;
+        this.cn = (this.cn + count - 1) % count;
         this.audio?.playSfx?.('uiMove');
       } else if ((this.pressedKeys & MASK_DOWN) !== 0) {
-        this.cn = (this.cn + 1) % pauseItems.length;
+        this.cn = (this.cn + 1) % count;
         this.audio?.playSfx?.('uiMove');
       } else if ((this.pressedKeys & (KEY.RSK | KEY.BACK)) !== 0) {
         this.o = 6;
+        this.audio?.playSfx?.('uiBack');
       } else if ((this.pressedKeys & (MASK_FIRE | KEY.LSK)) !== 0) {
         this.audio?.playSfx?.('uiSelect');
         if (this.cn === 0) this.o = 6;
-        else if (this.cn === 1) this.startMatch({ seed: this.matchSeed, themeId: this.themeId, mapStyle: this.mapStyle, numTeams: this.numTeams, wormsPerTeam: this.wormsPerTeam, aiMask: 0b0010, turnTime: this.turnSecondsMax });
-        else if (this.cn === 2) { this.o = 4; this.cm = 11; this.cn = 0; }
-        else { this.o = 4; this.cm = 0; this.cn = 0; }
+        else if (this.cn === 1) { this.minimapOpen = !this.minimapOpen; this.o = 6; }
+        else if (this.cn === 2) { this.binocularsMode = !this.binocularsMode; this.o = 6; }
+        else if (this.cn === 3) {
+          this.save.soundOn = !this.save.soundOn;
+          this.audio?.setMuted?.(!this.save.soundOn);
+          writePersistentSave(this.save);
+        } else if (this.cn === 4 && !this.mp.enabled) {
+          this.startMatch({ seed: this.matchSeed, themeId: this.themeId, mapStyle: this.mapStyle, numTeams: this.numTeams, wormsPerTeam: this.wormsPerTeam, aiMask: 0b0010, turnTime: this.turnSecondsMax });
+        } else if (this.cn === 5 && !this.mp.enabled) {
+          this.o = 4; this.cm = 11; this.cn = 0;
+        } else if (this.cn === 6) {
+          this.mp.enabled = false;
+          this.o = 4; this.cm = 0; this.cn = 0;
+        }
       }
       return;
     }

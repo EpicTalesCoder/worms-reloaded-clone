@@ -79,9 +79,10 @@ export function getProjectileSpriteInfo(p, tickCount = 0) {
   switch (p.kind) {
     case 0:
     case 5:
-    case 11:
     case 29:
       return { frameId: 45 + angleIdx, flipFlag };
+    case 11:
+      return { frameId: 159 + angleIdx, flipFlag }; // Napalm fire canister (not Bazooka rocket)
     case 1: return { frameId: 22 + angleIdx, flipFlag };
     case 6: return { frameId: 34 + angleIdx, flipFlag };
     case 7: return { frameId: 124 + angleIdx, flipFlag };
@@ -673,8 +674,8 @@ export class WormsRenderer {
     // 11. Match HUD (y.java:6616-6899)
     this.renderMatchHUD(ctx, world);
 
-    // 12. Slide-in 9x4 Weapon Backpack Drawer (y.java:5290-5348)
-    if (world.phase === 'BACKPACK' || world.backpackSlide < SCREEN_W) {
+    // 12. Slide-in 9x4 Weapon Backpack Drawer from LEFT (y.java:5290-5348)
+    if (world.phase === 'BACKPACK' || world.backpackSlide > -SCREEN_W) {
       this.renderBackpackDrawer(ctx, world);
     }
   }
@@ -698,25 +699,30 @@ export class WormsRenderer {
       }
     }
 
-    // Turn countdown number bottom-right aligned cleanly inside clock frame (to the left of || glyph)
-    const secLeft = Math.max(0, Math.ceil(world.turnMsLeft / 1000));
+    // Turn or Retreat countdown number bottom-right aligned cleanly inside clock frame (y.java:6712)
+    const activeMs = world.phase === 'RETREAT' ? Math.max(0, world.retreatMsLeft) : world.turnMsLeft;
+    const secLeft = Math.max(0, Math.ceil(activeMs / 1000));
     if (fonts) {
-      const fnt = (secLeft <= 5 && world.tickCount % 10 < 5) ? fonts.red : fonts.white;
+      const isUrgent = world.phase === 'RETREAT' || secLeft <= 5;
+      const fnt = (isUrgent && world.tickCount % 8 < 4) ? fonts.red : fonts.white;
       fnt.drawString(ctx, `${secLeft}`, SCREEN_W - 49, SCREEN_H - 50, 17);
     }
 
-    // Active Weapon Slot Badge bottom-left with bezel ac[5] frame 24 (y.java:6674)
+    // Bottom-left Pop-Out Backpack Button (ac[5] f24) + Active Weapon Slot beside it (y.java:6674,6692)
+    if (ac5) ac5.drawFrame(ctx, 24, 24, SCREEN_H - 36, 0);
     const aw = world.getActiveWorm();
-    if (aw && (world.phase === 'PLAY' || world.phase === 'TARGET')) {
-      if (ac5) ac5.drawFrame(ctx, 24, 25, SCREEN_H - 36, 0);
-      if (ac1) ac1.drawFrame(ctx, aw.weaponId, 25, SCREEN_H - 36, 0);
+    if (aw && (world.phase === 'PLAY' || world.phase === 'TARGET' || world.phase === 'INTRO')) {
+      if (ac1) {
+        ac1.drawFrame(ctx, 36, 56, SCREEN_H - 22, 0);
+        ac1.drawFrame(ctx, aw.weaponId, 56, SCREEN_H - 22, 0);
+      }
       if (fonts) {
         const qty = world.teams[world.activeTeamIdx]?.ammo?.[aw.weaponId] ?? -1;
-        if (qty > 0) fonts.white.drawString(ctx, String(qty), 46, SCREEN_H - 34, 20);
+        if (qty > 0) fonts.white.drawString(ctx, String(qty), 63, SCREEN_H - 36, 20);
       }
       if (world.charging) {
-        fillRoundRectMIDP(ctx, 50, SCREEN_H - 20, 82, 10, 4, 4, '#111111');
-        fillRectMIDP(ctx, 52, SCREEN_H - 18, Math.round((world.chargePower / 100) * 78), 6, '#ff6622');
+        fillRoundRectMIDP(ctx, 74, SCREEN_H - 20, 82, 10, 4, 4, '#111111');
+        fillRectMIDP(ctx, 76, SCREEN_H - 18, Math.round((world.chargePower / 100) * 78), 6, '#ff6622');
       }
     }
 
@@ -795,34 +801,57 @@ export class WormsRenderer {
 
     if (fonts && locale) {
       const wName = locale.getString(345 + world.backpackCursor);
-      fillRoundRectMIDP(ctx, dx + 24, 152, SCREEN_W - 48, 26, 6, 6, '#052742');
-      fonts.cyan.drawString(ctx, wName, dx + (SCREEN_W >> 1), 161, 3);
+      fillRoundRectMIDP(ctx, dx + 14, 152, 170, 26, 6, 6, '#052742');
+      fonts.cyan.drawString(ctx, wName, dx + 99, 161, 3);
+      for (let f = 1; f <= 5; f++) {
+        const fx = dx + 190 + (f - 1) * 22;
+        const activeFuse = f === world.fuseSeconds;
+        fillRoundRectMIDP(ctx, fx, 155, 20, 20, 4, 4, activeFuse ? '#dd7200' : '#0a3358');
+        drawRoundRectMIDP(ctx, fx, 155, 20, 20, 4, 4, activeFuse ? '#ffd878' : '#3d89c9');
+        fonts.white.drawString(ctx, `${f}S`, fx + 10, 154, 17);
+      }
     }
 
     this.drawSoftkeys(ctx, 33, 29);
   }
 
   renderPauseOverlay(ctx, world) {
-    fillARGBRectMIDP(ctx, 0xbb04101e, 0, 0, SCREEN_W, SCREEN_H);
+    fillARGBRectMIDP(ctx, 0x7704101e, 0, 0, SCREEN_W, SCREEN_H);
     const fonts = this.assets?.fonts;
     const locale = this.assets?.locale;
     if (!fonts || !locale) return;
 
-    fillRoundRectMIDP(ctx, 48, 38, SCREEN_W - 96, 158, 10, 10, '#0a3a66');
-    drawRoundRectMIDP(ctx, 48, 38, SCREEN_W - 96, 158, 10, 10, '#66b8ff');
-    fonts.cyan.drawString(ctx, locale.getString(36), SCREEN_W >> 1, 52, 3); // GAME PAUSED
+    // Right Pop-Out Menu Drawer anchored cleanly on right edge inside 320x240 screen
+    const px = Math.round(world.rightMenuSlide ?? (SCREEN_W - 148));
+    const pw = 142;
+    fillRectMIDP(ctx, px, 10, pw, 202, '#054f77');
+    fillRoundRectMIDP(ctx, px + 3, 12, pw - 6, 198, 8, 8, '#0788ff');
+    fillRectMIDP(ctx, px + 6, 15, pw - 12, 192, '#073d66');
+
+    const vi = locale.activeCode === 'vi';
+    fonts.cyan.drawString(ctx, 'MENU', px + (pw >> 1), 17, 17);
 
     const labels = [
-      locale.getString(14), // RESUME
-      locale.getString(15), // RESTART
-      locale.getString(27), // OPTIONS
-      locale.getString(11), // MAIN MENU
+      locale.getString(14), // 0: RESUME
+      `${vi ? 'BẢN ĐỒ' : 'MAP'} 7`,
+      `${vi ? 'NHÌN' : 'LOOK'} 9`,
+      `${vi ? 'ÂM' : 'SFX'}: ${world.save.soundOn ? 'ON' : 'OFF'}`,
+      locale.getString(15), // 4: RESTART
+      locale.getString(27), // 5: OPTIONS
+      locale.getString(11), // 6: MAIN MENU
     ];
     for (let i = 0; i < labels.length; i++) {
       const sel = i === world.cn;
-      const y = 84 + i * 25;
-      if (sel) fillRoundRectMIDP(ctx, 70, y - 9, SCREEN_W - 140, 19, 6, 6, '#dd7200');
-      fonts.white.drawString(ctx, labels[i], SCREEN_W >> 1, y - 4, 3);
+      const disabledInMp = world.mp.enabled && (i === 4 || i === 5);
+      const y = 52 + i * 22;
+      if (sel) {
+        fillRoundRectMIDP(ctx, px + 10, y - 9, pw - 20, 19, 6, 6, '#dd7200');
+        drawRoundRectMIDP(ctx, px + 10, y - 9, pw - 20, 19, 6, 6, '#ffd878');
+      } else {
+        fillARGBRectMIDP(ctx, 0x660b2c4e, px + 10, y - 9, pw - 20, 19);
+      }
+      const fnt = disabledInMp ? fonts.red : (sel ? fonts.white : fonts.cyan);
+      fnt.drawString(ctx, labels[i], px + (pw >> 1), y - 4, 3);
     }
     this.drawSoftkeys(ctx, 33, 29);
   }

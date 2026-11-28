@@ -319,3 +319,115 @@ test('Projectile sprites never render worm hand module m:27 and exclude Pneumati
   assert.equal(playState.animId, 32);
   assert.equal(retreatState.animId, 7);
 });
+
+test('Mine gives 5s RETREAT movement window and Jetpack lifts off & flies across ticks', () => {
+  const assets = loadMinimalAssets();
+  const world = new WormsWorld(assets);
+  world.startQuickMatch(44556);
+  for (let i = 0; i < 30; i++) world.stepTick(50);
+  assert.equal(world.phase, 'PLAY');
+
+  // Carve flat runway under active worm
+  const aw = world.getActiveWorm();
+  aw.x = MARGIN_X + 200;
+  aw.y = MARGIN_Y + 180;
+  for (let dx = -40; dx <= 60; dx += 4) {
+    world.carveCrater(aw.x + dx, aw.y - 8, 16);
+  }
+  for (let x = MARGIN_X + 150; x <= MARGIN_X + 270; x++) {
+    for (let y = aw.y + 7; y <= aw.y + 30; y++) {
+      world.mask[(y - MARGIN_Y) * MASK_W + (x - MARGIN_X)] = 1;
+    }
+  }
+  aw.onGround = true;
+
+  // Drop Mine (4) -> must enter RETREAT (5000ms) and let worm walk away without premature detonation
+  aw.weaponId = 4;
+  world.fireCurrentWeapon();
+  assert.equal(world.phase, 'RETREAT');
+  assert.equal(world.retreatMsLeft, 5000);
+  assert.equal(world.mines.length, 1);
+
+  const startX = aw.x;
+  world.heldKeys = KEY.RIGHT;
+  for (let t = 0; t < 15; t++) world.stepTick(50);
+  world.heldKeys = 0;
+  assert.equal(world.phase, 'RETREAT', 'Worm must keep RETREAT time while moving away from Mine');
+  assert.ok(aw.x > startX + 8, 'Worm must be able to walk away during Mine retreat window');
+  assert.equal(world.mines[0].triggered, false, 'Mine must stay unarmed during retreat grace period');
+
+  // Test Jetpack (2): must lift off ground, stay in JETPACK across ticks, fly UP+RIGHT, and stop on FIRE
+  world.phase = 'PLAY';
+  world.turnMsLeft = 30000;
+  aw.weaponId = 2;
+  const jpStartX = aw.x;
+  const jpStartY = aw.y;
+  world.fireCurrentWeapon();
+  assert.equal(aw.state, 'JETPACK');
+
+  world.heldKeys = KEY.UP | KEY.RIGHT;
+  for (let t = 0; t < 10; t++) world.stepTick(50);
+  assert.equal(aw.state, 'JETPACK');
+  assert.ok(aw.y < jpStartY - 8, 'Jetpack must lift worm upward');
+  assert.ok(aw.x > jpStartX + 8, 'Jetpack must fly horizontally with RIGHT');
+  assert.ok(aw.jetpackFuel < 30, 'Jetpack must burn fuel while flying airborne');
+
+  world.heldKeys = 0;
+  world.pressedKeys = KEY.FIRE;
+  world.stepTick(50);
+  assert.equal(aw.state, 'IDLE', 'Pressing FIRE exits Jetpack cleanly');
+  assert.equal(world.phase, 'PLAY', 'Turning off Jetpack lets worm keep acting during turn');
+});
+
+test('Gas Pump, Parachute, Napalm & Grenade never trigger Bazooka rockets, and Left/Right drawers pop in', () => {
+  const assets = loadMinimalAssets();
+  const world = new WormsWorld(assets);
+  world.startQuickMatch(77889);
+  for (let i = 0; i < 30; i++) world.stepTick(50);
+  const aw = world.getActiveWorm();
+
+  // Parachute on ground must NOT spawn a Bazooka rocket
+  aw.weaponId = 8;
+  world.fireCurrentWeapon();
+  assert.equal(world.projectiles.length, 0);
+
+  // Gas Pump (23) must NOT spawn a Bazooka rocket
+  world.phase = 'PLAY';
+  aw.weaponId = 23;
+  world.fireCurrentWeapon();
+  assert.equal(world.projectiles.length, 0);
+  assert.equal(world.phase, 'RETREAT');
+
+  // Grenade (1) keeps RETREAT without spawning white rocket smoke particles
+  world.phase = 'PLAY';
+  world.particles = [];
+  aw.weaponId = 1;
+  world.fireCurrentWeapon();
+  assert.equal(world.phase, 'RETREAT');
+  assert.equal(world.projectiles[0].kind, 1);
+  world.stepTick(50);
+  world.stepTick(50);
+  assert.equal(world.phase, 'RETREAT', 'Grenade RETREAT must not end on tick 1 when projectile exists');
+  assert.equal(world.particles.filter((pt) => pt.kind === 'smoke').length, 0, 'Grenade should not puff Bazooka smoke');
+
+  // Napalm projectile sprite should not use Bazooka rocket frame (45..55)
+  const napalmSprite = getProjectileSpriteInfo({ kind: 11, vx: 1.5, vy: 2.2 }, 0);
+  assert.ok(napalmSprite.frameId >= 159 && napalmSprite.frameId <= 169);
+
+  // Left Backpack & Right In-Game Menu drawer animations
+  world.phase = 'PLAY';
+  assert.ok(world.backpackSlide < 0, 'Backpack starts hidden offscreen left');
+  world.pressedKeys = KEY.LSK;
+  world.stepTick(50);
+  assert.equal(world.phase, 'BACKPACK');
+  assert.ok(world.backpackSlide > -320, 'Backpack slides in from the left');
+
+  world.pressedKeys = KEY.RSK;
+  world.stepTick(50);
+  assert.equal(world.phase, 'PLAY');
+
+  world.pressedKeys = KEY.RSK;
+  world.stepTick(50);
+  assert.equal(world.o, 7, 'Right softkey opens in-game pop-out menu');
+  assert.ok(world.rightMenuSlide < 320, 'Right pop-out menu slides in from the right edge');
+});
